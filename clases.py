@@ -16,7 +16,8 @@ class Usuario:
 
 class Cliente(Usuario):
 
-    def __init__(self,tarjeta):
+    def __init__(self,usuario,contrasenia,nombre,apellido,correo, tarjeta):
+        super().__init__(usuario,contrasenia,nombre,apellido,correo)
         
         self._tarjeta = tarjeta
         
@@ -31,7 +32,8 @@ class Cliente(Usuario):
     
 class Administrador(Usuario):
 
-    def __init__(self,llaveMaestra):
+    def __init__(self,usuario,contrasenia,nombre,apellido,correo, llaveMaestra):
+        super().__init__(usuario,contrasenia,nombre,apellido,correo)
         self._llaveMaestra = llaveMaestra
        
         
