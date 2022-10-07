@@ -1,21 +1,22 @@
+
 class User:
 
     def __init__(self,user,password,name,lastname,mail):
-        self.user = user
-        self.password = password
-        self.name = name
-        self.lastname = lastname
-        self.mail = mail
+        self._user = user
+        self._password = password
+        self._name = name
+        self._lastname = lastname
+        self._mail = mail
 
     def verify_session(self):
         pass
 
 
-class Client(User):
+class Client(User): 
 
     def __init__(self,paycard):
         
-        self.paycard = paycard
+        self._paycard = paycard
         
     
     def register_client(self):
@@ -29,7 +30,7 @@ class Client(User):
 class Admin(User):
 
     def __init__(self,masterKey):
-        self.masterKey = masterKey
+        self._masterKey = masterKey
        
         
 
@@ -40,11 +41,11 @@ class Admin(User):
 class Payment: 
     
     def __init__(self,number,concept,dni,date,amount):
-        self.number = number
-        self.concept = concept
-        self.dni = dni 
-        self.date = date
-        self.amount = amount
+        self._number = number
+        self._concept = concept
+        self._dni = dni 
+        self._date = date
+        self._amount = amount
 
 
     def register_transaction(self):
@@ -55,18 +56,18 @@ class Payment:
 class Reserve:
     
     def __init__(self,code,entryDate,depDate,numDays,people): 
-        self.code = code
-        self.entryDate = entryDate
-        self.depDate = depDate
-        self.numDays = numDays
-        self.people = people
+        self._code = code
+        self._entryDate = entryDate
+        self._depDate = depDate
+        self._numDays = numDays
+        self._people = people
 
         
     def reserve(self):
         pass
 
 
-    def show_reservation(self):
+    def view_reservation(self):
         pass
 
 
@@ -80,10 +81,12 @@ class Reserve:
 class Room:
     
     def __init__(self,state,price,roomtype,roomnumber): 
-        self.state = state
-        self.price = price
-        self.roomtype = roomtype
-        self.roomnumber = roomnumber
+        self._state = state
+        self._price = price
+        self._roomtype = roomtype
+        self._roomnumber = roomnumber
 
     def view_info(self):
         pass
+
+
