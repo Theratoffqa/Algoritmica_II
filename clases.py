@@ -1,92 +1,94 @@
+class Usuario:
 
-class User:
+    def __init__(self,usuario,contrasenia,nombre,apellido,correo):
+        self._usuario = usuario
+        self._contrasenia = contrasenia
+        self._nombre = nombre
+        self._apellido = apellido
+        self._correo = correo
 
-    def __init__(self,user,password,name,lastname,mail):
-        self._user = user
-        self._password = password
-        self._name = name
-        self._lastname = lastname
-        self._mail = mail
+    def iniciarSesion(self):
+        pass
 
-    def verify_session(self):
+    def verificarSesion(self):
         pass
 
 
-class Client(User): 
+class Cliente(Usuario):
 
-    def __init__(self,paycard):
+    def __init__(self,tarjeta):
         
-        self._paycard = paycard
+        self._tarjeta = tarjeta
         
     
-    def register_client(self):
+    def registrarCliente(self):
         pass
     
 
-    def update_info(self):
+    def actualizarDatos(self):
         pass
 
     
-class Admin(User):
+class Administrador(Usuario):
 
-    def __init__(self,masterKey):
-        self._masterKey = masterKey
+    def __init__(self,llaveMaestra):
+        self._llaveMaestra = llaveMaestra
        
         
 
-    def update_catalogue(self):
+    def actualizarCatalogo(self):
         pass
     
 
-class Payment: 
+class Pago: 
     
-    def __init__(self,number,concept,dni,date,amount):
-        self._number = number
-        self._concept = concept
+    def __init__(self,numOperacion,concepto,dni,fecha,monto):
+        self._numOperacion = numOperacion
+        self._concepto = concepto
         self._dni = dni 
-        self._date = date
-        self._amount = amount
+        self._fecha = fecha
+        self._monto = monto
 
 
-    def register_transaction(self):
+    def registrarTransaccion(self):
         pass
 
 
 
-class Reserve:
+class Reserva:
     
-    def __init__(self,code,entryDate,depDate,numDays,people): 
-        self._code = code
-        self._entryDate = entryDate
-        self._depDate = depDate
-        self._numDays = numDays
-        self._people = people
+    def __init__(self,codReserva,fechaEnt,fechaSal,numDias,cantPersonas): 
+        self._codReserva = codReserva
+        self._fechaEnt = fechaEnt
+        self._fechaSal = fechaSal
+        self._numDias = numDias
+        self._cantPersonas = cantPersonas
 
         
-    def reserve(self):
+    def reservar(self):
         pass
 
 
-    def view_reservation(self):
+    def cambiarEstado(self):
         pass
 
 
-    def change_state(self):
+    def mostrarReserva(self):
         pass
 
-    def verify_state(self):
+    def verificarEstadoHabitacion(self):
         pass
     
 
-class Room:
+class Habitacion:
     
-    def __init__(self,state,price,roomtype,roomnumber): 
-        self._state = state
-        self._price = price
-        self._roomtype = roomtype
-        self._roomnumber = roomnumber
+    def __init__(self,estado,precio,tipoHabitacion,numHabitacion): 
+        self._estado = estado
+        self._precio = precio
+        self._tipoHabitacion = tipoHabitacion
+        self._numHabitacion = numHabitacion
 
-    def view_info(self):
+    def mostrarDatos(self):
         pass
 
 
