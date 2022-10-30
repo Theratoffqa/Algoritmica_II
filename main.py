@@ -10,10 +10,7 @@ Elija una opcion: """
     if option == 1:
         user = input("Usuario: ")
         password = input("Contrasenia: ")
-        if Usuario.verify_session(user, password):
-            print("Hola " + str(user))
-        else:
-            print("No tenemos registrado ese usuario")
+        Usuario.verify_session(user, password)
 
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
