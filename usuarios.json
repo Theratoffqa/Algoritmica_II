@@ -1,7 +1,16 @@
-{
-    "apellido": "Picapiedra",
-    "contrasenia": "yabadabadu",
-    "correo": "pedropp@gmail.com",
-    "nombre": "Pedro",
-    "usuario": "Pedropp"
-}
+[
+    {
+        "apellido": "Picapiedra",
+        "contrasenia": "yabadabadu",
+        "correo": "pedropp@gmail.com",
+        "nombre": "Pedro",
+        "usuario": "Pedropp"
+    },
+    {
+        "usuario": "JoxSam35",
+        "contrasenia": "hola123",
+        "nombre": "Jose",
+        "apellido": "Quispe",
+        "correo": "joxsam@gmail.com"
+    }
+]

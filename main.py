@@ -15,14 +15,20 @@ Elija una opcion: """
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
         password = input("Ingrese nueva contrasenia: ")
-        name = input("Ingrese su nombre: ")
+        name = input("Ingrese su nombre: ") 
         lastname = input("Ingrese su apellido: ")
         mail = input("Ingrese su correo: ")
         new_User = Usuario(user, password, name, lastname, mail)
         #usuarios_Registrados.append(new_User)
         usern = dict(usuario = new_User._usuario, contrasenia = new_User._contrasenia, nombre = new_User._nombre, apellido = new_User._apellido, correo = new_User._correo)
+        
+        with open("usuarios.json", "r") as f:
+            data = json.load(f)
+
+        data.append(usern)
+
         with open("usuarios.json", "w") as f:
-            json.dump(usern, f, indent=4, sort_keys=True)
+            json.dump(data, f, indent=4)
 
     else:
         print("Opcion no valida")

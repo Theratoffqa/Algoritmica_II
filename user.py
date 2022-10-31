@@ -17,12 +17,17 @@ class Usuario:
         #         print("No tenemos registrado ese usuario, inténtelo nuevamente")
         #         Usuario.verify_session(given_User, given_Password)
 
+        encontrado = False
         with open("usuarios.json", "r") as f:
             usuario = json.load(f)
-            if usuario["usuario"] == given_User and usuario["contrasenia"] == given_Password:
-                print("Bienvenido, " + usuario["nombre"])
-            else:
-                print("Usuario no encontrado, por favor, intentelo de nuevo")
+
+        for element in usuario:
+            if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+                print("Bienvenido, " + element["nombre"])
+                encontrado = True
+        
+        if encontrado == False:
+            print("No tenemos registrado ese usuario, inténtelo nuevamente")
 
 # usuarios_Registrados = [
 #     Usuario("JoseQC35","hola123","Jose","Quispe","jose.quispe35@unmsm.edu.pe")
