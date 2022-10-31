@@ -1,5 +1,5 @@
 from user import *
-import cliente, administrador
+import json
 
 if __name__ == "__main__":
     menu="""
@@ -19,7 +19,10 @@ Elija una opcion: """
         lastname = input("Ingrese su apellido: ")
         mail = input("Ingrese su correo: ")
         new_User = Usuario(user, password, name, lastname, mail)
-        usuarios_Registrados.append(new_User)
+        #usuarios_Registrados.append(new_User)
+        usern = dict(usuario = new_User._usuario, contrasenia = new_User._contrasenia, nombre = new_User._nombre, apellido = new_User._apellido, correo = new_User._correo)
+        with open("usuarios.json", "w") as f:
+            json.dump(usern, f, indent=4, sort_keys=True)
 
     else:
         print("Opcion no valida")
