@@ -1,10 +1,10 @@
 [
     {
-        "apellido": "Picapiedra",
+        "usuario": "Pedropp",
         "contrasenia": "yabadabadu",
-        "correo": "pedropp@gmail.com",
         "nombre": "Pedro",
-        "usuario": "Pedropp"
+        "apellido": "Picapiedra",
+        "correo": "pedropp@gmail.com"
     },
     {
         "usuario": "JoxSam35",
@@ -12,5 +12,12 @@
         "nombre": "Jose",
         "apellido": "Quispe",
         "correo": "joxsam@gmail.com"
+    },
+    {
+        "usuario": "Ghopst",
+        "contrasenia": "Fakergod",
+        "nombre": "Gian",
+        "apellido": "Ore",
+        "correo": "ghopst@gmail.com"
     }
 ]
