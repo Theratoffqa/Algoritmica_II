@@ -1,0 +1,23 @@
+[
+    {
+        "usuario": "Pedropp",
+        "contrasenia": "yabadabadu",
+        "nombre": "Pedro",
+        "apellido": "Picapiedra",
+        "correo": "pedropp@gmail.com"
+    },
+    {
+        "usuario": "JoxSam35",
+        "contrasenia": "hola123",
+        "nombre": "Jose",
+        "apellido": "Quispe",
+        "correo": "joxsam@gmail.com"
+    },
+    {
+        "usuario": "Ghopst",
+        "contrasenia": "Fakergod",
+        "nombre": "Gian",
+        "apellido": "Ore",
+        "correo": "ghopst@gmail.com"
+    }
+]
