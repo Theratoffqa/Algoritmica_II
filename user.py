@@ -1,4 +1,3 @@
-import json
 
 class Usuario:
 
@@ -10,25 +9,71 @@ class Usuario:
         self._correo = correo
 
     def verify_session(given_User, given_Password):
-        # for element in usuarios_Registrados:
-        #     if given_User == element._usuario and given_Password == element._contrasenia:
-        #         print("Bienvenido " + str(element._nombre))
-        #     else:
-        #         print("No tenemos registrado ese usuario, inténtelo nuevamente")
-        #         Usuario.verify_session(given_User, given_Password)
-
         encontrado = False
-        with open("usuarios.json", "r") as f:
-            usuario = json.load(f)
-
-        for element in usuario:
-            if element["usuario"] == given_User and element["contrasenia"] == given_Password:
-                print("Bienvenido, " + element["nombre"])
+        for element in usuarios_Registrados:
+            if given_User == element.user and given_Password == element.password:
                 encontrado = True
-        
-        if encontrado == False:
-            print("No tenemos registrado ese usuario, inténtelo nuevamente")
+                return encontrado
 
-# usuarios_Registrados = [
-#     Usuario("JoseQC35","hola123","Jose","Quispe","jose.quispe35@unmsm.edu.pe")
-# ]
+
+class Cliente(Usuario):
+
+    def __init__(self,usuario,contrasenia,nombre,apellido,correo, tarjeta):
+        super().__init__(usuario,contrasenia,nombre,apellido,correo)
+        
+        self._tarjeta = tarjeta
+        
+    
+    def registrarCliente(self):
+        pass
+    
+
+    def actualizarDatos(self):
+        pass
+
+    
+class Administrador(Usuario):
+
+    def __init__(self,usuario,contrasenia,nombre,apellido,correo, llaveMaestra):
+        super().__init__(usuario,contrasenia,nombre,apellido,correo)
+        self._llaveMaestra = llaveMaestra
+       
+        
+
+    def actualizarCatalogo(self):
+        pass
+
+
+
+usuarios_Registrados = [
+    Usuario("JoseQC35","hola123","Jose","Quispe","jose.quispe35@unmsm.edu.pe")
+]
+
+
+if __name__ == "__main__":
+    menu="""
+1.- Iniciar Sesion
+2.- Registrarse
+Elija una opcion: """
+    option = int(input(menu))
+    if option == 1:
+        user = input("Usuario: ")
+        password = input("Contrasenia: ")
+        if Usuario.verify_session(user, password):
+            print("Hola " + str(user))
+        else:
+            print("No tenemos registrado ese usuario")
+
+    elif option == 2:
+        user = input("Ingrese nuevo usuario: ")
+        password = input("Ingrese nueva contrasenia: ")
+        name = input("Ingrese su nombre: ")
+        lastname = input("Ingrese su apellido: ")
+        mail = input("Ingrese su correo: ")
+        new_User = Usuario(user, password, name, lastname, mail)
+        usuarios_Registrados.append(new_User)
+
+    else:
+        print("Opcion no valida")
+
+
