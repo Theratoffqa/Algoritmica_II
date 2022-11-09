@@ -37,7 +37,24 @@ Elija una opcion: """
 
     elif option == 2:
         
-        pass
+        with open("habitaciones_Registradas.json", "r") as f:
+            data = json.load(f)
+        habitacion_busqueda = int(input("Ingrese el numero de habitacion que desea editar:")) 
+
+        for habitacion in data:
+            if habitacion["numHabitacion"] == habitacion_busqueda:
+                print("Habitacion ANTES:",habitacion)
+                habitacion["estado"] = input("Estado: ")
+                habitacion["precio"] = int(input("Precio: "))
+                habitacion["tipoHabitacion"] = input("Tipo de habitacion:")
+                habitacion["numHabitacion"] = int(input("Numero de habitacion:"))
+                print("Habitacion DESPUES:",habitacion)
+                habitacion= Habitacion(habitacion["estado"],habitacion["precio"],habitacion["tipoHabitacion"],habitacion["numHabitacion"])
+    
+        data.append(habitacion)
+
+        with open("habitaciones_Registradas.json", "w") as f:
+            json.dump(data, f, indent=4)
 
     else:
         print("Opcion no valida")
