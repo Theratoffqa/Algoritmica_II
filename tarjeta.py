@@ -24,13 +24,15 @@ class Tarjeta:
     
     def verificarBloqueo(Num_Tarjeta):
         passed = False
-        for number in NumerosBloqueados:
-            if Num_Tarjeta == number:
+        with open("numerobloqueado.json", "r") as f:
+            numerosBloqueados = json.load(f)
+        for element in numerosBloqueados:
+            if element["numero"] == Num_Tarjeta:
                 passed = True
-                return passed
+        return passed        
             
 
-NumerosBloqueados = [0000000000000000]
+#NumerosBloqueados = [0000000000000000]
 
 
 
@@ -39,23 +41,23 @@ if __name__ == "__main__":
 
     NombreTarjeta = input("Nombre: ")
     ApellidoTarjeta = input("Apellido: ")
-    NumeroTarjeta = input("Tarjeta: ")
-    CodigoTarjeta = input("Codigo de seguridad: ")
+    NumeroTarjeta = int(input("Tarjeta: "))
+    CodigoTarjeta = int(input("Codigo de seguridad: "))
     FechaCaducidadTarjeta = input("Fecha Caducidad: ")
-    if Tarjeta.verificarTarjeta(NumeroTarjeta):
-        print("Numero de Tarjeta valido")
-        valido = True
+    # if Tarjeta.verificarTarjeta(NumeroTarjeta):
+    #     print("Numero de Tarjeta valido")
+    #     valido = True
+    # else:
+    #     print("Numero de Tarjeta invalido")
+
+    # if valido == True:
+    #     if Tarjeta.verificarCaducidad(FechaCaducidadTarjeta,datetime.date()):
+    #         print("Tarjeta vigente")
+    #     else:
+    #         print("Tarjeta vencida")
+
+    if Tarjeta.verificarBloqueo(NumeroTarjeta):
+        print("Tarjeta bloqueada")
     else:
-        print("Numero de Tarjeta invalido")
-
-    if valido == True:
-        if Tarjeta.verificarCaducidad(FechaCaducidadTarjeta,datetime.date()):
-            print("Tarjeta vigente")
-        else:
-            print("Tarjeta vencida")
-
-        if Tarjeta.verificarBloqueo(NumeroTarjeta):
-            print("Tarjeta operativa")
-        else:
-            print("Tarjeta bloqueada")
+        print("Tarjeta operativa")
 
