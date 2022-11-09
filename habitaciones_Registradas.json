@@ -1,0 +1,20 @@
+[
+    {
+        "estado": "Disponible",
+        "precio": 200,
+        "tipoHabitacion": "Doble",
+        "numHabitacion": 512
+    },
+    {
+        "estado": "Disponible",
+        "precio": 100,
+        "tipoHabitacion": "Simple",
+        "numHabitacion": 213
+    },
+    {
+        "estado": "Disponble",
+        "precio": 200,
+        "tipoHabitacion": "Matrimonial",
+        "numHabitacion": 666
+    }
+]
