@@ -24,7 +24,7 @@ class Tarjeta:
             s = True if element["codSeguridad"] == codigoTarjeta else False
             t = True if element["nombTarjeta"] == nombreTarjeta else False
             u = True if element["apellTarjeta"] == apellidoTarjeta else False
-            
+
             if p and q and r and s and t and u:
                 passed = True
 
@@ -55,43 +55,3 @@ class Tarjeta:
             
 
 #NumerosBloqueados = [0000000000000000]
-
-
-
-if __name__ == "__main__":
-    menu="""Ingresar tarjeta"""
-
-    nombreTarjeta = input("Nombre: ")
-    apellidoTarjeta = input("Apellido: ")
-    numeroTarjeta = int(input("Tarjeta: "))
-
-    while len(str(numeroTarjeta)) != 16:
-        print("El numero de tarjeta debe contener 16 digitos")
-        numeroTarjeta = int(input("Tarjeta: "))
-
-    codigoTarjeta = int(input("Codigo de seguridad (CVV): "))
-
-    while len(str(codigoTarjeta)) != 3:
-        print("El codigo de verificación debe contener 3 digitos")
-        codigoTarjeta = int(input("Tarjeta: "))
-
-    emisorTarjeta = input("Emisor: ")
-    fechaCaducidadTarjeta = input("Fecha Caducidad: ")
-
-    if Tarjeta.verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
-        print("Tarjeta valida")
-
-        if Tarjeta.verificarBloqueo(numeroTarjeta) == False:
-            print("Tarjeta operativa")
-
-            if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
-                print("Tarjeta vigente")
-
-            else:
-                print("Tarjeta vencida")
-
-        else:
-            print("Tarjeta bloqueada")
-
-    else:
-        print("Tarjeta no valida, por favor ingres bien los datos")

@@ -1,4 +1,5 @@
 from user import *
+from tarjeta import *
 import json
 
 if __name__ == "__main__":
@@ -10,7 +11,48 @@ Elija una opcion: """
     if option == 1:
         user = input("Usuario: ")
         password = input("Contrasenia: ")
-        Usuario.verify_session(user, password)
+        if Usuario.verify_session(user, password):
+            print("*Se muestran los hoteles*")
+            print("*Se elige uno*")
+            print("Ingresar los datos:")
+            nombreTarjeta = input("Nombre: ")
+            apellidoTarjeta = input("Apellido: ")
+            numeroTarjeta = int(input("Tarjeta: "))
+
+            while len(str(numeroTarjeta)) != 16:
+                print("El numero de tarjeta debe contener 16 digitos")
+                numeroTarjeta = int(input("Tarjeta: "))
+
+            codigoTarjeta = int(input("Codigo de seguridad (CVV): "))
+
+            while len(str(codigoTarjeta)) != 3:
+                print("El codigo de verificación debe contener 3 digitos")
+                codigoTarjeta = int(input("Tarjeta: "))
+
+            emisorTarjeta = input("Emisor: ")
+            fechaCaducidadTarjeta = input("Fecha Caducidad: ")
+
+            if Tarjeta.verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
+                print("Tarjeta valida")
+
+                if Tarjeta.verificarBloqueo(numeroTarjeta) == False:
+                    print("Tarjeta operativa")
+
+                    if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
+                        print("Tarjeta vigente")
+
+                        print("*Paga*")
+
+                    else:
+                        print("Tarjeta vencida")
+
+                else:
+                    print("Tarjeta bloqueada")
+
+            else:
+                print("Tarjeta no valida, por favor ingres bien los datos")
+        else:
+            print("No tenemos registrado ese usuario, inténtelo nuevamente")
 
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
