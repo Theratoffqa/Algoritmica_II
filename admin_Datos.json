@@ -1,0 +1,18 @@
+[
+    {
+        "nombre": "Jennie",
+        "apellido": "Ruby",
+        "usuario": "adminpeluche1",
+        "contrasenia": "lisa",
+        "correo": "adminjennie@peluche.com",
+        "llave_maestra": "199616"
+    },
+    {
+        "nombre": "Rose",
+        "apellido": "Park",
+        "usuario": "adminpeluche2",
+        "contrasenia": "viruspeluche@2023",
+        "correo": "adminrose@peluche.com",
+        "llave_maestra": "199711"
+    }
+]
