@@ -26,8 +26,7 @@ class Usuario:
                 print("Bienvenido, " + element["nombre"])
                 encontrado = True
         
-        if encontrado == False:
-            print("No tenemos registrado ese usuario, inténtelo nuevamente")
+        return encontrado
 
 # usuarios_Registrados = [
 #     Usuario("JoseQC35","hola123","Jose","Quispe","jose.quispe35@unmsm.edu.pe")

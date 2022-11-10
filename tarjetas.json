@@ -1,0 +1,42 @@
+[
+    {
+        "emisor" : "VISA",
+        "numTarjeta" : 4009423705981980,
+        "fechCaducidad" : "5/2026",
+        "codSeguridad" : 460,
+        "nombTarjeta" : "Jose",
+        "apellTarjeta" : "Quispe"
+    },
+    {
+        "emisor" : "VISA",
+        "numTarjeta" : 4015745563599518,
+        "fechCaducidad" : "3/2026",
+        "codSeguridad" : 475,
+        "nombTarjeta" : "Gianfranco",
+        "apellTarjeta" : "Ore"
+    },
+    {
+        "emisor" : "VISA",
+        "numTarjeta" : 4000196729435790,
+        "fechCaducidad" : "3/2025",
+        "codSeguridad" : 248,
+        "nombTarjeta" : "Fiorella",
+        "apellTarjeta" : "Mirano"
+    },
+    {
+        "emisor" : "MasterCard",
+        "numTarjeta" : 5102575553380988,
+        "fechCaducidad" : "6/2025",
+        "codSeguridad" : 254,
+        "nombTarjeta" : "Jatziry",
+        "apellTarjeta" : "Wong"
+    },
+    {
+        "emisor" : "MasterCard",
+        "numTarjeta" : 5109896983996927,
+        "fechCaducidad" : "11/2026",
+        "codSeguridad" : 683,
+        "nombTarjeta" : "Pedro",
+        "apellTarjeta" : "Barazorda"
+    }
+]
