@@ -22,14 +22,14 @@ if __name__ == "__main__":
 
         for admin in data:
             if admin["usuario"] == admin_buscar:
-            
-                admin["contrasenia"] = input("Ingrese su nueva contrasenia: ")
-                
-                admin= Administrador(admin["nombre"],admin["apellido"],admin["usuario"],admin["contrasenia"],admin["correo"],admin["llave_maestra"])
-    
-        data.append(admin)
-        #for admin in data:
-         #   print(admin)
+                admin_contrasenia = str(input("Ingrese su contrasenia actual:"))
+                if admin_contrasenia==admin["contrasenia"]:
 
+                    admin["contrasenia"] = input("Ingrese su nueva contrasenia: ")
+                
+                    admin= Administrador(admin["nombre"],admin["apellido"],admin["usuario"],admin["contrasenia"],admin["correo"],admin["llave_maestra"])
+                else:
+                    print("Contrasenia incorrecta")
+                    
         with open("admin_Datos.json", "w") as f:
             json.dump(data, f, indent=4)
