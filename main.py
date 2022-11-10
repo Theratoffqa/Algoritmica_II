@@ -1,17 +1,32 @@
 from user import *
 from tarjeta import *
-import json
 
 if __name__ == "__main__":
-    menu="""
-1.- Iniciar Sesion
+    menu="""1.- Iniciar Sesion
 2.- Registrarse
 Elija una opcion: """
     option = int(input(menu))
     if option == 1:
         user = input("Usuario: ")
         password = input("Contrasenia: ")
-        if Usuario.verify_session(user, password):
+        usuarioEnSesion = Usuario.verify_session(user, password)
+
+        while usuarioEnSesion == None:
+            print("No tenemos a ese usuario registrado, intentelo de nuevo")
+            user = input("Usuario: ")
+            password = input("Contrasenia: ")
+            usuarioEnSesion = Usuario.verify_session(user, password)
+            print(usuarioEnSesion)
+        
+        menu = """1.- Actualizar Datos
+2.- Comprar
+Elija una opcion: """
+
+        op = int(input(menu))
+        
+        if op == 1:
+            usuarioEnSesion.actualizarDatos()
+        elif op == 2:
             print("*Se muestran los hoteles*")
             print("*Se elige uno*")
             print("Ingresar los datos:")
@@ -51,8 +66,6 @@ Elija una opcion: """
 
             else:
                 print("Tarjeta no valida, por favor ingres bien los datos")
-        else:
-            print("No tenemos registrado ese usuario, inténtelo nuevamente")
 
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
@@ -61,16 +74,7 @@ Elija una opcion: """
         lastname = input("Ingrese su apellido: ")
         mail = input("Ingrese su correo: ")
         new_User = Usuario(user, password, name, lastname, mail)
-        #usuarios_Registrados.append(new_User)
-        usern = dict(usuario = new_User._usuario, contrasenia = new_User._contrasenia, nombre = new_User._nombre, apellido = new_User._apellido, correo = new_User._correo)
-        
-        with open("usuarios.json", "r") as f:
-            data = json.load(f)
-
-        data.append(usern)
-
-        with open("usuarios.json", "w") as f:
-            json.dump(data, f, indent=4)
+        new_User.registrar()
 
     else:
         print("Opcion no valida")
