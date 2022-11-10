@@ -51,7 +51,6 @@ Elija una opcion: """
                 print("Habitacion DESPUES:",habitacion)
                 habitacion= Habitacion(habitacion["estado"],habitacion["precio"],habitacion["tipoHabitacion"],habitacion["numHabitacion"])
     
-        data.append(habitacion)
 
         with open("habitaciones_Registradas.json", "w") as f:
             json.dump(data, f, indent=4)

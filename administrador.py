@@ -7,10 +7,13 @@ class Administrador(Usuario):
         super().__init__(usuario,contrasenia,nombre,apellido,correo)
         self._llaveMaestra = llaveMaestra
        
-    def actualizarCatalogo(self):
-        pass #registro y actualizacion de habitaciones
     #def actualizarDatos(self):
         #editar solo la contraseña del admin
+    #def registrarHab(self):
+        #registrar una habitación desde 0
+    #def actualizarDatosHab(self):
+        #Actualizar los datos de la habitación
+    
 if __name__ == "__main__":        
         
         with open("admin_Datos.json", "r") as f:
