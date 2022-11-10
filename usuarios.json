@@ -8,10 +8,14 @@
     },
     {
         "usuario": "JoxSam35",
-        "contrasenia": "hola123",
+        "contrasenia": "pollito123",
         "nombre": "Jose",
         "apellido": "Quispe",
-        "correo": "joxsam@gmail.com"
+        "correo": "joxsam@gmail.com",
+        "metPago": "4009423705981980",
+        "registros": [
+            "Pago001"
+        ]
     },
     {
         "usuario": "Ghopst",
