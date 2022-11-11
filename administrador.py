@@ -8,7 +8,7 @@ class Administrador(Usuario):
         super().__init__(usuario,contrasenia,nombre,apellido,correo)
         self._llaveMaestra = llaveMaestra
        
-    def actualizarDatos(self):
+    def actualizarContrasenia(self):
         
         admin_buscar = str(input("Ingrese su usuario:"))
         with open("admin_Datos.json", "r") as f:
@@ -44,26 +44,46 @@ class Administrador(Usuario):
 
         with open("habitaciones_Registradas.json", "w") as f:
             json.dump(data, f, indent=4)
+   
+    def actualizar(self, dato):
 
-    def actualizarDatosHab(self):
         with open("habitaciones_Registradas.json", "r") as f:
-            data = json.load(f)
-        habitacion_busqueda = int(input("Ingrese el numero de habitacion que desea editar:")) 
+            habitacionTemp = json.load(f)
+        habitacion_buscar = int(input("Ingrese el numero de habitacion a editar:"))
 
-        for habitacion in data:
-            if habitacion["numHabitacion"] == habitacion_busqueda:
-                print("Habitacion ANTES:",habitacion)
-                habitacion["estado"] = input("Estado: ")
-                habitacion["precio"] = int(input("Precio: "))
-                habitacion["tipoHabitacion"] = input("Tipo de habitacion:")
-                habitacion["numHabitacion"] = int(input("Numero de habitacion:"))
-                print("Habitacion DESPUES:",habitacion)
-                habitacion= Habitacion(habitacion["estado"],habitacion["precio"],habitacion["tipoHabitacion"],habitacion["numHabitacion"])
-    
-
+        for element in habitacionTemp:
+            if element["numHabitacion"] == habitacion_buscar:
+                if dato == 'precio': 
+                    element[dato] = int(input("Ingrese actualiazación de su " + dato +": "))
+                else:
+                    element[dato] = str(input("Ingrese actualiazación de su " + dato +": "))   
         with open("habitaciones_Registradas.json", "w") as f:
-            json.dump(data, f, indent=4)
-    
+            json.dump(habitacionTemp, f, indent=4)
+
+    def actualizarDatos(self):
+        menu = """ACTUALIZAR
+        1. Estado
+        2. Precio
+        3. Tipo de Habitacion
+        OPCION: """
+
+        opcion = int(input(menu))
+
+        while opcion > 3 and opcion <1:
+            print("Elija una opción valida")
+            opcion = int(input(menu))
+
+        if opcion == 1:
+            dato = "estado"
+
+        elif opcion == 2:  
+            
+            dato = "precio"
+
+        elif opcion == 3:
+            dato = "tipoHabitacion"
+            
+        self.actualizar(dato)
 
 if __name__ == "__main__":
     adminTemp = Administrador("","","","","","")
@@ -78,12 +98,10 @@ if __name__ == "__main__":
        adminTemp.registrarHab()
 
     elif option == 2:
-
-       
-       adminTemp.actualizarDatosHab() 
+       adminTemp.actualizarDatos() 
        
     elif option==3:
-        adminTemp.actualizarDatos()
+        adminTemp.actualizarContrasenia()
         
     else:
         print("Opcion no valida") 

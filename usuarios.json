@@ -1,23 +1,50 @@
 [
     {
-        "usuario": "Pedropp",
-        "contrasenia": "yabadabadu",
-        "nombre": "Pedro",
-        "apellido": "Picapiedra",
-        "correo": "pedropp@gmail.com"
+        "estado": "Disponible",
+        "precio": 200,
+        "tipoHabitacion": "Doble",
+        "numHabitacion": 512
     },
     {
-        "usuario": "JoxSam35",
-        "contrasenia": "hola123",
-        "nombre": "Jose",
-        "apellido": "Quispe",
-        "correo": "joxsam@gmail.com"
+        "estado": "Disponible",
+        "precio": 100,
+        "tipoHabitacion": "Simple",
+        "numHabitacion": 213
     },
     {
-        "usuario": "Ghopst",
-        "contrasenia": "Fakergod",
-        "nombre": "Gian",
-        "apellido": "Ore",
-        "correo": "ghopst@gmail.com"
+        "estado": "no disponible",
+        "precio": 300,
+        "tipoHabitacion": "matrimonial",
+        "numHabitacion": 666
+    },
+    {
+        "estado": "no disponible",
+        "precio": 1500,
+        "tipoHabitacion": "triple",
+        "numHabitacion": 512
+    },
+    {
+        "estado": "liquido",
+        "precio": 55,
+        "tipoHabitacion": "Matrimonial",
+        "numHabitacion": 600
+    },
+    {
+        "estado": "gaseoso",
+        "precio": 56,
+        "tipoHabitacion": "matrimon",
+        "numHabitacion": 601
+    },
+    {
+        "estado": "Ocupado",
+        "precio": 100,
+        "tipoHabitacion": "BungalowBig",
+        "numHabitacion": 602
+    },
+    {
+        "estado": "disponible",
+        "precio": 1487,
+        "tipoHabitacion": "simple",
+        "numHabitacion": 649
     }
 ]

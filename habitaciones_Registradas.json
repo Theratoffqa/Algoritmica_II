@@ -40,5 +40,17 @@
         "precio": 100,
         "tipoHabitacion": "BungalowBig",
         "numHabitacion": 602
+    },
+    {
+        "estado": "no disponible",
+        "precio": 1487,
+        "tipoHabitacion": "simple",
+        "numHabitacion": 649
+    },
+    {
+        "estado": "disponible",
+        "precio": 6500,
+        "tipoHabitacion": "doble",
+        "numHabitacion": 719
     }
 ]
