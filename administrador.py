@@ -88,20 +88,30 @@ class Administrador(Usuario):
 if __name__ == "__main__":
     adminTemp = Administrador("","","","","","")
     #adminTemp = administrador que ingresa al menu (cambiar cuando se incorpore el admin)
-    menu="""
-    1.- Registrar habitacion
-    2.- Actualizar datos de habitacion
-    3.- Actualizar contrasenia
-    Elija una opcion: """
-    option = int(input(menu))
-    if option == 1:
-       adminTemp.registrarHab()
+    
+    llave_ingresada= input("Ingrese su llave maestra para acceder al menu:")
+   
+    with open("admin_Datos.json", "r") as f:
+        data = json.load(f)
 
-    elif option == 2:
-       adminTemp.actualizarDatos() 
-       
-    elif option==3:
-        adminTemp.actualizarContrasenia()
-        
-    else:
-        print("Opcion no valida") 
+    for admin in data:
+        if admin["llave_maestra"]==llave_ingresada:
+            adminTemp = Administrador("","","","","","")
+    #adminTemp = administrador que ingresa al menu (cambiar cuando se incorpore el admin)
+            menu="""
+            1.- Registrar habitacion
+            2.- Actualizar datos de habitacion
+            3.- Actualizar contrasenia
+            Elija una opcion: """
+            option = int(input(menu))
+            if option == 1:
+                adminTemp.registrarHab()
+
+            elif option == 2:
+                adminTemp.actualizarDatos() 
+
+            elif option==3:
+                adminTemp.actualizarContrasenia()
+
+            else:
+                print("Opcion no valida")
