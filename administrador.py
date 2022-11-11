@@ -30,7 +30,7 @@ class Administrador(Usuario):
     def registrarHab():
         print("A continuacion, digite las caracteristicas de la nueva habitacion:")
         estado = input("Estado: ")
-        precio = int(input("Precio: "))
+        precio = float(input("Precio: "))
         tipoHabitacion = input("Tipo de habitacion:")
         numHabitacion = int(input("Numero de habitacion:"))
         new_Room= Habitacion(estado,precio,tipoHabitacion,numHabitacion)
@@ -53,7 +53,7 @@ class Administrador(Usuario):
         for element in habitacionTemp:
             if element["numHabitacion"] == habitacion_buscar:
                 if dato == 'precio': 
-                    element[dato] = int(input("Ingrese actualiazación de su " + dato +": "))
+                    element[dato] = float(input("Ingrese actualiazación de su " + dato +": "))
                 else:
                     element[dato] = str(input("Ingrese actualiazación de su " + dato +": "))   
         with open("habitaciones_Registradas.json", "w") as f:
