@@ -1,5 +1,5 @@
 from user import Usuario
-from habitacion import Habitacion
+from habitacion import *
 import json
 
 class Administrador(Usuario):
@@ -69,7 +69,7 @@ class Administrador(Usuario):
 
         opcion = int(input(menu))
 
-        while opcion > 3 and opcion <1:
+        while opcion > 3 or opcion <1:
             print("Elija una opción valida")
             opcion = int(input(menu))
 
@@ -102,6 +102,8 @@ if __name__ == "__main__":
             1.- Registrar habitacion
             2.- Actualizar datos de habitacion
             3.- Actualizar contrasenia
+            4.- Buscar habitacion y mostrar datos
+            5.- Mostrar catalogo de habitaciones
             Elija una opcion: """
             option = int(input(menu))
             if option == 1:
@@ -112,6 +114,12 @@ if __name__ == "__main__":
 
             elif option==3:
                 adminTemp.actualizarContrasenia()
+
+            elif option==4:
+                Habitacion.buscarHabitacion()
+
+            elif option==5:
+                Habitacion.mostrarDatos()
 
             else:
                 print("Opcion no valida")

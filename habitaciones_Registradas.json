@@ -12,45 +12,15 @@
         "numHabitacion": 213
     },
     {
-        "estado": "no disponible",
+        "estado": "No disponible",
         "precio": 300,
-        "tipoHabitacion": "matrimonial",
+        "tipoHabitacion": "Matrimonial",
         "numHabitacion": 666
     },
     {
-        "estado": "no disponible",
+        "estado": "No disponible",
         "precio": 1500,
-        "tipoHabitacion": "triple",
+        "tipoHabitacion": "Triple",
         "numHabitacion": 512
-    },
-    {
-        "estado": "liquido",
-        "precio": 55,
-        "tipoHabitacion": "Matrimonial",
-        "numHabitacion": 600
-    },
-    {
-        "estado": "gaseoso",
-        "precio": 56,
-        "tipoHabitacion": "matrimon",
-        "numHabitacion": 601
-    },
-    {
-        "estado": "Ocupado",
-        "precio": 100,
-        "tipoHabitacion": "BungalowBig",
-        "numHabitacion": 602
-    },
-    {
-        "estado": "no disponible",
-        "precio": 1487,
-        "tipoHabitacion": "simple",
-        "numHabitacion": 649
-    },
-    {
-        "estado": "disponible",
-        "precio": 6500,
-        "tipoHabitacion": "doble",
-        "numHabitacion": 719
     }
 ]
