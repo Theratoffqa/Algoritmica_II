@@ -1,5 +1,5 @@
-#🐵🏨 Hotel PelucheVirus	🏨🐵
-####Clonar repositorio
+# 🐵🏨 Hotel PelucheVirus 🏨🐵
+#### Clonar repositorio
 
 `$ git clone https://github.com/Theratoffqa/Algoritmica_II.git`
 
@@ -7,20 +7,14 @@
 > https://github.com/Theratoffqa/Algoritmica_II<link>
 
 #### Instalar Python 3.11 o mayor
-
-######Se recomienda el uso de Visual Studio Code o PyCharm
+###### Se recomienda el uso de Visual Studio Code o PyCharm
 - Acceder a la carpeta `Algoritmica_II`
 - Ejecutar el main.py con python 🐍🐍🐍
-
-###Tecnologías usadas
-- Python 🐍
-- Json 📄
-
+### Tecnologías usadas
+* Python 🐍
+* Json 📄
 ------------
-
-
-
-###Integrantes del grupo
+### Integrantes del grupo
 -Barazorda Medrano, Pedro Emanuel // [Theratoffqa](https://github.com/Theratoffqa) //
 -Mirano Surquislla, Fiorella Patricia // [FiorellaMirano13](https://github.com/FiorellaMirano13) //
 -Ore Paredes, Gianfranco Henry // [GHOPsT](https://github.com/GHOPsT) //
