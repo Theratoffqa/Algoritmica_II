@@ -40,8 +40,7 @@ if __name__ == "__main__":
         verdad = str(mensaje.endswith("peluche.com"))
 
         if verdad =="True":
-            adminTemp = Administrador("","","","","","")
-             #adminTemp = administrador que ingresa al menu (cambiar cuando se incorpore el admin)
+            
     
             llave_ingresada= input("Ingrese su llave maestra para acceder al menu:")
     
@@ -50,8 +49,7 @@ if __name__ == "__main__":
 
             for admin in data:
                 if admin["llave_maestra"]==llave_ingresada:
-                    adminTemp = Administrador("","","","","","")
-            #adminTemp = administrador que ingresa al menu (cambiar cuando se incorpore el admin)
+                    
                     menu="""
                     1.- Registrar habitacion
                     2.- Actualizar datos de habitacion
@@ -61,13 +59,13 @@ if __name__ == "__main__":
                     Elija una opcion: """
                     option = int(input(menu))
                     if option == 1:
-                        adminTemp.registrarHab()
+                        Administrador.registrarHab()
 
                     elif option == 2:
-                        adminTemp.actualizarDatos() 
+                        Administrador.actualizarDatos() 
 
                     elif option==3:
-                        adminTemp.actualizarContrasenia()
+                        Administrador.actualizarContrasenia()
 
                     elif option==4:
                         Habitacion.buscarHabitacion()

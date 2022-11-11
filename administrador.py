@@ -8,7 +8,7 @@ class Administrador(Usuario):
         super().__init__(usuario,contrasenia,nombre,apellido,correo)
         self._llaveMaestra = llaveMaestra
        
-    def actualizarContrasenia(self):
+    def actualizarContrasenia():
         
         admin_buscar = str(input("Ingrese su usuario:"))
         with open("admin_Datos.json", "r") as f:
@@ -20,7 +20,6 @@ class Administrador(Usuario):
 
                     admin["contrasenia"] = input("Ingrese su nueva contrasenia: ")
                 
-                    admin= Administrador(admin["nombre"],admin["apellido"],admin["usuario"],admin["contrasenia"],admin["correo"],admin["llave_maestra"])
                 else:
                     print("Contrasenia incorrecta")
                     
@@ -28,7 +27,7 @@ class Administrador(Usuario):
             json.dump(data, f, indent=4)
 
 
-    def registrarHab(self):
+    def registrarHab():
         print("A continuacion, digite las caracteristicas de la nueva habitacion:")
         estado = input("Estado: ")
         precio = int(input("Precio: "))
@@ -45,7 +44,7 @@ class Administrador(Usuario):
         with open("habitaciones_Registradas.json", "w") as f:
             json.dump(data, f, indent=4)
    
-    def actualizar(self, dato):
+    def actualizar(dato):
 
         with open("habitaciones_Registradas.json", "r") as f:
             habitacionTemp = json.load(f)
@@ -60,7 +59,7 @@ class Administrador(Usuario):
         with open("habitaciones_Registradas.json", "w") as f:
             json.dump(habitacionTemp, f, indent=4)
 
-    def actualizarDatos(self):
+    def actualizarDatos():
         menu = """ACTUALIZAR
         1. Estado
         2. Precio
@@ -83,4 +82,4 @@ class Administrador(Usuario):
         elif opcion == 3:
             dato = "tipoHabitacion"
             
-        self.actualizar(dato)
+        Administrador.actualizar(dato)
