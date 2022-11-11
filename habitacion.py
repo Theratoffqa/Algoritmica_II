@@ -15,10 +15,12 @@ class Habitacion:
         for element in habitacionTemp:
                 if element["numHabitacion"] == habitacion_buscar:
                     print("DATOS DE LA HABITACION "+str(habitacion_buscar))
+                    print("------------------------------------------------------")
                     print("Estado:"+ element["estado"])
                     print("Precio:"+ str(element["precio"]))
                     print("Tipo de la habitacion:"+ element["tipoHabitacion"])
                     print("Numero de la habitacion:"+ str(element["numHabitacion"]))
+                    print("------------------------------------------------------")
 
     def mostrarDatos():
         with open("habitaciones_Registradas.json", "r") as f:

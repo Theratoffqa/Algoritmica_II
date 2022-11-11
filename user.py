@@ -19,6 +19,16 @@ class Usuario:
                 print("Bienvenido, " + element["nombre"])
                 return Usuario(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"])
             
+            else:
+                with open("admin_Datos.json", "r") as f:
+                    usuario = json.load(f)
+
+                for element in usuario:
+                    if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+                        print("Bienvenido, " + element["nombre"])
+                        return Usuario(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"])
+
+
 
     def registrar(self):
         usern = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo)
