@@ -53,7 +53,7 @@ class Administrador(Usuario):
         for element in habitacionTemp:
             if element["numHabitacion"] == habitacion_buscar:
                 if dato == 'precio': 
-                    element[dato] = int(input("Ingrese actualiazación de su " + dato +": "))
+                    element[dato] = float(input("Ingrese actualiazación de su " + dato +": "))
                 else:
                     element[dato] = str(input("Ingrese actualiazación de su " + dato +": "))   
         with open("habitaciones_Registradas.json", "w") as f:
