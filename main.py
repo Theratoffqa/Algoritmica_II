@@ -1,7 +1,7 @@
-from user import *
-from tarjeta import *
-from habitacion import *
-from administrador import *
+from entities.user import *
+from entities.tarjeta import *
+from entities.habitacion import *
+from entities.administrador import *
 import json
 
 if __name__ == "__main__":

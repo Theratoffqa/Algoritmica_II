@@ -1,5 +1,5 @@
-from user import Usuario
-from habitacion import *
+from entities.user import Usuario
+from entities.habitacion import *
 import json
 
 class Administrador(Usuario):
