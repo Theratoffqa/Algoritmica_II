@@ -55,7 +55,7 @@ OPCION: """
 
         opcion = int(input(menu))
 
-        while opcion > 5 and opcion <1:
+        while opcion > 5 or opcion <1:
             print("Elija una opción valida")
             opcion = int(input(menu))
 
