@@ -6,7 +6,7 @@ class Administrador(Usuario):
 
     def __init__(self,usuario,contrasenia,nombre,apellido,correo, llaveMaestra):
         super().__init__(usuario,contrasenia,nombre,apellido,correo)
-        self._contrasenia = contrasenia
+        self._llaveMaestra = llaveMaestra
        
     def actualizarContrasenia():
         
