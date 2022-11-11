@@ -88,9 +88,9 @@ if __name__ == "__main__":
             if op == 1:
                 usuarioEnSesion.actualizarDatos()
             elif op == 2:
-                print("*Se muestran los hoteles*")
+                Habitacion.mostrarDatos()
                 print("*Se elige uno*")
-                print("Ingresar los datos:")
+                print("Ingresar los datos de la tarjeta:")
                 nombreTarjeta = input("Nombre: ")
                 apellidoTarjeta = input("Apellido: ")
                 numeroTarjeta = int(input("Tarjeta: "))

@@ -8,7 +8,7 @@
     },
     {
         "usuario": "JoxSam35",
-        "contrasenia": "xd2023algo",
+        "contrasenia": "xDalgo2023",
         "nombre": "Jose",
         "apellido": "Quispe",
         "correo": "jose.quispe@gmail.com"
@@ -33,5 +33,12 @@
         "nombre": "Pedro",
         "apellido": "Barazorda",
         "correo": "pedro.barazorda@gmail.com"
+    },
+    {
+        "usuario": "ediprof",
+        "contrasenia": "apruebame",
+        "nombre": "Edson",
+        "apellido": "Ticona",
+        "correo": "ediprof@gmail.com"
     }
 ]
