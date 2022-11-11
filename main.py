@@ -1,5 +1,6 @@
 from user import *
 from tarjeta import *
+from cliente import *
 
 if __name__ == "__main__":
     menu="""1.- Iniciar Sesion
@@ -56,7 +57,7 @@ Elija una opcion: """
                     if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
                         print("Tarjeta vigente")
 
-                        print("*Paga*")
+                        new_cliente = Cliente.registrarCliente(user)
 
                     else:
                         print("Tarjeta vencida")
