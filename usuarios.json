@@ -33,12 +33,5 @@
         "nombre": "Pedro",
         "apellido": "Barazorda",
         "correo": "pedro.barazorda@gmail.com"
-    },
-    {
-        "usuario": "ediprof",
-        "contrasenia": "apruebame",
-        "nombre": "Edson",
-        "apellido": "Ticona",
-        "correo": "ediprof@gmail.com"
     }
 ]

@@ -3,7 +3,7 @@ import json
 
 class Tarjeta:
 
-    def _init_(self,numTarjeta,fechCaducidad,codSeguridad,nomTarjeta,apellTarjeta,emisorTarjeta):
+    def __init__(self,numTarjeta,fechCaducidad,codSeguridad,nomTarjeta,apellTarjeta,emisorTarjeta):
         self._emisor = emisorTarjeta
         self._numTarjeta = numTarjeta
         self._fechCaducidad = fechCaducidad
