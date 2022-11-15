@@ -12,36 +12,36 @@ class Tarjeta(Metodo):
         self.__nombTarjeta = nomTarjeta
         self.__apellTarjeta = apellTarjeta
 
-    def verificar(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
+    def verificar(self):
         passed = False
 
         with open("tarjetas.json", "r") as f:
             tarjetas = json.load(f)
 
         for element in tarjetas:
-            p = True if element["emisor"] == emisorTarjeta else False
-            q = True if element["numTarjeta"] == numeroTarjeta else False
-            r = True if datetime.datetime.strptime(fechaCaducidadTarjeta, "%m/%Y") == datetime.datetime.strptime(element["fechCaducidad"], "%m/%Y") else False
-            s = True if element["codSeguridad"] == codigoTarjeta else False
-            t = True if element["nombTarjeta"] == nombreTarjeta else False
-            u = True if element["apellTarjeta"] == apellidoTarjeta else False
+            p = True if element["emisor"] == self.__emisor else False
+            q = True if element["numTarjeta"] == self._numTarjeta else False
+            r = True if datetime.datetime.strptime(self.__fechCaducidad, "%m/%Y") == datetime.datetime.strptime(element["fechCaducidad"], "%m/%Y") else False
+            s = True if element["codSeguridad"] == self.__codSeguridad else False
+            t = True if element["nombTarjeta"] == self.__nombTarjeta else False
+            u = True if element["apellTarjeta"] == self.__apellTarjeta else False
 
             if p and q and r and s and t and u:
                 passed = True
 
         return passed  
     
-    def verificarCaducidad(fechaVenci):
+    def verificarCaducidad(self):
         passed = False
         fechaActual = datetime.datetime.now()
-        fechaV = datetime.datetime.strptime(fechaVenci, "%m/%Y")
+        fechaV = datetime.datetime.strptime(self.__fechCaducidad, "%m/%Y")
 
         if fechaV > fechaActual:
             passed = True
 
         return passed
     
-    def verificarBloqueo(num_Tarjeta):
+    def verificarBloqueo(self):
         passed = False
 
         with open("numerobloqueado.json", "r") as f:
@@ -49,7 +49,7 @@ class Tarjeta(Metodo):
 
         for element in numerosBloqueados:
 
-            if element["numero"] == num_Tarjeta:
+            if element["numero"] == self._numTarjeta:
                 passed = True
 
         return passed        

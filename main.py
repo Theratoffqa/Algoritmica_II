@@ -22,7 +22,6 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
-            print(usuarioEnSesion)
         
         with open("usuarios.json", "r") as f:
             data = json.load(f)
@@ -108,13 +107,15 @@ if __name__ == "__main__":
                 emisorTarjeta = input("Emisor: ")
                 fechaCaducidadTarjeta = input("Fecha Caducidad: ")
 
-                if Tarjeta.verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
+                tarjetaIngresada = Tarjeta(numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta,emisorTarjeta)
+
+                if tarjetaIngresada.verificar():
                     print("Tarjeta valida")
 
-                    if Tarjeta.verificarBloqueo(numeroTarjeta) == False:
+                    if tarjetaIngresada.verificarBloqueo() == False:
                         print("Tarjeta operativa")
 
-                        if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
+                        if tarjetaIngresada.verificarCaducidad():
                             print("Tarjeta vigente")
 
                             print("*Paga*")
