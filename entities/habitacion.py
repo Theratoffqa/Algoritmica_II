@@ -3,10 +3,10 @@ import json
 class Habitacion:
     
     def __init__(self,estado,precio,tipoHabitacion,numHabitacion): 
-        self._estado = estado
-        self._precio = precio
-        self._tipoHabitacion = tipoHabitacion
-        self._numHabitacion = numHabitacion
+        self.estado = estado
+        self.precio = precio
+        self.tipoHabitacion = tipoHabitacion
+        self.numHabitacion = numHabitacion
 
     def buscarHabitacion():
         with open("habitaciones_Registradas.json", "r") as f:
