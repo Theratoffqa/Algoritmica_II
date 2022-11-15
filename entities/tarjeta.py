@@ -1,7 +1,8 @@
+from entities.metodos import *
 import datetime
 import json
 
-class Tarjeta:
+class Tarjeta(Metodo):
 
     def __init__(self,numTarjeta,fechCaducidad,codSeguridad,nomTarjeta,apellTarjeta,emisorTarjeta):
         self.__emisor = emisorTarjeta
@@ -11,7 +12,7 @@ class Tarjeta:
         self.__nombTarjeta = nomTarjeta
         self.__apellTarjeta = apellTarjeta
 
-    def verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
+    def verificar(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
         passed = False
 
         with open("tarjetas.json", "r") as f:
