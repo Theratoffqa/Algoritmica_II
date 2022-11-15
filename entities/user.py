@@ -3,11 +3,11 @@ import json
 class Usuario:
 
     def __init__(self,usuario,contrasenia,nombre,apellido,correo):
-        self._usuario = usuario
-        self._contrasenia = contrasenia
-        self._nombre = nombre
-        self._apellido = apellido
-        self._correo = correo
+        self.__usuario = usuario
+        self.__contrasenia = contrasenia
+        self.__nombre = nombre
+        self.__apellido = apellido
+        self.__correo = correo
 
 
     def verify_session(given_User, given_Password):
@@ -31,7 +31,7 @@ class Usuario:
 
 
     def registrar(self):
-        usern = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo)
+        usern = dict(usuario = self.__usuario, contrasenia = self.__contrasenia, nombre = self.__nombre, apellido = self.__apellido, correo = self.__correo)
         
         with open("usuarios.json", "r") as f:
             data = json.load(f)
@@ -47,7 +47,7 @@ class Usuario:
             usuarios = json.load(f)
 
         for element in usuarios:
-            if element["usuario"] == self._usuario:
+            if element["usuario"] == self.__usuario:
                 element[dato] = input("Ingrese actualiazación de su " + dato +": ")
 
         with open("usuarios.json", "w") as f:
@@ -75,7 +75,7 @@ OPCION: """
         elif opcion == 2:  
             contraseniaActual = input("Ingrese contrasenia actual: ")    
 
-            while self._contrasenia != contraseniaActual:
+            while self.__contrasenia != contraseniaActual:
                 print("Contrasenia incorrecta")
                 contraseniaActual = input("Ingrese contrasenia actual: ")
 
