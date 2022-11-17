@@ -25,8 +25,8 @@ class Cliente(Usuario):
         
         with open("usuarios.json", "w") as f:
             json.dump(usuarios, f, indent=4)
-         
-
+            
+            
     def actualizar(self, dato):
         with open("usuarios.json", "r") as f:
             usuarios = json.load(f)
