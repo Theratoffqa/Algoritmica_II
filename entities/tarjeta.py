@@ -4,12 +4,12 @@ import json
 class Tarjeta:
 
     def __init__(self,numTarjeta,fechCaducidad,codSeguridad,nomTarjeta,apellTarjeta,emisorTarjeta):
-        self._emisor = emisorTarjeta
+        self.__emisor = emisorTarjeta
         self._numTarjeta = numTarjeta
-        self._fechCaducidad = fechCaducidad
-        self._codSeguridad = codSeguridad
-        self._nombTarjeta = nomTarjeta
-        self._apellTarjeta = apellTarjeta
+        self.__fechCaducidad = fechCaducidad
+        self.__codSeguridad = codSeguridad
+        self.__nombTarjeta = nomTarjeta
+        self.__apellTarjeta = apellTarjeta
 
     def verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
         passed = False
