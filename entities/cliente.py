@@ -11,7 +11,7 @@ class Cliente(Usuario):
             
     
     def registrarCliente(self):          
-        usercliente = dict(usuario = self.usuario, contrasenia = self.contrasenia, nombre = self.nombre, apellido = self.apellido, correo = self.correo, metpago = self._metPago, pago = self._pago)
+        usercliente = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo, metpago = self._metPago, pago = self._pago)
 
         with open("clientes.json", "r") as f:
             client = json.load(f)
@@ -99,11 +99,3 @@ OPCION: """
             dato = "metPago"
 
         self.actualizar(dato)
-
-if __name__ == "__main__":
-
-    newClient = Cliente("JoxSam35","hola123","Jose","Quispe","joxsam@gmail.com", "4009423705981980", "Pago001")
-    
-    newClient.registrarCliente()
-
-    newClient.actualizarDatos()

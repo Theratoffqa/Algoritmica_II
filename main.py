@@ -23,7 +23,6 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
-            print(usuarioEnSesion)
         
         with open("usuarios.json", "r") as f:
             data = json.load(f)
@@ -118,23 +117,9 @@ if __name__ == "__main__":
                         if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
                             print("Tarjeta vigente")
 
-                            if usuarioEnSesion != None:
-                                with open("usuarios.json", "r") as f:
-                                    data = json.load(f)
-                                for element in data:
-                                    user1 = element["usuario"]
-                                    password1 = element["contrasenia"]
-                                    name1 = element["nombre"]
-                                    lastname1 = element["apellido"]
-                                    correo1 = element["correo"]
-                                    pago1 = "pago001"
-                                with open("tarjetas.json", "r") as f:
-                                    datatarjet = json.load(f)
-                                for element in datatarjet:
-                                    if numeroTarjeta == element["numTarjeta"]:
-                                        metpago1 = element["numTarjeta"]
-                                nuevo_cliente = Cliente(user1, password1, name1, lastname1, correo1, metpago1, pago1)
-                                nuevo_cliente.registrarCliente()
+                            pago = "ejemplopago001"
+                            nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, "tarjeta", pago)
+                            nuevo_cliente.registrarCliente()
 
                         else:
                             print("Tarjeta vencida")

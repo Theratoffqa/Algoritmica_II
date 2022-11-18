@@ -34,5 +34,14 @@
         "correo": "pedro.barazorda@gmail.com",
         "metpago": 4000196729435790,
         "pago": "pago001"
+    },
+    {
+        "usuario": "JoxSam35",
+        "contrasenia": "xDalgo2023",
+        "nombre": "Jose",
+        "apellido": "Quispe",
+        "correo": "jose.quispe@gmail.com",
+        "metpago": "tarjeta",
+        "pago": "ejemplopago001"
     }
 ]
