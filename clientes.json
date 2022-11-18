@@ -1,0 +1,47 @@
+[
+    {
+        "usuario": "Ghopst",
+        "contrasenia": "ke2023algo",
+        "nombre": "Gianfranco",
+        "apellido": "Ore",
+        "correo": "gianfranco.ore@gmail.com",
+        "metPago": 4015745563599518,
+        "pago": "pago001"
+    },
+    {
+        "usuario": "JoxSam35",
+        "contrasenia": "xDalgo2023",
+        "nombre": "Jose",
+        "apellido": "Quispe",
+        "correo": "jose.quispe@gmail.com",
+        "metPago": 4009423705981980,
+        "pago": "pago001"
+    },
+    {
+        "usuario": "Theratoffqa",
+        "contrasenia": "pq2023algo",
+        "nombre": "Pedro",
+        "apellido": "Barazorda",
+        "correo": "pedro.barazorda@gmail.com",
+        "metpago": 5102575553380988,
+        "pago": "pago001"
+    },
+    {
+        "usuario": "Theratoffqa",
+        "contrasenia": "pq2023algo",
+        "nombre": "Pedro",
+        "apellido": "Barazorda",
+        "correo": "pedro.barazorda@gmail.com",
+        "metpago": 4000196729435790,
+        "pago": "pago001"
+    },
+    {
+        "usuario": "JoxSam35",
+        "contrasenia": "xDalgo2023",
+        "nombre": "Jose",
+        "apellido": "Quispe",
+        "correo": "jose.quispe@gmail.com",
+        "metpago": "tarjeta",
+        "pago": "ejemplopago001"
+    }
+]

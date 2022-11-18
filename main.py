@@ -2,6 +2,7 @@ from entities.user import *
 from entities.tarjeta import *
 from entities.habitacion import *
 from entities.administrador import *
+from entities.cliente import *
 from entities.paypal import *
 
 import json
@@ -101,6 +102,7 @@ if __name__ == "__main__":
                 opSelec = int(input(menuPago))
                 
                 if opSelec == 1:
+                    metPago = "Tarjeta"
                     print("Ingresar los datos de la tarjeta:")
                     nombreTarjeta = input("Nombre: ")
                     apellidoTarjeta = input("Apellido: ")
@@ -142,6 +144,7 @@ if __name__ == "__main__":
                         print("Tarjeta no valida, por favor ingres bien los datos")
                 
                 elif opSelec == 2:
+                    metPago = "PayPal"
                     primeravalidacion = PayPal.verificar()
                     segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
                     terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
@@ -149,6 +152,9 @@ if __name__ == "__main__":
                     if segundavalidacion  != False and terceravalidacion !=False:
                         print("*** Pago exitoso =) ***")
 
+                pago = "ejemplopago001" 
+                nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
+                nuevo_cliente.registrarCliente()   
 
 
     elif option == 2:
