@@ -35,7 +35,7 @@ class PayPal(Metodo):
         for element in usuarioPaypal:
             if element["correoPayPal"] == correoPayPal:
                 if element["estado"] == "inactiva":
-                    print("**Su cuenta se encuentra inactiva**")
+                    print("***Su cuenta se encuentra inactiva.***")
                     return False
     
     def verificarBloqueo(self,correoPayPal): #verificar banneada
@@ -50,4 +50,8 @@ if __name__ == "__main__":
 
     primeravalidacion = PayPal.verificar()
     segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
-    terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)    
+    terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
+
+    if segundavalidacion  != False and terceravalidacion !=False:
+        print("*** Pago exitoso =) ***")
+        
