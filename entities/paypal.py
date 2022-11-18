@@ -1,5 +1,4 @@
-from metodos import *
-#import datetime
+from entities.metodos import *
 import json
 
 class PayPal(Metodo):
@@ -46,12 +45,5 @@ class PayPal(Metodo):
                 print("***Cuenta bloqueada. Use otra cuenta.***") 
                 return False
 
-if __name__ == "__main__":
 
-    primeravalidacion = PayPal.verificar()
-    segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
-    terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
-
-    if segundavalidacion  != False and terceravalidacion !=False:
-        print("*** Pago exitoso =) ***")
         
