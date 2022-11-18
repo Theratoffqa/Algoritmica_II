@@ -23,6 +23,7 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
+            print(usuarioEnSesion)
         
         with open("usuarios.json", "r") as f:
             data = json.load(f)
@@ -117,8 +118,7 @@ if __name__ == "__main__":
                         if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
                             print("Tarjeta vigente")
 
-                            pago = "ejemplopago001"
-                            nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, "tarjeta", pago)
+                            nuevo_cliente = Cliente(user1, password1, name1, lastname1, correo1, metpago1, pago1)
                             nuevo_cliente.registrarCliente()
 
                         else:
