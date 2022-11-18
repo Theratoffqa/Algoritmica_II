@@ -1,0 +1,11 @@
+[{
+    "correoPayPal": "fioPayPal@gmail.com",
+    "contraseniaPayPal": "fio2023@",
+    "estado":"inactiva"
+},
+{
+    "correoPayPal": "jatPayPal@gmail.com",
+    "contraseniaPayPal": "jat2023@",
+    "estado":"activa"
+}
+]

@@ -2,6 +2,8 @@ from entities.user import *
 from entities.tarjeta import *
 from entities.habitacion import *
 from entities.administrador import *
+from entities.paypal import *
+
 import json
 
 if __name__ == "__main__":
@@ -22,7 +24,6 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
-            print(usuarioEnSesion)
         
         with open("usuarios.json", "r") as f:
             data = json.load(f)
@@ -90,43 +91,64 @@ if __name__ == "__main__":
             elif op == 2:
                 Habitacion.mostrarDatos()
                 print("*Se elige uno*")
-                print("Ingresar los datos de la tarjeta:")
-                nombreTarjeta = input("Nombre: ")
-                apellidoTarjeta = input("Apellido: ")
-                numeroTarjeta = int(input("Tarjeta: "))
 
-                while len(str(numeroTarjeta)) != 16:
-                    print("El numero de tarjeta debe contener 16 digitos")
+                menuPago = """
+                Seleccione el metodo de pago:
+                1.- Tarjeta VISA/Mastercard
+                2.- PayPal
+                Elija una opcion: """
+
+                opSelec = int(input(menuPago))
+                
+                if opSelec == 1:
+                    print("Ingresar los datos de la tarjeta:")
+                    nombreTarjeta = input("Nombre: ")
+                    apellidoTarjeta = input("Apellido: ")
                     numeroTarjeta = int(input("Tarjeta: "))
 
-                codigoTarjeta = int(input("Codigo de seguridad (CVV): "))
+                    while len(str(numeroTarjeta)) != 16:
+                        print("El numero de tarjeta debe contener 16 digitos")
+                        numeroTarjeta = int(input("Tarjeta: "))
 
-                while len(str(codigoTarjeta)) != 3:
-                    print("El codigo de verificación debe contener 3 digitos")
-                    codigoTarjeta = int(input("Tarjeta: "))
+                    codigoTarjeta = int(input("Codigo de seguridad (CVV): "))
 
-                emisorTarjeta = input("Emisor: ")
-                fechaCaducidadTarjeta = input("Fecha Caducidad: ")
+                    while len(str(codigoTarjeta)) != 3:
+                        print("El codigo de verificación debe contener 3 digitos")
+                        codigoTarjeta = int(input("Tarjeta: "))
 
-                if Tarjeta.verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
-                    print("Tarjeta valida")
+                    emisorTarjeta = input("Emisor: ")
+                    fechaCaducidadTarjeta = input("Fecha Caducidad: ")
 
-                    if Tarjeta.verificarBloqueo(numeroTarjeta) == False:
-                        print("Tarjeta operativa")
+                    tarjetaIngresada = Tarjeta(numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta,emisorTarjeta)
 
-                        if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
-                            print("Tarjeta vigente")
+                    if tarjetaIngresada.verificar():
+                        print("Tarjeta valida")
 
-                            print("*Paga*")
+                        if tarjetaIngresada.verificarBloqueo() == False:
+                            print("Tarjeta operativa")
+
+                            if tarjetaIngresada.verificarCaducidad():
+                                print("Tarjeta vigente")
+
+                                print("*Paga*")
+
+                            else:
+                                print("Tarjeta vencida")
 
                         else:
-                            print("Tarjeta vencida")
+                            print("Tarjeta bloqueada")
 
                     else:
-                        print("Tarjeta bloqueada")
+                        print("Tarjeta no valida, por favor ingres bien los datos")
+                
+                elif opSelec == 2:
+                    primeravalidacion = PayPal.verificar()
+                    segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
+                    terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
 
-                else:
-                    print("Tarjeta no valida, por favor ingres bien los datos")
+                    if segundavalidacion  != False and terceravalidacion !=False:
+                        print("*** Pago exitoso =) ***")
+
 
 
     elif option == 2:
