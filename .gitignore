@@ -1,5 +1,5 @@
 #ignorar cache de python
-    __pycache__/
-    **/__pycache__/
+__pycache__/
+**/__pycache__/
 #ignorar desktop.ini
-    desktop.ini
+desktop.ini
