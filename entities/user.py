@@ -3,11 +3,11 @@ import json
 class Usuario:
 
     def __init__(self,usuario,contrasenia,nombre,apellido,correo):
-        self.__usuario = usuario
-        self.__contrasenia = contrasenia
-        self.__nombre = nombre
-        self.__apellido = apellido
-        self.__correo = correo
+        self.usuario = usuario
+        self.contrasenia = contrasenia
+        self.nombre = nombre
+        self.apellido = apellido
+        self.correo = correo
 
 
     def verify_session(given_User, given_Password):

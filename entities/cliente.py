@@ -10,32 +10,34 @@ class Cliente(Usuario):
         self._pago = pago
             
     
-    def registrarCliente(self):
-        #with open("usuarios.json", "r") as f:
-        #    usuarios = json.load(f)
-
-        #for element in usuarios:
-        #    if element["usuario"] == self.__usuario:
-        #        element["metPago"] = self._metPago
-        #        try:
-        #            element["registros"].append(self._pago)
-        #        except KeyError:
-        #            element["registros"] = []
-        #            element["registros"].append(self._pago)
-
-        usercliente = dict(usuario = self.__usuario, contrasenia = self.__contrasenia, nombre = self.__nombre, apellido = self.__apellido, correo = self.__correo, metpago = self._metPago, pago = self._pago)
+    def registrarCliente(self):          
+        usercliente = dict(usuario = self.usuario, contrasenia = self.contrasenia, nombre = self.nombre, apellido = self.apellido, correo = self.correo, metpago = self._metPago, pago = self._pago)
 
         with open("clientes.json", "r") as f:
-            data =json.load(f)
-        
-        data.append(usercliente)
+            client = json.load(f)
+
+        client.append(usercliente)
 
         with open("clientes.json", "w") as f:
-            json.dump(data, f, indent=4)
+            json.dump(client, f, indent=4)
+
+        #for element in usuarios:
+        #    if element["usuario"] == user:
+        #        usuarios.append(usercliente)
+
+                #element["metPago"] = self._metPago
+                #try:
+                #   element["registros"].append(self._pago)
+                #except KeyError:
+                #    element["registros"] = []
+                #    element["registros"].append(self._pago)
+        #with open("clientes.json", "r") as f:
+        #    data = json.load(f)
+        #data.append(usercliente)
 
         #def registrar(self):
         #usern = dict(usuario = self.__usuario, contrasenia = self.__contrasenia, nombre = self.__nombre, apellido = self.__apellido, correo = self.__correo)
-        
+
         #with open("usuarios.json", "r") as f:
         #    data = json.load(f)
 
@@ -49,7 +51,7 @@ class Cliente(Usuario):
             usuarios = json.load(f)
 
         for element in usuarios:
-            if element["usuario"] == self._usuario:
+            if element["usuario"] == self.__usuario:
                 element[dato] = input("Ingrese actualiazación de su " + dato +": ")
 
         with open("usuarios.json", "w") as f:
