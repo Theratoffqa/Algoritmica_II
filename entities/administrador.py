@@ -34,7 +34,7 @@ class Administrador(Usuario):
         tipoHabitacion = input("Tipo de habitacion:")
         numHabitacion = int(input("Numero de habitacion:"))
         new_Room= Habitacion(estado,precio,tipoHabitacion,numHabitacion)
-        roomn = dict(estado = new_Room._estado, precio = new_Room._precio,tipoHabitacion = new_Room._tipoHabitacion,numHabitacion = new_Room._numHabitacion)
+        roomn = dict(estado = new_Room.estado, precio = new_Room.precio,tipoHabitacion = new_Room.tipoHabitacion,numHabitacion = new_Room.numHabitacion)
         
         with open("habitaciones_Registradas.json", "r") as f:
             data = json.load(f)

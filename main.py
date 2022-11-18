@@ -25,21 +25,8 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
-        
-        with open("usuarios.json", "r") as f:
-            data = json.load(f)
-        for element in data:
-            if user == element["usuario"]:
-                mensaje = element["correo"]
-            else:
-                with open("admin_Datos.json", "r") as f:
-                    data = json.load(f)
-                for element in data:
-                    if user == element["usuario"]:
-                        mensaje = element["correo"]
-
     
-        verdad = str(mensaje.endswith("peluche.com"))
+        verdad = str(usuarioEnSesion._correo.endswith("peluche.com"))
 
         if verdad =="True":
             
