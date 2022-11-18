@@ -4,10 +4,10 @@ import json
 
 class PayPal(Metodo):
 
-    def __init__(self,correoPayPal,contraseniaPayPal):
+    def __init__(self,correoPayPal,contraseniaPayPal,estado):
         self.__correoPayPal = correoPayPal
         self.__contraseniaPayPal = contraseniaPayPal
-        
+        self.__estado = estado
 
     def verificar(): #verificar correo y contrasenia
         print('----------------------PAYPAL----------------------')
@@ -28,8 +28,15 @@ class PayPal(Metodo):
                 print("***Error.Ingrese nuevamente los datos:***")
                 return correoPayPal
            
-    def verificarCaducidad(self): #verificar si la cuenta está desactivada 
-        pass
+    def verificarCaducidad(self,correoPayPal): #verificar si la cuenta está desactivada 
+        
+        with open("cuentasPayPal.json", "r") as f:
+            usuarioPaypal = json.load(f)
+        for element in usuarioPaypal:
+            if element["correoPayPal"] == correoPayPal:
+                if element["estado"] == "inactiva":
+                    print("**Su cuenta se encuentra inactiva**")
+                    return False
     
     def verificarBloqueo(self,correoPayPal): #verificar banneada
         with open("cuentasSuspendidas.json", "r") as f:
@@ -37,7 +44,10 @@ class PayPal(Metodo):
         for element in usuarioPaypal:
             if element["correoPayPal"] == correoPayPal:
                 print("***Cuenta bloqueada. Use otra cuenta.***") 
+                return False
+
 if __name__ == "__main__":
 
     primeravalidacion = PayPal.verificar()
-    segundavalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
+    segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
+    terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)    
