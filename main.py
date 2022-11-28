@@ -3,6 +3,8 @@ from entities.tarjeta import *
 from entities.habitacion import *
 from entities.administrador import *
 from entities.cliente import *
+from entities.paypal import *
+
 import json
 
 if __name__ == "__main__":
@@ -23,6 +25,7 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
+<<<<<<< HEAD
             print(usuarioEnSesion)
         
         with open("usuarios.json", "r") as f:
@@ -37,8 +40,10 @@ if __name__ == "__main__":
                     if user == element["usuario"]:
                         mensaje = element["correo"]
 
+=======
+>>>>>>> 089cab3f8197825354867d2b7cfd4ed7d6f76123
     
-        verdad = str(mensaje.endswith("peluche.com"))
+        verdad = str(usuarioEnSesion._correo.endswith("peluche.com"))
 
         if verdad =="True":
             
@@ -91,44 +96,74 @@ if __name__ == "__main__":
             elif op == 2:
                 Habitacion.mostrarDatos()
                 print("*Se elige uno*")
-                print("Ingresar los datos de la tarjeta:")
-                nombreTarjeta = input("Nombre: ")
-                apellidoTarjeta = input("Apellido: ")
-                numeroTarjeta = int(input("Tarjeta: "))
 
-                while len(str(numeroTarjeta)) != 16:
-                    print("El numero de tarjeta debe contener 16 digitos")
+                menuPago = """
+                Seleccione el metodo de pago:
+                1.- Tarjeta VISA/Mastercard
+                2.- PayPal
+                Elija una opcion: """
+
+                opSelec = int(input(menuPago))
+                
+                if opSelec == 1:
+                    metPago = "Tarjeta"
+                    print("Ingresar los datos de la tarjeta:")
+                    nombreTarjeta = input("Nombre: ")
+                    apellidoTarjeta = input("Apellido: ")
                     numeroTarjeta = int(input("Tarjeta: "))
 
-                codigoTarjeta = int(input("Codigo de seguridad (CVV): "))
+                    while len(str(numeroTarjeta)) != 16:
+                        print("El numero de tarjeta debe contener 16 digitos")
+                        numeroTarjeta = int(input("Tarjeta: "))
 
-                while len(str(codigoTarjeta)) != 3:
-                    print("El codigo de verificación debe contener 3 digitos")
-                    codigoTarjeta = int(input("Tarjeta: "))
+                    codigoTarjeta = int(input("Codigo de seguridad (CVV): "))
 
-                emisorTarjeta = input("Emisor: ")
-                fechaCaducidadTarjeta = input("Fecha Caducidad: ")
+                    while len(str(codigoTarjeta)) != 3:
+                        print("El codigo de verificación debe contener 3 digitos")
+                        codigoTarjeta = int(input("Tarjeta: "))
 
-                if Tarjeta.verificarTarjeta(emisorTarjeta,numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta):
-                    print("Tarjeta valida")
+                    emisorTarjeta = input("Emisor: ")
+                    fechaCaducidadTarjeta = input("Fecha Caducidad: ")
 
-                    if Tarjeta.verificarBloqueo(numeroTarjeta) == False:
-                        print("Tarjeta operativa")
+                    tarjetaIngresada = Tarjeta(numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta,emisorTarjeta)
 
-                        if Tarjeta.verificarCaducidad(fechaCaducidadTarjeta):
-                            print("Tarjeta vigente")
+                    if tarjetaIngresada.verificar():
+                        print("Tarjeta valida")
 
+<<<<<<< HEAD
                             nuevo_cliente = Cliente(user1, password1, name1, lastname1, correo1, metpago1, pago1)
                             nuevo_cliente.registrarCliente()
+=======
+                        if tarjetaIngresada.verificarBloqueo() == False:
+                            print("Tarjeta operativa")
+
+                            if tarjetaIngresada.verificarCaducidad():
+                                print("Tarjeta vigente")
+
+                                print("*Paga*")
+
+                            else:
+                                print("Tarjeta vencida")
+>>>>>>> 089cab3f8197825354867d2b7cfd4ed7d6f76123
 
                         else:
-                            print("Tarjeta vencida")
+                            print("Tarjeta bloqueada")
 
                     else:
-                        print("Tarjeta bloqueada")
+                        print("Tarjeta no valida, por favor ingres bien los datos")
+                
+                elif opSelec == 2:
+                    metPago = "PayPal"
+                    primeravalidacion = PayPal.verificar()
+                    segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
+                    terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
 
-                else:
-                    print("Tarjeta no valida, por favor ingres bien los datos")
+                    if segundavalidacion  != False and terceravalidacion !=False:
+                        print("*** Pago exitoso =) ***")
+
+                pago = "ejemplopago001" 
+                nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
+                nuevo_cliente.registrarCliente()   
 
 
     elif option == 2:
