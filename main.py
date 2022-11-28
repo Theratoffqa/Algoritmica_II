@@ -1,9 +1,9 @@
-from entities.user import *
-from entities.tarjeta import *
-from entities.habitacion import *
-from entities.administrador import *
-from entities.cliente import *
-from entities.paypal import *
+from entities.user import Usuario
+from entities.tarjeta import Tarjeta
+from entities.habitacion import Habitacion
+from entities.administrador import Administrador
+from entities.cliente import Cliente
+from entities.paypal import PayPal
 
 import json
 
