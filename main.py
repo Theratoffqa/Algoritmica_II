@@ -88,9 +88,9 @@ if __name__ == "__main__":
                 codReserva = str(Reserva.generarCod())
                 habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
                 titular = usuarioEnSesion._usuario
-
                 new_Reserva= Reserva(codReserva,titular,fechaEnt,fechaSal,numDias,cantPersonas,cantHabitaciones,habitacionesSolicitadas)
                 new_Reserva.reservar()
+                Reserva.mostrarReserva(codReserva)
                 
                 menuPago = """
                 Seleccione el metodo de pago:

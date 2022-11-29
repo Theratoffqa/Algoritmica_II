@@ -24,14 +24,15 @@ class Habitacion:
 
     def mostrarDatos():
         with open("habitaciones_Registradas.json", "r") as f:
-            habitacionTemp = json.load(f)
-        for element in habitacionTemp:
-            print("------------------------------------------------------")
-            print("DATOS DE LA HABITACION "+str(element["numHabitacion"]))
-            print("Estado:"+ element["estado"])
-            print("Precio:"+ str(element["precio"]))
-            print("Tipo de la habitacion:"+ element["tipoHabitacion"])
-            print("Numero de la habitacion:"+ str(element["numHabitacion"]))
-            print("------------------------------------------------------")
-        
+            habDatos = json.load(f)
+        for element in habDatos:
+            if element["estado"]=="Disponible":
+                print("------------------------------------------------------")
+                print("DATOS DE LA HABITACION "+str(element["numHabitacion"]))
+                print("Estado:"+ element["estado"])
+                print("Precio:"+ str(element["precio"]))
+                print("Tipo de la habitacion:"+ element["tipoHabitacion"])
+                print("Numero de la habitacion:"+ str(element["numHabitacion"]))
+                print("------------------------------------------------------")
+            
 

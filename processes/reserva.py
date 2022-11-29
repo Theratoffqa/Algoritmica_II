@@ -43,8 +43,24 @@ class Reserva:
     def cambiarEstado(self):
         pass
 
-    def mostrarReserva(self):
-        pass
+    def mostrarReserva(codReserva):
+       
+            with open("reservas.json", "r") as f:
+                data = json.load(f)
+        
+            for element in data:
+                if element["codReserva"]==codReserva:
+                    print("------------------------------------------------------")
+                    print("DATOS DE LA RESERVA DE LA HABITACION")
+                    print("Codigo de reserva:"+ str(element["codReserva"]))
+                    print("Titular:"+ str(element["titular"]))
+                    print("Fecha de entrada:"+ str(element["fechaEnt"]))
+                    print("Fecha de salida:"+ str(element["fechaSal"]))
+                    print("Numero de dias de la estadia:",element["numDias"])
+                    print("Cantidad de personas:", element["cantPersonas"])
+                    print("Cantidad de habitaciones:", element["canthabitaciones"])
+                    print("Habitaciones solicitadas:"+ str(element["habitacionesSolicitadas"]))
+                    print("------------------------------------------------------")
 
 #Fio:
 #Editar el metodo MostrarDatos de la clase Habitacion y hacer que solo muestre las disponibles 
