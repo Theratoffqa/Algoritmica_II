@@ -1,9 +1,9 @@
-from entities.user import Usuario
-from entities.tarjeta import Tarjeta
-from entities.habitacion import Habitacion
-from entities.administrador import Administrador
-from entities.cliente import Cliente
-from entities.paypal import PayPal
+from entities.user import *
+from entities.tarjeta import *
+from entities.habitacion import *
+from entities.administrador import *
+from entities.cliente import *
+from entities.paypal import *
 
 import json
 
@@ -25,23 +25,6 @@ if __name__ == "__main__":
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
-<<<<<<< HEAD
-            print(usuarioEnSesion)
-        
-        with open("usuarios.json", "r") as f:
-            data = json.load(f)
-        for element in data:
-            if user == element["usuario"]:
-                mensaje = element["correo"]
-            else:
-                with open("admin_Datos.json", "r") as f:
-                    data = json.load(f)
-                for element in data:
-                    if user == element["usuario"]:
-                        mensaje = element["correo"]
-
-=======
->>>>>>> 089cab3f8197825354867d2b7cfd4ed7d6f76123
     
         verdad = str(usuarioEnSesion._correo.endswith("peluche.com"))
 
@@ -130,10 +113,6 @@ if __name__ == "__main__":
                     if tarjetaIngresada.verificar():
                         print("Tarjeta valida")
 
-<<<<<<< HEAD
-                            nuevo_cliente = Cliente(user1, password1, name1, lastname1, correo1, metpago1, pago1)
-                            nuevo_cliente.registrarCliente()
-=======
                         if tarjetaIngresada.verificarBloqueo() == False:
                             print("Tarjeta operativa")
 
@@ -144,7 +123,6 @@ if __name__ == "__main__":
 
                             else:
                                 print("Tarjeta vencida")
->>>>>>> 089cab3f8197825354867d2b7cfd4ed7d6f76123
 
                         else:
                             print("Tarjeta bloqueada")
