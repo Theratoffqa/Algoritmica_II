@@ -4,6 +4,7 @@ from entities.habitacion import Habitacion
 from entities.administrador import Administrador
 from entities.cliente import Cliente
 from entities.paypal import PayPal
+from processes.reserva import Reserva
 
 import json
 
@@ -77,9 +78,20 @@ if __name__ == "__main__":
             if op == 1:
                 usuarioEnSesion.actualizarDatos()
             elif op == 2:
+                print("**************SOLICITUD DE RESERVA*********************")
+                fechaEnt = str(input("Llegada (dd-mm-aaa):"))
+                fechaSal = str(input("Salida (dd-mm-aaaa):"))
+                numDias = int(input("Ingrese el numero de dias de su estadia:"))
+                cantPersonas = int(input("Ingrese la cantidad de personas: "))
+                cantHabitaciones = int(input("Ingrese el numero de habitaciones:"))
                 Habitacion.mostrarDatos()
-                print("*Se elige uno*")
+                codReserva = str(Reserva.generarCod())
+                habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
+                titular = usuarioEnSesion._usuario
 
+                new_Reserva= Reserva(codReserva,titular,fechaEnt,fechaSal,numDias,cantPersonas,cantHabitaciones,habitacionesSolicitadas)
+                new_Reserva.reservar()
+                
                 menuPago = """
                 Seleccione el metodo de pago:
                 1.- Tarjeta VISA/Mastercard

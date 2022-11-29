@@ -2,7 +2,7 @@ import json
 
 class Habitacion:
     
-    def __init__(self,estado,precio,tipoHabitacion,numHabitacion): 
+    def _init_(self,estado,precio,tipoHabitacion,numHabitacion): 
         self.estado = estado
         self.precio = precio
         self.tipoHabitacion = tipoHabitacion
