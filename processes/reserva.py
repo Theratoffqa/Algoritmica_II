@@ -1,5 +1,8 @@
 import random
-from entities.habitacion import *
+from datetime import datetime
+import json
+#from entities.habitacion import *
+#error al momento de importar entities.habitacion
 
 class Reserva:
     
@@ -30,8 +33,7 @@ class Reserva:
 
         with open("reservas.json", "w") as f:
             json.dump(data, f, indent=4)
-
-        
+   
     def generarCod():
         caracteres="123456789abcdefghijklmnopqrstuvwxyz"
         longitud = 5
@@ -62,13 +64,27 @@ class Reserva:
                     print("Habitaciones solicitadas:"+ str(element["habitacionesSolicitadas"]))
                     print("------------------------------------------------------")
 
+    def tiempoDeEstadia():
+        pass
+
+if __name__ == "__main__":
+    codReserva = str(input())
+    with open("reservas.json", "r") as f:
+        data = json.load(f)
+
+    for element in data:
+        if element["codReserva"]==codReserva:
+           fEnt = datetime.strptime(str(element["fechaEnt"]),"%d-%m-%Y")
+           fSal = datetime.strptime(str(element["fechaSal"]),"%d-%m-%Y")
+           t = fSal - fEnt
+           print(t.days)
 #Fio:
 #Editar el metodo MostrarDatos de la clase Habitacion y hacer que solo muestre las disponibles 
 #Mostrar Reserva 
 
 #Pedro:
-#Agregar metodo que calcule la cantidad de días de la estadía del cliente
-#considerando la fecha de llegada y de salida (o sea las fechas que ingresa)
+#Agregar metodo que calcule la cantidad de días de la estadía del cliente 
+#considerando la fecha de llegada y de salida (o sea las fechas que ingresa) (check)
 
 #Validar cantidad de personas con cantidad de habitaciones. Por ejemplo, 10 personas no pueden 
 #entrar en 1 habitación, es imposible.
