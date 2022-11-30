@@ -31,7 +31,12 @@ class Administrador(Usuario):
         print("A continuacion, digite las caracteristicas de la nueva habitacion:")
         estado = input("Estado: ")
         precio = float(input("Precio: "))
-        tipoHabitacion = input("Tipo de habitacion:")
+        a = 1
+        while(a == 1):
+            tipoHabitacion = input("Tipo de habitacion:")
+            if(tipoHabitacion == 'Simple' or tipoHabitacion == 'Matrimonial' or tipoHabitacion == 'Triple' or tipoHabitacion == 'Doble'):
+                a = 0
+                
         numHabitacion = int(input("Numero de habitacion:"))
         new_Room= Habitacion(estado,precio,tipoHabitacion,numHabitacion)
         roomn = dict(estado = new_Room.estado, precio = new_Room.precio,tipoHabitacion = new_Room.tipoHabitacion,numHabitacion = new_Room.numHabitacion)

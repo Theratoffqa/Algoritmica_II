@@ -64,20 +64,46 @@ class Reserva:
                     print("Habitaciones solicitadas:"+ str(element["habitacionesSolicitadas"]))
                     print("------------------------------------------------------")
 
-    def tiempoDeEstadia():
-        pass
+    def tiempoDeEstadia(codReserva):
+        
+        with open("reservas.json", "r") as f:
+            data = json.load(f)
 
-if __name__ == "__main__":
-    codReserva = str(input())
-    with open("reservas.json", "r") as f:
-        data = json.load(f)
-
-    for element in data:
-        if element["codReserva"]==codReserva:
-           fEnt = datetime.strptime(str(element["fechaEnt"]),"%d-%m-%Y")
-           fSal = datetime.strptime(str(element["fechaSal"]),"%d-%m-%Y")
-           t = fSal - fEnt
-           print(t.days)
+        for element in data:
+            if element["codReserva"]==codReserva:
+                fEnt = datetime.strptime(str(element["fechaEnt"]),"%d-%m-%Y")
+                fSal = datetime.strptime(str(element["fechaSal"]),"%d-%m-%Y")
+                t = fSal - fEnt
+                return t.days
+    
+    def validarNumPers(codReserva):
+        with open("reservas.json", "r") as f:
+            data = json.load(f)
+    
+        for element in data:
+            if element["codReserva"]==codReserva:
+                n = element["canthabitaciones"]
+                tipo = element["habitacionesSolicitadas"]
+                cantpers = element["cantPersonas"]
+                NumPers = 0
+                with open("habitaciones_Registradas.json", "r") as g:
+                    data2 = json.load(g)
+                for i in range(n):
+                    for element in data2:
+                        if element["numHabitacion"] == int(tipo[i]):
+                            if element["tipoHabitacion"] == 'Simple':
+                                NumPers = NumPers + 1
+                            elif(element["tipoHabitacion"] == 'Doble' or element["tipoHabitacion"] == 'Matrimonial'):
+                                NumPers = NumPers + 2
+                            elif(element["tipoHabitacion"] == 'Triple'):
+                                NumPers = NumPers + 3
+        if cantpers > NumPers:
+            print("La cantidad de personas para la reserva es mayor al espacio pedido. Por favor pedir más habitaciones.")
+            return False
+        else:
+            return True
+    
+    
 #Fio:
 #Editar el metodo MostrarDatos de la clase Habitacion y hacer que solo muestre las disponibles 
 #Mostrar Reserva 
@@ -87,4 +113,5 @@ if __name__ == "__main__":
 #considerando la fecha de llegada y de salida (o sea las fechas que ingresa) (check)
 
 #Validar cantidad de personas con cantidad de habitaciones. Por ejemplo, 10 personas no pueden 
-#entrar en 1 habitación, es imposible.
+#entrar en 1 habitación, es imposible. (check) 
+#falta implementar el tiempo y la validación
