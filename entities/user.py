@@ -1,5 +1,7 @@
 import json
 
+file_path = "usuarios.json"
+
 class Usuario:
 
     def __init__(self,usuario,contrasenia,nombre,apellido,correo):
@@ -11,7 +13,7 @@ class Usuario:
 
 
     def verify_session(given_User, given_Password):
-        with open("usuarios.json", "r") as f:
+        with open(file_path, "r") as f:
             usuario = json.load(f)
 
         for element in usuario:
@@ -33,24 +35,24 @@ class Usuario:
     def registrar(self):
         usern = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo)
         
-        with open("usuarios.json", "r") as f:
+        with open(file_path, "r") as f:
             data = json.load(f)
 
         data.append(usern)
 
-        with open("usuarios.json", "w") as f:
+        with open(file_path, "w") as f:
             json.dump(data, f, indent=4)
 
 
     def actualizar(self, dato):
-        with open("usuarios.json", "r") as f:
+        with open(file_path, "r") as f:
             usuarios = json.load(f)
 
         for element in usuarios:
             if element["usuario"] == self._usuario:
                 element[dato] = input("Ingrese actualiazación de su " + dato +": ")
 
-        with open("usuarios.json", "w") as f:
+        with open(file_path, "w") as f:
             json.dump(usuarios, f, indent=4)
 
 
