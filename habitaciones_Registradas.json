@@ -1,25 +1,24 @@
 [
-    
     {
-        "estado": "Disponible",
+        "estado": "No disponible",
         "precio": 100,
         "tipoHabitacion": "Simple",
         "numHabitacion": 213
     },
     {
-        "estado": "No disponible",
+        "estado": "Disponible",
         "precio": 300,
         "tipoHabitacion": "Matrimonial",
         "numHabitacion": 666
     },
     {
-        "estado": "No disponible",
+        "estado": "Disponible",
         "precio": 1500,
         "tipoHabitacion": "Triple",
         "numHabitacion": 512
     },
     {
-        "estado": "No disponible",
+        "estado": "Disponible",
         "precio": 69,
         "tipoHabitacion": "Doble",
         "numHabitacion": 8

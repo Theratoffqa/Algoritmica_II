@@ -42,8 +42,17 @@ class Reserva:
 
         return codigo
 
-    def cambiarEstado(self):
-        pass
+    def cambiarEstado(habitacionesSolicitadas):
+        for element in habitacionesSolicitadas: 
+            with open("habitaciones_Registradas.json", "r") as f:
+                data = json.load(f)
+            for habitacionSolicitada in data:
+                if str(habitacionSolicitada["numHabitacion"])== element:
+                    habitacionSolicitada["estado"] = "No disponible"
+                              
+            with open("habitaciones_Registradas.json", "w") as f:
+                json.dump(data, f, indent=4)
+
 
     def mostrarReserva(codReserva):
        
@@ -103,12 +112,8 @@ class Reserva:
         else:
             return True
     
-    
-#Fio:
-#Editar el metodo MostrarDatos de la clase Habitacion y hacer que solo muestre las disponibles 
-#Mostrar Reserva 
+ 
 
-#Pedro:
 #Agregar metodo que calcule la cantidad de días de la estadía del cliente 
 #considerando la fecha de llegada y de salida (o sea las fechas que ingresa) (check)
 

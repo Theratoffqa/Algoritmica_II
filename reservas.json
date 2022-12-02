@@ -8,20 +8,6 @@
         "cantPersonas": 2,
         "canthabitaciones": 3,
         "habitacionesSolicitadas": [
-            "8",
-            "666",
-            "512"
-        ]
-    },
-    {
-        "codReserva": "yubq5",
-        "titular": "Fiomisufiu",
-        "fechaEnt": "13-11-2022",
-        "fechaSal": "13-12-2022",
-        "numDias": 31,
-        "cantPersonas": 2,
-        "canthabitaciones": 1,
-        "habitacionesSolicitadas": [
             "213"
         ]
     }
