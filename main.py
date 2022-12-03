@@ -29,7 +29,6 @@ if __name__ == "__main__":
         verdad = str(usuarioEnSesion._correo.endswith("peluche.com"))
 
         if verdad =="True":
-            
     
             llave_ingresada= input("Ingrese su llave maestra para acceder al menu:")
     
