@@ -1,7 +1,7 @@
 [
     {
         "usuario": "JoxSam35",
-        "contrasenia": "pbkdf2:sha256:260000$z8J5EnPu41rzjls6$06059ce6a5c493a28de0afb25f22fa7e84803cd6b454b6a94be34790f06c0674",
+        "contrasenia": "pbkdf2:sha256:260000$Yu6QMwKyeUOTNAHa$bf0f1f793254e730713dbb7cc4e20208c9cc49bd682687e281defb6fe3804cd0",
         "nombre": "Jose",
         "apellido": "Quispe",
         "correo": "jose.quispe@gmail.com"
