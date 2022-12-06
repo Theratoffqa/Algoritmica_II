@@ -16,5 +16,14 @@
         "correo": "gianfranco.ore@gmail.com",
         "metpago": "Tarjeta",
         "pago": "ejemplopago001"
+    },
+    {
+        "usuario": "Jatmnk9",
+        "contrasenia": "cc2023algo",
+        "nombre": "Jatziry",
+        "apellido": "Sanchez",
+        "correo": "jatziry.sanchez@gmail.com",
+        "metpago": "Tarjeta",
+        "pago": "ejemplopago001"
     }
 ]
