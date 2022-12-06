@@ -2,6 +2,8 @@ from entities.metodos import *
 import datetime
 import json
 
+file_path = "tarjetas.json"
+
 class Tarjeta(Metodo):
 
     def __init__(self,numTarjeta,fechCaducidad,codSeguridad,nomTarjeta,apellTarjeta,emisorTarjeta):
@@ -15,7 +17,7 @@ class Tarjeta(Metodo):
     def verificar(self):
         passed = False
 
-        with open("tarjetas.json", "r") as f:
+        with open(file_path, "r") as f:
             tarjetas = json.load(f)
 
         for element in tarjetas:
