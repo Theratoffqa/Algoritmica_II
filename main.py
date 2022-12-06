@@ -120,6 +120,7 @@ if __name__ == "__main__":
                                 print("Tarjeta vigente")
 
                                 print("*Paga*")
+                                PagoRealizadoTarjeta = True
 
                             else:
                                 print("Tarjeta vencida")
@@ -138,10 +139,12 @@ if __name__ == "__main__":
 
                     if segundavalidacion  != False and terceravalidacion !=False:
                         print("*** Pago exitoso =) ***")
+                        PagoRealizadoPaypal = True
 
-                pago = "ejemplopago001" 
-                nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
-                nuevo_cliente.registrarCliente()   
+                if PagoRealizadoTarjeta == True and PagoRealizadoPaypal == True:
+                    pago = "ejemplopago001" 
+                    nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
+                    nuevo_cliente.registrarCliente()   
 
 
     elif option == 2:

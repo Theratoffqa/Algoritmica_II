@@ -34,17 +34,7 @@ class Cliente(Usuario):
         #with open("clientes.json", "r") as f:
         #    data = json.load(f)
         #data.append(usercliente)
-
-        #def registrar(self):
-        #usern = dict(usuario = self.__usuario, contrasenia = self.__contrasenia, nombre = self.__nombre, apellido = self.__apellido, correo = self.__correo)
-
-        #with open("usuarios.json", "r") as f:
-        #    data = json.load(f)
-
-        #data.append(usern)
-
-        #with open("usuarios.json", "w") as f:
-        #    json.dump(data, f, indent=4)        
+      
             
     def actualizar(self, dato):
         with open("usuarios.json", "r") as f:
