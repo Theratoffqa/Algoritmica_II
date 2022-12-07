@@ -16,25 +16,31 @@ class Cliente(Usuario):
         with open("clientes.json", "r") as f:
             client = json.load(f)
 
-        client.append(usercliente)
+        for element in client:    
+            if element["usuario"] == self._usuario:
+                client.append(usercliente)
 
-        with open("clientes.json", "w") as f:
-            json.dump(client, f, indent=4)
+                if element["metpago"] == "Tarjeta":
+                    element["metpago"] = self._metPago
+                    try:
+                        element["pago"].append(self._pago)
+                    except KeyError:
+                        element["pago"] = []
+                        element["pago"].append(self._pago)
+                elif element["metpago"] == "PayPal":
+                    element["metpago"] = self._metPago
+                    try:
+                        element["pago"].append(self._pago)
+                    except KeyError:
+                        element["pago"] = []
+                        element["pago"].append(self._pago)
+            
+            else:
+                client.append(usercliente)
 
-        #for element in usuarios:
-        #    if element["usuario"] == user:
-        #        usuarios.append(usercliente)
+                with open("clientes.json", "w") as f:
+                    json.dump(client, f, indent=4)
 
-                #element["metPago"] = self._metPago
-                #try:
-                #   element["registros"].append(self._pago)
-                #except KeyError:
-                #    element["registros"] = []
-                #    element["registros"].append(self._pago)
-        #with open("clientes.json", "r") as f:
-        #    data = json.load(f)
-        #data.append(usercliente)
-      
             
     def actualizar(self, dato):
         with open("usuarios.json", "r") as f:
