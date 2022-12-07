@@ -18,6 +18,7 @@
         "pago": "ejemplopago001"
     },
     {
+<<<<<<< HEAD
         "usuario": "Jatmnk9",
         "contrasenia": "cc2023algo",
         "nombre": "Jatziry",
@@ -27,12 +28,18 @@
         "pago": "ejemplopago001"
     },
     {
+=======
+>>>>>>> 20c771f905680ead83015a1d6c46b57950083711
         "usuario": "Ghopst",
         "contrasenia": "ke2023algo",
         "nombre": "Gianfranco",
         "apellido": "Ore",
         "correo": "gianfranco.ore@gmail.com",
+<<<<<<< HEAD
         "metpago": "PayPal",
+=======
+        "metpago": "Tarjeta",
+>>>>>>> 20c771f905680ead83015a1d6c46b57950083711
         "pago": "ejemplopago001"
     }
 ]
