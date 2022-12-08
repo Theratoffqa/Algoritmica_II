@@ -5,25 +5,9 @@
         "nombre": "Jose",
         "apellido": "Quispe",
         "correo": "jose.quispe@gmail.com",
-        "metpago": "tarjeta",
-        "pago": "ejemplopago001"
-    },
-    {
-        "usuario": "Ghopst",
-        "contrasenia": "ke2023algo",
-        "nombre": "Gianfranco",
-        "apellido": "Ore",
-        "correo": "gianfranco.ore@gmail.com",
         "metpago": "Tarjeta",
-        "pago": "ejemplopago001"
-    },
-    {
-        "usuario": "Ghopst",
-        "contrasenia": "ke2023algo",
-        "nombre": "Gianfranco",
-        "apellido": "Ore",
-        "correo": "gianfranco.ore@gmail.com",
-        "metpago": "Tarjeta",
-        "pago": "ejemplopago001"
+        "pago": [
+            "ejemplopago001"
+        ]
     }
 ]

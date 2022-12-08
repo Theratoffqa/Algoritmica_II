@@ -31,7 +31,6 @@ class Usuario:
                         return Usuario(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"])
 
 
-
     def registrar(self):
         usern = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo)
         

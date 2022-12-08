@@ -29,7 +29,6 @@ if __name__ == "__main__":
         verdad = str(usuarioEnSesion._correo.endswith("peluche.com"))
 
         if verdad =="True":
-            
     
             llave_ingresada= input("Ingrese su llave maestra para acceder al menu:")
     
@@ -140,25 +139,10 @@ if __name__ == "__main__":
                     if segundavalidacion  != False and terceravalidacion !=False:
                         print("*** Pago exitoso =) ***")
                     
-                if opSelec == 1 or opSelec == 2:
-                    pago = "ejemplopago001" 
-                    nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
-                    nuevo_cliente.registrarCliente()   
-                    menuCliente = """"
-                    ¿Esta conforme con los datos registrados?
-                    1. Si
-                    2. No
-                    """
-                    opCliente = int(input(menuCliente))
-                    if opCliente == 1:
-                        print("Gracias por su compra")
-                    elif opCliente == 2:
-                        Cliente.actualizarDatos()
-                    else:
-                        print("Opcion no valida")
+                pago = "ejemplopago001" 
+                nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
+                nuevo_cliente.registrar()   
                
-                
-
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
         password = input("Ingrese nueva contrasenia: ")

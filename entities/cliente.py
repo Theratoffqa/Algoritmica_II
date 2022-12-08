@@ -1,6 +1,8 @@
 from entities.user import Usuario
 import json
 
+file_path = "clientes.json"
+
 class Cliente(Usuario):
 
     def __init__(self,usuario,contrasenia,nombre,apellido, correo, metPago, pago):
@@ -10,47 +12,50 @@ class Cliente(Usuario):
         self._pago = pago
             
     
-    def registrarCliente(self):          
-        usercliente = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo, metpago = self._metPago, pago = self._pago)
+    def registrar(self):          
 
-        with open("clientes.json", "r") as f:
+        with open(file_path, "r") as f:
             client = json.load(f)
+
+        registrado = False
 
         for element in client:    
             if element["usuario"] == self._usuario:
-                client.append(usercliente)
+                registrado = True
+                element["metpago"] = self._metPago
+                element["pago"].append(self._pago)
 
-                if element["metpago"] == "Tarjeta":
-                    element["metpago"] = self._metPago
-                    try:
-                        element["pago"].append(self._pago)
-                    except KeyError:
-                        element["pago"] = []
-                        element["pago"].append(self._pago)
-                elif element["metpago"] == "PayPal":
-                    element["metpago"] = self._metPago
-                    try:
-                        element["pago"].append(self._pago)
-                    except KeyError:
-                        element["pago"] = []
-                        element["pago"].append(self._pago)
+        if registrado == False:
+            file_path2 = "usuarios.json"
+
+            with open(file_path2, "r") as f:
+                usuarios = json.load(f)
+
+            for element in usuarios:    
+                if element["usuario"] == self._usuario:
+                    usuarios.remove(element)
+
+            with open(file_path2, "w") as f:
+                json.dump(usuarios, f, indent=4)
             
-            else:
-                client.append(usercliente)
 
-                with open("clientes.json", "w") as f:
-                    json.dump(client, f, indent=4)
+            usercliente = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo, metpago = self._metPago, pago = [])
+            usercliente["pago"].append(self._pago)
+            client.append(usercliente)
+
+        with open(file_path, "w") as f:
+            json.dump(client, f, indent=4)
 
             
     def actualizar(self, dato):
-        with open("usuarios.json", "r") as f:
+        with open(file_path, "r") as f:
             usuarios = json.load(f)
 
         for element in usuarios:
             if element["usuario"] == self.__usuario:
                 element[dato] = input("Ingrese actualiazación de su " + dato +": ")
 
-        with open("usuarios.json", "w") as f:
+        with open(file_path, "w") as f:
             json.dump(usuarios, f, indent=4)
 
             
