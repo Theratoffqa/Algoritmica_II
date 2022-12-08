@@ -1,6 +1,9 @@
 from entities.metodos import *
 import json
 
+file_path1 = "cuentasPayPal.json"
+file_path2 = "cuentasSuspendidas.json"
+
 class PayPal(Metodo):
 
     def __init__(self,correoPayPal,contraseniaPayPal,estado):
@@ -15,7 +18,7 @@ class PayPal(Metodo):
             correoPayPal = str(input("Ingrese su correo:"))
             contraseniaPayPal = str(input("Ingrese su contrasenia:"))
             
-            with open("cuentasPayPal.json", "r") as f:
+            with open(file_path1, "r") as f:
                 usuarioPayPal = json.load(f)
             for element in usuarioPayPal:
                 if element["correoPayPal"] == correoPayPal and element["contraseniaPayPal"] == contraseniaPayPal:
@@ -29,7 +32,7 @@ class PayPal(Metodo):
            
     def verificarCaducidad(self,correoPayPal): #verificar si la cuenta está desactivada 
         
-        with open("cuentasPayPal.json", "r") as f:
+        with open(file_path1, "r") as f:
             usuarioPaypal = json.load(f)
         for element in usuarioPaypal:
             if element["correoPayPal"] == correoPayPal:
@@ -38,7 +41,7 @@ class PayPal(Metodo):
                     return False
     
     def verificarBloqueo(self,correoPayPal): #verificar banneada
-        with open("cuentasSuspendidas.json", "r") as f:
+        with open(file_path2, "r") as f:
             usuarioPaypal = json.load(f)
         for element in usuarioPaypal:
             if element["correoPayPal"] == correoPayPal:

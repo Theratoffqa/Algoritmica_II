@@ -1,5 +1,7 @@
 import json
 
+file_path = "habitaciones_Registradas.json"
+
 class Habitacion:
     
     def _init_(self,estado,precio,tipoHabitacion,numHabitacion): 
@@ -9,7 +11,7 @@ class Habitacion:
         self.numHabitacion = numHabitacion
 
     def buscarHabitacion():
-        with open("habitaciones_Registradas.json", "r") as f:
+        with open(file_path, "r") as f:
             habitacionTemp = json.load(f)
         habitacion_buscar = int(input("Ingrese el numero de habitacion:"))
         for element in habitacionTemp:
@@ -23,7 +25,7 @@ class Habitacion:
                     print("------------------------------------------------------")
 
     def mostrarDatos():
-        with open("habitaciones_Registradas.json", "r") as f:
+        with open(file_path, "r") as f:
             habDatos = json.load(f)
         for element in habDatos:
             if element["estado"]=="Disponible":

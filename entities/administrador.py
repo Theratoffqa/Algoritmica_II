@@ -2,6 +2,9 @@ from entities.user import Usuario
 from entities.habitacion import *
 import json
 
+file_path1 = "admin_Datos.json"
+file_path2 = "habitaciones_Registradas.json"
+
 class Administrador(Usuario):
 
     def __init__(self,usuario,contrasenia,nombre,apellido,correo, llaveMaestra):
@@ -11,7 +14,7 @@ class Administrador(Usuario):
     def actualizarContrasenia():
         
         admin_buscar = str(input("Ingrese su usuario:"))
-        with open("admin_Datos.json", "r") as f:
+        with open(file_path1, "r") as f:
             data = json.load(f)
         for admin in data:
             if admin["usuario"] == admin_buscar:
@@ -23,7 +26,7 @@ class Administrador(Usuario):
                 else:
                     print("Contrasenia incorrecta")
                     
-        with open("admin_Datos.json", "w") as f:
+        with open(file_path1, "w") as f:
             json.dump(data, f, indent=4)
 
 
@@ -41,17 +44,17 @@ class Administrador(Usuario):
         new_Room= Habitacion(estado,precio,tipoHabitacion,numHabitacion)
         roomn = dict(estado = new_Room.estado, precio = new_Room.precio,tipoHabitacion = new_Room.tipoHabitacion,numHabitacion = new_Room.numHabitacion)
         
-        with open("habitaciones_Registradas.json", "r") as f:
+        with open(file_path2, "r") as f:
             data = json.load(f)
 
         data.append(roomn)
 
-        with open("habitaciones_Registradas.json", "w") as f:
+        with open(file_path2, "w") as f:
             json.dump(data, f, indent=4)
    
     def actualizar(dato):
 
-        with open("habitaciones_Registradas.json", "r") as f:
+        with open(file_path2, "r") as f:
             habitacionTemp = json.load(f)
         habitacion_buscar = int(input("Ingrese el numero de habitacion a editar:"))
 
@@ -61,7 +64,7 @@ class Administrador(Usuario):
                     element[dato] = float(input("Ingrese actualiazación de su " + dato +": "))
                 else:
                     element[dato] = str(input("Ingrese actualiazación de su " + dato +": "))   
-        with open("habitaciones_Registradas.json", "w") as f:
+        with open(file_path2, "w") as f:
             json.dump(habitacionTemp, f, indent=4)
 
     def actualizarDatos():

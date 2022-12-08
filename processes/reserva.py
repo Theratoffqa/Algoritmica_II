@@ -4,6 +4,9 @@ import json
 #from entities.habitacion import *
 #error al momento de importar entities.habitacion
 
+file_path1 = "reservas.json"
+file_path2 = "habitaciones_Registradas.json"
+
 class Reserva:
     
     def __init__(self,codReserva,titular,fechaEnt,fechaSal,numDias,cantPersonas,cantHabitaciones,habitacionesSolicitadas): 
@@ -26,12 +29,12 @@ class Reserva:
     def reservar(self):
         reservan = dict(codReserva = self._codReserva,titular = self._titular,fechaEnt = self._fechaEnt,fechaSal = self._fechaSal,numDias =self._numDias,cantPersonas =self._cantPersonas,canthabitaciones = self._cantHabitaciones,habitacionesSolicitadas =self._habitacionesSolicitadas)
         
-        with open("reservas.json", "r") as f:
+        with open(file_path1, "r") as f:
             data = json.load(f)
 
         data.append(reservan)
 
-        with open("reservas.json", "w") as f:
+        with open(file_path1, "w") as f:
             json.dump(data, f, indent=4)
    
     def generarCod():
@@ -44,19 +47,19 @@ class Reserva:
 
     def cambiarEstado(habitacionesSolicitadas):
         for element in habitacionesSolicitadas: 
-            with open("habitaciones_Registradas.json", "r") as f:
+            with open(file_path2, "r") as f:
                 data = json.load(f)
             for habitacionSolicitada in data:
                 if str(habitacionSolicitada["numHabitacion"])== element:
                     habitacionSolicitada["estado"] = "No disponible"
                               
-            with open("habitaciones_Registradas.json", "w") as f:
+            with open(file_path2, "w") as f:
                 json.dump(data, f, indent=4)
 
 
     def mostrarReserva(codReserva):
        
-            with open("reservas.json", "r") as f:
+            with open(file_path1, "r") as f:
                 data = json.load(f)
         
             for element in data:
@@ -80,7 +83,7 @@ class Reserva:
         return t.days
     
     def validarNumPers(codReserva):
-        with open("reservas.json", "r") as f:
+        with open(file_path1, "r") as f:
             data = json.load(f)
     
         for element in data:
@@ -89,7 +92,7 @@ class Reserva:
                 tipo = element["habitacionesSolicitadas"]
                 cantpers = element["cantPersonas"]
                 NumPers = 0
-                with open("habitaciones_Registradas.json", "r") as g:
+                with open(file_path2, "r") as g:
                     data2 = json.load(g)
                 for i in range(n):
                     for element in data2:
