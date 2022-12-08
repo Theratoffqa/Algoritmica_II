@@ -1,6 +1,7 @@
 from entities.user import Usuario
 from entities.habitacion import *
 import json
+from werkzeug.security import check_password_hash
 
 class Administrador(Usuario):
 
@@ -16,9 +17,9 @@ class Administrador(Usuario):
         for admin in data:
             if admin["usuario"] == admin_buscar:
                 admin_contrasenia = str(input("Ingrese su contrasenia actual:"))
-                if admin_contrasenia==admin["contrasenia"]:
+                if check_password_hash(admin["contrasenia"],admin_contrasenia):
 
-                    admin["contrasenia"] = input("Ingrese su nueva contrasenia: ")
+                    admin["contrasenia"] = Usuario.codificar(input("Ingrese su nueva contrasenia: "))
                 
                 else:
                     print("Contrasenia incorrecta")

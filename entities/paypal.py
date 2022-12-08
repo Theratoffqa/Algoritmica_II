@@ -1,5 +1,6 @@
 from entities.metodos import *
 import json
+from werkzeug.security import check_password_hash
 
 class PayPal(Metodo):
 
@@ -18,9 +19,8 @@ class PayPal(Metodo):
             with open("cuentasPayPal.json", "r") as f:
                 usuarioPayPal = json.load(f)
             for element in usuarioPayPal:
-                if element["correoPayPal"] == correoPayPal and element["contraseniaPayPal"] == contraseniaPayPal:
+                if element["correoPayPal"] == correoPayPal and check_password_hash(element["contraseniaPayPal"],str(contraseniaPayPal)):
                     verificado = False
-                    
                     return correoPayPal
 
             if verificado == True:

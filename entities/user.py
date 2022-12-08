@@ -32,7 +32,7 @@ class Usuario:
                     usuario = json.load(f)
 
                 for element in usuario:
-                    if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+                    if element["usuario"] == given_User and check_password_hash(element["contrasenia"],given_Password):
                         print("Bienvenido, " + element["nombre"])
                         return Usuario(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"])
 

@@ -4,6 +4,7 @@ from entities.habitacion import Habitacion
 from entities.administrador import Administrador
 from entities.cliente import Cliente
 from entities.paypal import PayPal
+from werkzeug.security import check_password_hash
 
 import json
 
@@ -36,7 +37,7 @@ if __name__ == "__main__":
                 data = json.load(f)
 
             for admin in data:
-                if admin["llave_maestra"]==llave_ingresada:
+                if check_password_hash(admin["llave_maestra"],llave_ingresada):
                     
                     menu="""
                     1.- Registrar habitacion
