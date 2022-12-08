@@ -11,7 +11,15 @@ class Cliente(Usuario):
         self._metPago = metPago
         self._pago = pago
             
-    
+    def verify_session(given_User, given_Password):
+        with open(file_path, "r") as f:
+            usuario = json.load(f)
+
+        for element in usuario:
+            if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+                print("Bienvenido, " + element["nombre"])
+                return Cliente(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"],element["metpago"],element["pago"])
+
     def registrar(self):          
 
         with open(file_path, "r") as f:

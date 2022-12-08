@@ -5,8 +5,6 @@ from entities.administrador import *
 from entities.cliente import *
 from entities.paypal import *
 
-import json
-
 if __name__ == "__main__":
     menu="""
     ---------BIENVENIDOS AL HOTEL VIRUS PELUCHE----------
@@ -19,50 +17,53 @@ if __name__ == "__main__":
         user = input("      Usuario: ")
         password = input("      Contrasenia: ")
         usuarioEnSesion = Usuario.verify_session(user, password)
+        tipo = "user"
+        if usuarioEnSesion is None:
+            usuarioEnSesion = Cliente.verify_session(user, password)
+            tipo = "client"
+        if usuarioEnSesion is None:
+            usuarioEnSesion = Administrador.verify_session(user, password)
+            tipo = "admin"
 
         while usuarioEnSesion == None:
             print("     No tenemos a ese usuario registrado, intentelo de nuevo")
             user = input("      Usuario: ")
             password = input("      Contrasenia: ")
             usuarioEnSesion = Usuario.verify_session(user, password)
-    
-        verdad = str(usuarioEnSesion._correo.endswith("peluche.com"))
+            tipo = "user"
+            if usuarioEnSesion is None:
+                usuarioEnSesion = Cliente.verify_session(user, password)
+                tipo = "client"
+            if usuarioEnSesion is None:
+                usuarioEnSesion = Administrador.verify_session(user, password)
+                tipo = "admin"
 
-        if verdad =="True":
-    
-            llave_ingresada= input("Ingrese su llave maestra para acceder al menu:")
-    
-            with open("admin_Datos.json", "r") as f:
-                data = json.load(f)
+        if tipo == "admin":   
+            menu="""
+            1.- Registrar habitacion
+            2.- Actualizar datos de habitacion
+            3.- Actualizar contrasenia
+            4.- Buscar habitacion y mostrar datos
+            5.- Mostrar catalogo de habitaciones
+            Elija una opcion: """
+            option = int(input(menu))
+            if option == 1:
+                usuarioEnSesion.registrarHab()
 
-            for admin in data:
-                if admin["llave_maestra"]==llave_ingresada:
-                    
-                    menu="""
-                    1.- Registrar habitacion
-                    2.- Actualizar datos de habitacion
-                    3.- Actualizar contrasenia
-                    4.- Buscar habitacion y mostrar datos
-                    5.- Mostrar catalogo de habitaciones
-                    Elija una opcion: """
-                    option = int(input(menu))
-                    if option == 1:
-                        Administrador.registrarHab()
+            elif option == 2:
+                usuarioEnSesion.actualizarDatos() 
 
-                    elif option == 2:
-                        Administrador.actualizarDatos() 
+            elif option==3:
+                usuarioEnSesion.actualizarContrasenia()
 
-                    elif option==3:
-                        Administrador.actualizarContrasenia()
+            elif option==4:
+                Habitacion.buscarHabitacion()
 
-                    elif option==4:
-                        Habitacion.buscarHabitacion()
+            elif option==5:
+                Habitacion.mostrarDatos()
 
-                    elif option==5:
-                        Habitacion.mostrarDatos()
-
-                    else:
-                        print("Opcion no valida")
+            else:
+                print("Opcion no valida")
             
 
         else:
