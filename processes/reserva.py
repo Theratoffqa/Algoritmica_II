@@ -73,17 +73,11 @@ class Reserva:
                     print("Habitaciones solicitadas:"+ str(element["habitacionesSolicitadas"]))
                     print("------------------------------------------------------")
 
-    def tiempoDeEstadia(codReserva):
-        
-        with open("reservas.json", "r") as f:
-            data = json.load(f)
-
-        for element in data:
-            if element["codReserva"]==codReserva:
-                fEnt = datetime.strptime(str(element["fechaEnt"]),"%d-%m-%Y")
-                fSal = datetime.strptime(str(element["fechaSal"]),"%d-%m-%Y")
-                t = fSal - fEnt
-                return t.days
+    def tiempoDeEstadia( E, S):
+        fEnt = datetime.strptime(str(E),"%d-%m-%Y")
+        fSal = datetime.strptime(str(S),"%d-%m-%Y")
+        t = fSal - fEnt
+        return t.days
     
     def validarNumPers(codReserva):
         with open("reservas.json", "r") as f:
@@ -110,13 +104,4 @@ class Reserva:
             print("La cantidad de personas para la reserva es mayor al espacio pedido. Por favor pedir más habitaciones.")
             return False
         else:
-            return True
-    
- 
-
-#Agregar metodo que calcule la cantidad de días de la estadía del cliente 
-#considerando la fecha de llegada y de salida (o sea las fechas que ingresa) (check)
-
-#Validar cantidad de personas con cantidad de habitaciones. Por ejemplo, 10 personas no pueden 
-#entrar en 1 habitación, es imposible. (check) 
-#falta implementar el tiempo y la validación
+            return True        

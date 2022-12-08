@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 print("**************SOLICITUD DE RESERVA*********************")
                 fechaEnt = str(input("Llegada (dd-mm-aaa):"))
                 fechaSal = str(input("Salida (dd-mm-aaaa):"))
-                numDias = int(input("Ingrese el numero de dias de su estadia:"))
+                numDias = Reserva.tiempoDeEstadia(fechaEnt,fechaSal)
                 cantPersonas = int(input("Ingrese la cantidad de personas: "))
                 cantHabitaciones = int(input("Ingrese el numero de habitaciones:"))
                 Habitacion.mostrarDatos()
@@ -90,7 +90,8 @@ if __name__ == "__main__":
                 titular = usuarioEnSesion._usuario
                 new_Reserva= Reserva(codReserva,titular,fechaEnt,fechaSal,numDias,cantPersonas,cantHabitaciones,habitacionesSolicitadas)
                 new_Reserva.reservar()
-                Reserva.mostrarReserva(codReserva)
+                if Reserva.validarNumPers(codReserva):
+                    Reserva.mostrarReserva(codReserva)
                 
                 menuPago = """
                 Seleccione el metodo de pago:
