@@ -26,15 +26,6 @@ class Usuario:
             if element["usuario"] == given_User and check_password_hash(element["contrasenia"], given_Password):
                 print("Bienvenido, " + element["nombre"])
                 return Usuario(element["usuario"],given_Password,element["nombre"],element["apellido"],element["correo"])
-            
-            else:
-                with open("admin_Datos.json", "r") as f:
-                    usuario = json.load(f)
-
-                for element in usuario:
-                    if element["usuario"] == given_User and check_password_hash(element["contrasenia"],given_Password):
-                        print("Bienvenido, " + element["nombre"])
-                        return Usuario(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"])
 
 
     def registrar(self):
