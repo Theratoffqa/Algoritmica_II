@@ -1,4 +1,4 @@
-from entities.metodos import *
+from entities.metodos import Metodo
 import datetime
 import json
 from werkzeug.security import check_password_hash
