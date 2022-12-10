@@ -4,6 +4,9 @@ from entities.habitacion import Habitacion
 from entities.administrador import Administrador
 from entities.cliente import Cliente
 from entities.paypal import PayPal
+from processes.reserva import Reserva
+
+import json
 
 if __name__ == "__main__":
     menu="""
@@ -77,9 +80,21 @@ if __name__ == "__main__":
             if op == 1:
                 usuarioEnSesion.actualizarDatos()
             elif op == 2:
+                print("**************SOLICITUD DE RESERVA*********************")
+                fechaEnt = str(input("Llegada (dd-mm-aaa):"))
+                fechaSal = str(input("Salida (dd-mm-aaaa):"))
+                numDias = Reserva.tiempoDeEstadia(fechaEnt,fechaSal)
+                cantPersonas = int(input("Ingrese la cantidad de personas: "))
+                cantHabitaciones = int(input("Ingrese el numero de habitaciones:"))
                 Habitacion.mostrarDatos()
-                print("*Se elige uno*")
-
+                codReserva = str(Reserva.generarCod())
+                habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
+                titular = usuarioEnSesion._usuario
+                new_Reserva= Reserva(codReserva,titular,fechaEnt,fechaSal,numDias,cantPersonas,cantHabitaciones,habitacionesSolicitadas)
+                new_Reserva.reservar()
+                if Reserva.validarNumPers(codReserva):
+                    Reserva.mostrarReserva(codReserva)
+                
                 menuPago = """
                 Seleccione el metodo de pago:
                 1.- Tarjeta VISA/Mastercard
@@ -120,7 +135,7 @@ if __name__ == "__main__":
                                 print("Tarjeta vigente")
 
                                 print("*Paga*")
-                                #PagoRealizadoTarjeta = True
+                                Reserva.cambiarEstado(habitacionesSolicitadas) 
 
                             else:
                                 print("Tarjeta vencida")
@@ -139,7 +154,8 @@ if __name__ == "__main__":
 
                     if segundavalidacion  != False and terceravalidacion !=False:
                         print("*** Pago exitoso =) ***")
-                    
+                        Reserva.cambiarEstado(habitacionesSolicitadas) 
+
                 pago = "ejemplopago001" 
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()   
