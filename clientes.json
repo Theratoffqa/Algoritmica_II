@@ -1,47 +1,13 @@
 [
     {
         "usuario": "JoxSam35",
-        "contrasenia": "xDalgo2023",
+        "contrasenia": "pbkdf2:sha256:260000$Yu6QMwKyeUOTNAHa$bf0f1f793254e730713dbb7cc4e20208c9cc49bd682687e281defb6fe3804cd0",
         "nombre": "Jose",
         "apellido": "Quispe",
         "correo": "jose.quispe@gmail.com",
-        "metpago": "tarjeta",
-        "pago": "ejemplopago001"
-    },
-    {
-        "usuario": "Ghopst",
-        "contrasenia": "ke2023algo",
-        "nombre": "Gianfranco",
-        "apellido": "Ore",
-        "correo": "gianfranco.ore@gmail.com",
         "metpago": "Tarjeta",
-        "pago": "ejemplopago001"
-    },
-    {
-        "usuario": "Jatmnk9",
-        "contrasenia": "cc2023algo",
-        "nombre": "Jatziry",
-        "apellido": "Sanchez",
-        "correo": "jatziry.sanchez@gmail.com",
-        "metpago": "Tarjeta",
-        "pago": "ejemplopago001"
-    },
-    {
-        "usuario": "Jatmnk9",
-        "contrasenia": "cc2023algo",
-        "nombre": "Jatziry",
-        "apellido": "Sanchez",
-        "correo": "jatziry.sanchez@gmail.com",
-        "metpago": "PayPal",
-        "pago": "ejemplopago001"
-    },
-    {
-        "usuario": "Jatmnk9",
-        "contrasenia": "cc2023algo",
-        "nombre": "Jatziry",
-        "apellido": "Sanchez",
-        "correo": "jatziry.sanchez@gmail.com",
-        "metpago": "PayPal",
-        "pago": "ejemplopago001"
+        "pago": [
+            "ejemplopago001"
+        ]
     }
 ]
