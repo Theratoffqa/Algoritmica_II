@@ -1,7 +1,7 @@
 from entities.user import Usuario
 from entities.habitacion import Habitacion
 import json
-from werkzeug.security import check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 file_path = "admin_Datos.json"
 file_path2 = "habitaciones_Registradas.json"
@@ -36,7 +36,7 @@ class Administrador(Usuario):
             if admin["usuario"] == self._usuario:
                 admin_contrasenia = input("Ingrese su contrasenia actual:")
                 if check_password_hash(admin["contrasenia"],admin_contrasenia):
-                    admin["contrasenia"] = input("Ingrese su nueva contrasenia: ")
+                    admin["contrasenia"] = generate_password_hash(input("Ingrese actualiazación de su contraseña: "))
                 
                 else:
                     print("Contrasenia incorrecta")
