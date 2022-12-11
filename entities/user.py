@@ -1,6 +1,12 @@
 import json
+from werkzeug.security import generate_password_hash, check_password_hash
 
 file_path = "usuarios.json"
+
+def codificar(dato):
+    encriptado = generate_password_hash(dato)
+    return encriptado
+
 
 class Usuario:
 
@@ -17,13 +23,13 @@ class Usuario:
             usuario = json.load(f)
 
         for element in usuario:
-            if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+            if element["usuario"] == given_User and check_password_hash(element["contrasenia"], given_Password):
                 print("Bienvenido, " + element["nombre"])
-                return Usuario(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"])
+                return Usuario(element["usuario"],given_Password,element["nombre"],element["apellido"],element["correo"])
 
 
     def registrar(self):
-        usern = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo)
+        usern = dict(usuario = self._usuario, contrasenia = codificar(self._contrasenia), nombre = self._nombre, apellido = self._apellido, correo = self._correo)
         
         with open(file_path, "r") as f:
             data = json.load(f)
@@ -40,7 +46,10 @@ class Usuario:
 
         for element in usuarios:
             if element["usuario"] == self._usuario:
-                element[dato] = input("Ingrese actualiazación de su " + dato +": ")
+                if dato == "contrasenia":
+                    element[dato] = generate_password_hash(input("Ingrese actualiazación de su " + dato +": "))
+                else:
+                    element[dato] = input("Ingrese actualiazación de su " + dato +": ")
 
         with open(file_path, "w") as f:
             json.dump(usuarios, f, indent=4)

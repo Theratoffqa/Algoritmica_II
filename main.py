@@ -11,7 +11,6 @@ import json
 if __name__ == "__main__":
     menu="""
     ---------BIENVENIDOS AL HOTEL VIRUS PELUCHE----------
-
     1.- Iniciar Sesion
     2.- Registrarse
     Elija una opcion: """

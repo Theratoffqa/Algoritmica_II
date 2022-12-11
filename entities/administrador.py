@@ -1,9 +1,11 @@
 from entities.user import Usuario
 from entities.habitacion import Habitacion
 import json
+from werkzeug.security import generate_password_hash, check_password_hash
 
 file_path = "admin_Datos.json"
 file_path2 = "habitaciones_Registradas.json"
+
 
 class Administrador(Usuario):
 
@@ -17,10 +19,10 @@ class Administrador(Usuario):
             usuario = json.load(f)
 
         for element in usuario:
-            if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+            if element["usuario"] == given_User and check_password_hash(element["contrasenia"], given_Password):
                 print("Bienvenido, " + element["nombre"])
                 llave = input("Ingrese su llame maestra para continuar: ")
-                while llave != element["llave_maestra"]:
+                while check_password_hash(element["llave_maestra"],llave) == False:
                     print("Llave maestra incorrecta, intentelo nuevamente, por favor")
                     llave = input("Ingrese su llame maestra para continuar: ")
                 return Administrador(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"],element["llave_maestra"])
@@ -32,9 +34,9 @@ class Administrador(Usuario):
 
         for admin in data:
             if admin["usuario"] == self._usuario:
-                admin_contrasenia = str(input("Ingrese su contrasenia actual:"))
-                if admin_contrasenia == admin["contrasenia"]:
-                    admin["contrasenia"] = input("Ingrese su nueva contrasenia: ")
+                admin_contrasenia = input("Ingrese su contrasenia actual:")
+                if check_password_hash(admin["contrasenia"],admin_contrasenia):
+                    admin["contrasenia"] = generate_password_hash(input("Ingrese actualiazación de su contraseña: "))
                 
                 else:
                     print("Contrasenia incorrecta")
