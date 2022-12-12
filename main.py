@@ -5,6 +5,7 @@ from entities.administrador import Administrador
 from entities.cliente import Cliente
 from entities.paypal import PayPal
 from processes.reserva import Reserva
+from processes.pago import Pago
 
 import json
 
@@ -133,8 +134,13 @@ if __name__ == "__main__":
                             if tarjetaIngresada.verificarCaducidad():
                                 print("Tarjeta vigente")
 
-                                print("*Paga*")
-                                Reserva.cambiarEstado(habitacionesSolicitadas) 
+                                nuevoPago = Pago("001","concepto","hoy",100,"Tarjeta VISA",tarjetaIngresada._numTarjeta)
+
+                                if nuevoPago.pagar():
+                                    print("Pago exitoso")
+                                    Reserva.cambiarEstado(habitacionesSolicitadas)
+                                else:
+                                    "No cuenta con el monto necesario"
 
                             else:
                                 print("Tarjeta vencida")
