@@ -1,6 +1,7 @@
-from entities.metodos import *
+from entities.metodos import Metodo
 import datetime
 import json
+from werkzeug.security import check_password_hash
 
 file_path = "tarjetas.json"
 
@@ -22,9 +23,9 @@ class Tarjeta(Metodo):
 
         for element in tarjetas:
             p = True if element["emisor"] == self.__emisor else False
-            q = True if element["numTarjeta"] == self._numTarjeta else False
-            r = True if datetime.datetime.strptime(self.__fechCaducidad, "%m/%Y") == datetime.datetime.strptime(element["fechCaducidad"], "%m/%Y") else False
-            s = True if element["codSeguridad"] == self.__codSeguridad else False
+            q = check_password_hash(element["numTarjeta"],str(self._numTarjeta))
+            r = check_password_hash(element["fechCaducidad"], self.__fechCaducidad)
+            s = check_password_hash(element["codSeguridad"], str(self.__codSeguridad))
             t = True if element["nombTarjeta"] == self.__nombTarjeta else False
             u = True if element["apellTarjeta"] == self.__apellTarjeta else False
 

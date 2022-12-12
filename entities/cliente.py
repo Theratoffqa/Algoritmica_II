@@ -1,7 +1,13 @@
 from entities.user import Usuario
+from werkzeug.security import generate_password_hash, check_password_hash
 import json
 
 file_path = "clientes.json"
+
+def codificar(dato):
+    encriptado = generate_password_hash(dato)
+    return encriptado
+
 
 class Cliente(Usuario):
 
@@ -16,7 +22,7 @@ class Cliente(Usuario):
             usuario = json.load(f)
 
         for element in usuario:
-            if element["usuario"] == given_User and element["contrasenia"] == given_Password:
+            if element["usuario"] == given_User and check_password_hash(element["contrasenia"], given_Password):
                 print("Bienvenido, " + element["nombre"])
                 return Cliente(element["usuario"],element["contrasenia"],element["nombre"],element["apellido"],element["correo"],element["metpago"],element["pago"])
 
@@ -46,7 +52,6 @@ class Cliente(Usuario):
             with open(file_path2, "w") as f:
                 json.dump(usuarios, f, indent=4)
             
-
             usercliente = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo, metpago = self._metPago, pago = [])
             usercliente["pago"].append(self._pago)
             client.append(usercliente)
@@ -60,8 +65,11 @@ class Cliente(Usuario):
             usuarios = json.load(f)
 
         for element in usuarios:
-            if element["usuario"] == self.__usuario:
-                element[dato] = input("Ingrese actualiazación de su " + dato +": ")
+            if element["usuario"] == self._usuario:
+                if dato == "contrasenia":
+                    element[dato] = generate_password_hash(input("Ingrese actualiazación de su " + dato +": "))
+                else:
+                    element[dato] = input("Ingrese actualiazación de su " + dato +": ")
 
         with open(file_path, "w") as f:
             json.dump(usuarios, f, indent=4)
