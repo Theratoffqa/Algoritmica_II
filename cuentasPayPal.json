@@ -1,11 +1,13 @@
 [{
     "correoPayPal": "fioPayPal@gmail.com",
     "contraseniaPayPal": "pbkdf2:sha256:260000$TWjOTBMHAlH3p4Vg$277416be8d5b2e9e55433b3aea65fea493992aeaff4bff6a880de34d4ec09ee7",
-    "estado":"inactiva"
+    "estado":"inactiva",
+    "monto" : 500
 },
 {
     "correoPayPal": "jatPayPal@gmail.com",
     "contraseniaPayPal": "pbkdf2:sha256:260000$N3O19gJPa2EWojBU$0fccb844059a880ab41254375351b1d936bb16541d68f73bc6ad27ec65b0f6ed",
-    "estado":"activa"
+    "estado":"activa",
+    "monto" : 500
 }
 ]
