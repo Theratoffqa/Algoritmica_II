@@ -4,6 +4,7 @@ import json
 
 file_path = "habitaciones_Registradas.json"
 file_path2 = "clientes.json"
+file_path3 = "pagos.json"
 
 
 class Pago: 
@@ -20,7 +21,7 @@ class Pago:
         #numero de operacion
         if self._monto > 0:
             n = n + 1
-            numOperacion = n
+        numOperacion = n
 
 
         #fecha actual
@@ -41,4 +42,9 @@ class Pago:
                     metPago = element["metpago"]
         
         RegistroPago = dict(nombre = self._nombre,apellido = self._apellido, numOperacion = self._numOperacion,concepto = self._concepto,fechaActual = self._fecha,monto = self._monto,metpago= self._metpago)
+        with open(file_path3, "r") as f:
+            data = json.load(f)
+        data.append(RegistroPago)
+        with open(file_path3, "w") as f:
+            json.dump(data, f, indent=4)
 
