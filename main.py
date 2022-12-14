@@ -165,8 +165,13 @@ if __name__ == "__main__":
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()   
 
-                nuevo_pago = Pago()
+                numOperacion = int(Pago.numeroOperacion())
+                conceptoOperacion = Pago.conceptoOperacion(new_Reserva._habitacionesSolicitadas)
+                fechaOperacion = Pago.fechaOperacion()
+                montoOperacion = Pago.montoOperacion(new_Reserva._habitacionesSolicitadas)
+                nuevo_pago = Pago(numOperacion,conceptoOperacion,fechaOperacion, montoOperacion,metPago,tarjetaIngresada._numTarjeta)
                 nuevo_pago.registrarTransaccion()
+
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
         password = input("Ingrese nueva contrasenia: ")
