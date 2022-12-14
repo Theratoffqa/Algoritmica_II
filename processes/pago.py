@@ -1,5 +1,7 @@
 from werkzeug.security import check_password_hash
 import json
+import datetime
+
 
 class Pago: 
     
@@ -39,32 +41,32 @@ class Pago:
 
     def registrarTransaccion(self):
         #numero de operacion
-        if self._monto > 0:
+        n = 0
+        while self._monto > 0:
             n = n + 1
-        numOperacion = n
-
+        self._numOperacion = n
 
         #fecha actual
-        fechaActual = datetime.datetime.now()
+        self._fecha = datetime.datetime.now()
 
         #concepto de pago
-        with open(file_path,"r") as f:
+        with open("habitaciones_Registradas.json","r") as f:
             habitaciones = json.load(f)
             for element in habitaciones:
                 if self._concepto == element["tipoHabitacion"]:
                     conceptoPago = element["tipoHabitacion"]
         
         #metodo de pago
-        with open(file_path2, "r") as f:
+        with open("clientes.json", "r") as f:
             metPagoClientes = json.load(f)
             for element in metPagoClientes:
                 if self._metpago == element["metpago"]:
                     metPago = element["metpago"]
         
         RegistroPago = dict(nombre = self._nombre,apellido = self._apellido, numOperacion = self._numOperacion,concepto = self._concepto,fechaActual = self._fecha,monto = self._monto,metpago= self._metpago)
-        with open(file_path3, "r") as f:
+        with open("pagos.json", "r") as f:
             data = json.load(f)
         data.append(RegistroPago)
-        with open(file_path3, "w") as f:
+        with open("pagos.json", "w") as f:
             json.dump(data, f, indent=4)
 

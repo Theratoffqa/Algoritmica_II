@@ -164,7 +164,9 @@ if __name__ == "__main__":
                 pago = "ejemplopago001" 
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()   
-               
+
+                nuevo_pago = Pago()
+                nuevo_pago.registrarTransaccion()
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
         password = input("Ingrese nueva contrasenia: ")
