@@ -5,9 +5,18 @@
         "nombre": "Jose",
         "apellido": "Quispe",
         "correo": "jose.quispe@gmail.com",
-        "metpago": "Tarjeta",
+        "metpago": "PayPal",
         "pago": [
-            "ejemplopago001"
+            {
+                "Codigo": "8206e8a5-f05f-4f4a-b581-d2a1af05c03d",
+                "Concepto": "concepto",
+                "Fecha": "15/12/2022 14:15:46",
+                "Monto": 100,
+                "MetodoPago": {
+                    "Metodo de pago": "PayPal",
+                    "Cuenta": "jatPayPal@gmail.com"
+                }
+            }
         ]
     }
 ]

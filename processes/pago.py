@@ -15,7 +15,7 @@ class Pago:
         self._metPago = {"Metodo de pago": metPago, "Cuenta": cuenta}
 
     def pagar(self):
-        if "Tarjeta" in self._metPago[0]:
+        if "Tarjeta" in self._metPago["Metodo de pago"]:
             key = "numTarjeta"
             file_path = "files/tarjetas.json"
         else:
@@ -26,7 +26,7 @@ class Pago:
             met_pago = json.load(f)
 
         for element in met_pago:
-            if check_password_hash(element[key], str(self._metPago[1])):
+            if check_password_hash(element[key], str(self._metPago["Cuenta"])):
                 if element["monto"] > self._monto:
                     monto_suficiente = True
                     element["monto"] = element["monto"] - self._monto
@@ -43,7 +43,7 @@ class Pago:
         return RegistroPago
 
     def registrarTransaccion(self):     
-        RegistroPago = Pago.cambiarFormato()
+        RegistroPago = self.cambiarFormato()
         with open(file_path1, "r") as f:
             data = json.load(f)
 
