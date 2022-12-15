@@ -24,7 +24,7 @@ class Reserva:
         return habitacionesSolicitadas
 
     def reservar(self):
-        reservan = dict(codReserva = self._codReserva, titular = self._titular, fechaEnt = self._fechaEnt, fechaSal = self._fechaSal, numDias = self._numDias, cantPersonas = self._cantPersonas, canthabitaciones = self._cantHabitaciones, habitacionesSolicitadas = self._habitacionesSolicitadas)
+        reservan = dict(codReserva=self._codReserva, titular=self._titular, fechaEnt=self._fechaEnt, fechaSal=self._fechaSal, numDias=self._numDias, cantPersonas=self._cantPersonas, canthabitaciones=self._cantHabitaciones, habitacionesSolicitadas=self._habitacionesSolicitadas)
         with open(file_path1, "r") as f:
             data = json.load(f)
 
@@ -53,7 +53,7 @@ class Reserva:
 
     def mostrarReserva(codReserva):
         with open(file_path1, "r") as f:
-                data = json.load(f)
+            data = json.load(f)
         for element in data:
             if element["codReserva"] == codReserva:
                 print("------------------------------------------------------")
@@ -77,7 +77,7 @@ class Reserva:
     def validarNumPers(codReserva):
         with open(file_path1, "r") as f:
             data = json.load(f)
-            
+
         for element in data:
             if element["codReserva"] == codReserva:
                 n = element["canthabitaciones"]

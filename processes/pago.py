@@ -74,7 +74,7 @@ class Pago:
         self._fecha = print(datetime.datetime.now() + datetime.datetime.time())
 
     def registrarTransaccion(self):
-        RegistroPago = dict(numOperacion = self._numOperacion, concepto = self._concepto, fechaActual = self._fecha, monto = self._monto, metpago= self._metPago)
+        RegistroPago = dict(numOperacion=self._numOperacion, concepto=self._concepto, fechaActual=self._fecha, monto=self._monto, metpago=self._metPago)
         with open("pagos.json", "r") as f:
             data = json.load(f)
         data.append(RegistroPago)

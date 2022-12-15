@@ -26,7 +26,7 @@ class Usuario:
                 return Usuario(element["usuario"], given_Password, element["nombre"], element["apellido"], element["correo"])
 
     def registrar(self):
-        usern = dict(usuario = self._usuario, contrasenia = codificar(self._contrasenia), nombre = self._nombre, apellido = self._apellido, correo = self._correo)
+        usern = dict(usuario=self._usuario, contrasenia=codificar(self._contrasenia), nombre=self._nombre, apellido=self._apellido, correo=self._correo)
         with open(file_path, "r") as f:
             data = json.load(f)
 

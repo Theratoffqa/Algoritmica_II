@@ -49,7 +49,7 @@ class Cliente(Usuario):
             with open(file_path2, "w") as f:
                 json.dump(usuarios, f, indent=4)
 
-            usercliente = dict(usuario = self._usuario, contrasenia = self._contrasenia, nombre = self._nombre, apellido = self._apellido, correo = self._correo, metpago = self._metPago, pago = [])
+            usercliente = dict(usuario=self._usuario, contrasenia=self._contrasenia, nombre=self._nombre, apellido=self._apellido, correo=self._correo, metpago=self._metPago, pago=[])
             usercliente["pago"].append(self._pago)
             client.append(usercliente)
 
@@ -80,7 +80,7 @@ class Cliente(Usuario):
             6. Metodo de Pago Predeterminado
         OPCION: """
         opcion = int(input(menu))
-        
+
         while opcion > 5 and opcion < 1:
             print("Elija una opción valida")
             opcion = int(input(menu))
