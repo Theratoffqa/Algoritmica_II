@@ -96,10 +96,9 @@ def menu_usuarios(usuarioEnSesion):
         cantPersonas = int(input("Ingrese la cantidad de personas: "))
         cantHabitaciones = int(input("Ingrese el numero de habitaciones:"))
         Habitacion.mostrarDatos()
-        codReserva = str(Reserva.generarCod())
         habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
         titular = usuarioEnSesion._usuario
-        new_Reserva = Reserva(codReserva, titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
+        new_Reserva = Reserva(titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
         monto = Reserva.calcularMonto(habitacionesSolicitadas)
         print("Monto="+str(monto))
         menuPago = """

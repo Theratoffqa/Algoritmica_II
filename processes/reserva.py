@@ -1,4 +1,4 @@
-import random
+import uuid
 from datetime import datetime
 import json
 
@@ -7,8 +7,8 @@ file_path2 = "files/habitaciones_Registradas.json"
 
 class Reserva:
 
-    def __init__(self, codReserva, titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas):
-        self._codReserva = codReserva
+    def __init__(self, titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas):
+        self._codReserva = str(uuid.uuid4())
         self._titular = titular
         self._fechaEnt = fechaEnt
         self._fechaSal = fechaSal
@@ -22,6 +22,19 @@ class Reserva:
         for i in range(cantHabitaciones):
             habitacionesSolicitadas.append(input("Ingrese el numero de la "+str(i+1)+" habitacion que desea reservar:"))
         return habitacionesSolicitadas
+
+    def calcularMonto(habitacionesSolicitadas,numDias):
+            monto = 0
+            for element in habitacionesSolicitadas:
+                with open(file_path2, "r") as f:
+                    data = json.load(f)
+                for habitacionSolicitada in data:
+                    if str(habitacionSolicitada["numHabitacion"]) == element:
+                        monto = monto + habitacionSolicitada["precio"]
+                with open(file_path2, "w") as f:
+                    json.dump(data, f, indent=4)
+
+            return monto*numDias
 
     def calcularMonto(habitacionesSolicitadas):
         monto = 0
