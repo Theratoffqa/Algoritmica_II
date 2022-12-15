@@ -129,54 +129,35 @@ def menu_usuarios(usuarioEnSesion):
             emisorTarjeta = input("Emisor: ")
             fechaCaducidadTarjeta = input("Fecha Caducidad: ")
 
-            tarjetaIngresada = Tarjeta(numeroTarjeta, fechaCaducidadTarjeta, codigoTarjeta, nombreTarjeta, apellidoTarjeta, emisorTarjeta)
-
-            a = tarjetaIngresada.verificar()
-            b = (tarjetaIngresada.verificarBloqueo() == False)
-            c = tarjetaIngresada.verificarCaducidad()
-            
-            if a and b and c:
-                nuevoPago = Pago("concepto",100,metPago,tarjetaIngresada._numTarjeta)
-
-                if nuevoPago.pagar():
-                    nuevoPago.registrarTransaccion()
-                    print("Pago exitoso")
-                    new_Reserva.reservar()
-                    if Reserva.validarNumPers(codReserva):
-                        Reserva.mostrarReserva(codReserva)
-                    Reserva.cambiarEstado(habitacionesSolicitadas)
-                    pago = nuevoPago.cambiarFormato()
-                    nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
-                    nuevo_cliente.registrar()
-
-            else:
-                print("Comprueba la información de tu tarjeta e inténtalo de nuevo")
+            metPagoIngresado = Tarjeta(numeroTarjeta, fechaCaducidadTarjeta, codigoTarjeta, nombreTarjeta, apellidoTarjeta, emisorTarjeta)
+            cuenta = metPagoIngresado._numTarjeta
 
         elif opSelec == 2:
             metPago = "PayPal"
             correoPayPal = input("Ingrese su correo:")
             contraseniaPayPal = input("Ingrese su contrasenia:")
 
-            paypal_ingresado = PayPal(correoPayPal, contraseniaPayPal)
+            metPagoIngresado = PayPal(correoPayPal, contraseniaPayPal)
+            cuenta = metPagoIngresado._correoPayPal
             
-            a = paypal_ingresado.verificar()
-            b = (paypal_ingresado.verificarBloqueo() == False)
-            c = paypal_ingresado.verificarCaducidad()
+        a = metPagoIngresado.verificar()
+        b = (metPagoIngresado.verificarBloqueo() == False)
+        c = metPagoIngresado.verificarCaducidad()
 
-            if a and b and c:
-                nuevoPago = Pago("concepto",100,metPago,paypal_ingresado._correoPayPal)
+        if a and b and c:
+            nuevoPago = Pago("concepto",100,metPago,cuenta)
 
-                if nuevoPago.pagar():
-                    nuevoPago.registrarTransaccion()
-                    print("Pago exitoso")
-                    new_Reserva.reservar()
-                    Reserva.cambiarEstado(habitacionesSolicitadas)
-                    pago = nuevoPago.cambiarFormato()
-                    nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
-                    nuevo_cliente.registrar()
+            if nuevoPago.pagar():
+                nuevoPago.registrarTransaccion()
+                print("Pago exitoso")
+                new_Reserva.reservar()
+                Reserva.cambiarEstado(habitacionesSolicitadas)
+                pago = nuevoPago.cambiarFormato()
+                nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
+                nuevo_cliente.registrar()
 
-            else:
-                print("Comprueba la información de su cuenta PayPal e inténtalo de nuevo")
+        else:
+            print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")
 
 
 if __name__ == "__main__":
