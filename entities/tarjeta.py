@@ -7,7 +7,7 @@ file_path = "tarjetas.json"
 
 class Tarjeta(Metodo):
 
-    def __init__(self,numTarjeta,fechCaducidad,codSeguridad,nomTarjeta,apellTarjeta,emisorTarjeta):
+    def __init__(self, numTarjeta, fechCaducidad, codSeguridad, nomTarjeta, apellTarjeta, emisorTarjeta):
         self.__emisor = emisorTarjeta
         self._numTarjeta = numTarjeta
         self.__fechCaducidad = fechCaducidad
@@ -23,7 +23,7 @@ class Tarjeta(Metodo):
 
         for element in tarjetas:
             p = True if element["emisor"] == self.__emisor else False
-            q = check_password_hash(element["numTarjeta"],str(self._numTarjeta))
+            q = check_password_hash(element["numTarjeta"], str(self._numTarjeta))
             r = check_password_hash(element["fechCaducidad"], self.__fechCaducidad)
             s = check_password_hash(element["codSeguridad"], str(self.__codSeguridad))
             t = True if element["nombTarjeta"] == self.__nombTarjeta else False
@@ -32,8 +32,8 @@ class Tarjeta(Metodo):
             if p and q and r and s and t and u:
                 passed = True
 
-        return passed  
-    
+        return passed
+
     def verificarCaducidad(self):
         passed = False
         fechaActual = datetime.datetime.now()
@@ -43,7 +43,7 @@ class Tarjeta(Metodo):
             passed = True
 
         return passed
-    
+
     def verificarBloqueo(self):
         passed = False
 
@@ -55,7 +55,7 @@ class Tarjeta(Metodo):
             if element["numero"] == self._numTarjeta:
                 passed = True
 
-        return passed        
-            
+        return passed
+
 
 #NumerosBloqueados = [0000000000000000]
