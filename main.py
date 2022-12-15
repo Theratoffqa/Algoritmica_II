@@ -100,7 +100,8 @@ def menu_usuarios(usuarioEnSesion):
         habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
         titular = usuarioEnSesion._usuario
         new_Reserva = Reserva(codReserva, titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
-
+        monto = Reserva.calcularMonto(habitacionesSolicitadas)
+        print("Monto="+str(monto))
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard

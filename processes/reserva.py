@@ -23,6 +23,19 @@ class Reserva:
             habitacionesSolicitadas.append(input("Ingrese el numero de la "+str(i+1)+" habitacion que desea reservar:"))
         return habitacionesSolicitadas
 
+    def calcularMonto(habitacionesSolicitadas):
+        monto = 0
+        for element in habitacionesSolicitadas:
+            with open(file_path2, "r") as f:
+                data = json.load(f)
+            for habitacionSolicitada in data:
+                if str(habitacionSolicitada["numHabitacion"]) == element:
+                    monto = monto + habitacionSolicitada["precio"]
+            with open(file_path2, "w") as f:
+                json.dump(data, f, indent=4)
+
+        return monto
+
     def reservar(self):
         reservan = dict(codReserva=self._codReserva, titular=self._titular, fechaEnt=self._fechaEnt, fechaSal=self._fechaSal, numDias=self._numDias, cantPersonas=self._cantPersonas, canthabitaciones=self._cantHabitaciones, habitacionesSolicitadas=self._habitacionesSolicitadas)
         with open(file_path1, "r") as f:
