@@ -77,7 +77,7 @@ def menu_admin(usuarioEnSesion):
 
     else:
         print("Opcion no valida")
-                
+
 
 def menu_usuarios(usuarioEnSesion):
     menu = """
@@ -139,13 +139,13 @@ def menu_usuarios(usuarioEnSesion):
 
             metPagoIngresado = PayPal(correoPayPal, contraseniaPayPal)
             cuenta = metPagoIngresado._correoPayPal
-            
+
         a = metPagoIngresado.verificar()
         b = (metPagoIngresado.verificarBloqueo() == False)
         c = metPagoIngresado.verificarCaducidad()
 
         if a and b and c:
-            nuevoPago = Pago("concepto",100,metPago,cuenta)
+            nuevoPago = Pago("concepto", 100, metPago, cuenta)
 
             if nuevoPago.pagar():
                 nuevoPago.registrarTransaccion()
