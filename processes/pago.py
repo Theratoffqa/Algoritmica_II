@@ -9,13 +9,11 @@ class Pago:
     def __init__(self,concepto,monto, metPago, cuenta):
         self._numOperacion = str(uuid.uuid4())
         self._concepto = concepto
-        self._fecha = datetime.datetime.now() + datetime.datetime.time()
+        self._fecha = str(datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S"))
         self._monto = monto
         self._metPago = [metPago, cuenta]
 
     def pagar(self):
-        monto_suficiente = True
-
         if "Tarjeta" in self._metPago[0]:
             key = "numTarjeta"
             file_path = "tarjetas.json"
@@ -29,6 +27,7 @@ class Pago:
         for element in met_pago:
             if check_password_hash(element[key], str(self._metPago[1])):
                 if element["monto"] > self._monto:
+                    monto_suficiente = True
                     element["monto"] = element["monto"] - self._monto
                 else:
                     monto_suficiente = False
@@ -40,7 +39,7 @@ class Pago:
     
 
     def registrarTransaccion(self):     
-        RegistroPago = dict(numOperacion = self._numOperacion, concepto = self._concepto,fechaActual = self._fecha,monto = self._monto,metpago= self._metPago)
+        RegistroPago = dict(numOperacion = self._numOperacion, concepto = self._concepto,fecha = self._fecha,monto = self._monto,metpago= self._metPago)
 
         with open("pagos.json", "r") as f:
             data = json.load(f)

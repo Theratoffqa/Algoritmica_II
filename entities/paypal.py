@@ -7,42 +7,35 @@ file_path2 = "cuentasSuspendidas.json"
 
 class PayPal(Metodo):
 
-    def __init__(self, correoPayPal, contraseniaPayPal, estado):
-        self.__correoPayPal = correoPayPal
+    def __init__(self, correoPayPal, contraseniaPayPal):
+        self._correoPayPal = correoPayPal
         self.__contraseniaPayPal = contraseniaPayPal
-        self.__estado = estado
 
-    def verificar():  #verificar correo y contrasenia
+    def verificar(self):  #verificar correo y contrasenia
         print('----------------------PAYPAL----------------------')
-        verificado = True
-        while verificado == True:
-            correoPayPal = str(input("Ingrese su correo:"))
-            contraseniaPayPal = str(input("Ingrese su contrasenia:"))
+        with open(file_path1, "r") as f:
+            usuarioPayPal = json.load(f)
+        for element in usuarioPayPal:
+            passed = False
+            if check_password_hash(element["correoPayPal"], self._correoPayPal) and check_password_hash(element["contraseniaPayPal"], self.__contraseniaPayPal):
+                passed = True
+        return passed
 
-            with open(file_path1, "r") as f:
-                usuarioPayPal = json.load(f)
-            for element in usuarioPayPal:
-                if element["correoPayPal"] == correoPayPal and check_password_hash(element["contraseniaPayPal"], str(contraseniaPayPal)):
-                    verificado = False
-                    return correoPayPal
-
-            if verificado == True:
-                print("***Error.Ingrese nuevamente los datos:***")
-                return correoPayPal
-
-    def verificarCaducidad(self, correoPayPal):  #verificar si la cuenta está desactivada
+    def verificarCaducidad(self):  #verificar si la cuenta está desactivada
+        passed = False
         with open(file_path1, "r") as f:
             usuarioPaypal = json.load(f)
         for element in usuarioPaypal:
-            if element["correoPayPal"] == correoPayPal:
-                if element["estado"] == "inactiva":
-                    print("***Su cuenta se encuentra inactiva.***")
-                    return False
+            if check_password_hash(element["correoPayPal"], self._correoPayPal):
+                if element["estado"] == "activa":
+                    passed = True
+        return passed
 
-    def verificarBloqueo(self, correoPayPal):  #verificar banneada
+    def verificarBloqueo(self):  #verificar banneada}
+        passed = False
         with open(file_path2, "r") as f:
             usuarioPaypal = json.load(f)
         for element in usuarioPaypal:
-            if element["correoPayPal"] == correoPayPal:
-                print("***Cuenta bloqueada. Use otra cuenta.***")
-                return False
+            if element["correoPayPal"] == self._correoPayPal:
+                passed = True
+        return passed
