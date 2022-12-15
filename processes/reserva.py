@@ -2,8 +2,8 @@ import random
 from datetime import datetime
 import json
 
-file_path1 = "reservas.json"
-file_path2 = "habitaciones_Registradas.json"
+file_path1 = "files/reservas.json"
+file_path2 = "files/habitaciones_Registradas.json"
 
 class Reserva:
 

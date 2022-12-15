@@ -3,6 +3,7 @@ import uuid
 import json
 import datetime
 
+file_path1 = "files/pagos.json"
 
 class Pago: 
 
@@ -16,10 +17,10 @@ class Pago:
     def pagar(self):
         if "Tarjeta" in self._metPago[0]:
             key = "numTarjeta"
-            file_path = "tarjetas.json"
+            file_path = "files/tarjetas.json"
         else:
             key = "correoPayPal"
-            file_path = "cuentasPayPal.json"
+            file_path = "files/cuentasPayPal.json"
 
         with open(file_path, "r") as f:
             met_pago = json.load(f)
@@ -43,10 +44,10 @@ class Pago:
 
     def registrarTransaccion(self):     
         RegistroPago = Pago.cambiarFormato()
-        with open("pagos.json", "r") as f:
+        with open(file_path1, "r") as f:
             data = json.load(f)
 
         data.append(RegistroPago)
 
-        with open("pagos.json", "w") as f:
+        with open(file_path1, "w") as f:
             json.dump(data, f, indent=4)

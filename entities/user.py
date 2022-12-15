@@ -1,7 +1,7 @@
 import json
 from werkzeug.security import generate_password_hash, check_password_hash
 
-file_path = "usuarios.json"
+file_path = "files/usuarios.json"
 
 def codificar(dato):
     encriptado = generate_password_hash(dato)

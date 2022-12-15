@@ -3,7 +3,7 @@ import datetime
 import json
 from werkzeug.security import check_password_hash
 
-file_path = "tarjetas.json"
+file_path = "files/tarjetas.json"
 
 class Tarjeta(Metodo):
 
@@ -41,7 +41,7 @@ class Tarjeta(Metodo):
 
     def verificarBloqueo(self):
         passed = False
-        with open("numerobloqueado.json", "r") as f:
+        with open("files/numerobloqueado.json", "r") as f:
             numerosBloqueados = json.load(f)
 
         for element in numerosBloqueados:

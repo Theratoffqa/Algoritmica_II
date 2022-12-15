@@ -2,8 +2,8 @@ from entities.metodos import Metodo
 import json
 from werkzeug.security import check_password_hash
 
-file_path1 = "cuentasPayPal.json"
-file_path2 = "cuentasSuspendidas.json"
+file_path1 = "files/cuentasPayPal.json"
+file_path2 = "files/cuentasSuspendidas.json"
 
 class PayPal(Metodo):
 

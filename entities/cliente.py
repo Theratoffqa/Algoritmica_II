@@ -2,7 +2,7 @@ from entities.user import Usuario
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 
-file_path = "clientes.json"
+file_path = "files/clientes.json"
 
 def codificar(dato):
     encriptado = generate_password_hash(dato)
@@ -37,7 +37,7 @@ class Cliente(Usuario):
                 element["pago"].append(self._pago)
 
         if registrado == False:
-            file_path2 = "usuarios.json"
+            file_path2 = "files/usuarios.json"
 
             with open(file_path2, "r") as f:
                 usuarios = json.load(f)
