@@ -9,29 +9,5 @@
         "pago": [
             "ejemplopago001"
         ]
-    },
-    {
-        "usuario": "Ghopst",
-        "contrasenia": "ke2023algo",
-        "nombre": "Gianfranco",
-        "apellido": "Ore",
-        "correo": "gianfranco.ore@gmail.com",
-        "metpago": "PayPal",
-        "pago": [
-            "ejemplopago001",
-            "ejemplopago001",
-            "ejemplopago001"
-        ]
-    },
-    {
-        "usuario": "Theratoffqa",
-        "contrasenia": "pq2023algo",
-        "nombre": "Pedro",
-        "apellido": "Barazorda",
-        "correo": "pedro.barazorda@gmail.com",
-        "metpago": "PayPal",
-        "pago": [
-            "ejemplopago001"
-        ]
     }
 ]
