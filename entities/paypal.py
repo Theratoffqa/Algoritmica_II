@@ -31,7 +31,6 @@ class PayPal(Metodo):
                 return correoPayPal
 
     def verificarCaducidad(self, correoPayPal):  #verificar si la cuenta está desactivada 
-
         with open(file_path1, "r") as f:
             usuarioPaypal = json.load(f)
         for element in usuarioPaypal:

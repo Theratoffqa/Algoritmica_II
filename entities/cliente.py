@@ -12,7 +12,6 @@ class Cliente(Usuario):
 
     def __init__(self, usuario, contrasenia, nombre, apellido, correo, metPago, pago):
         super().__init__(usuario, contrasenia, nombre, apellido, correo)
-
         self._metPago = metPago
         self._pago = pago
 
@@ -26,7 +25,6 @@ class Cliente(Usuario):
                 return Cliente(element["usuario"], element["contrasenia"], element["nombre"], element["apellido"], element["correo"], element["metpago"], element["pago"])
 
     def registrar(self):
-
         with open(file_path, "r") as f:
             client = json.load(f)
 
@@ -74,20 +72,18 @@ class Cliente(Usuario):
 
     def actualizarDatos(self):
         menu = """ACTUALIZAR
-    1. Usuario
-    2. Contraseña
-    3. Nombre
-    4. Apellido
-    5. Correo
-    6. Metodo de Pago Predeterminado
-OPCION: """
-
+            1. Usuario
+            2. Contraseña
+            3. Nombre
+            4. Apellido
+            5. Correo
+            6. Metodo de Pago Predeterminado
+        OPCION: """
         opcion = int(input(menu))
-
+        
         while opcion > 5 and opcion < 1:
             print("Elija una opción valida")
             opcion = int(input(menu))
-
         if opcion == 1:
             dato = "usuario"
 
@@ -102,14 +98,10 @@ OPCION: """
 
         elif opcion == 3:
             dato = "nombre"
-
         elif opcion == 4:
             dato = "apellido"
-
         elif opcion == 5:
             dato = "correo"
-
         elif opcion == 6:
             dato = "metPago"
-
         self.actualizar(dato)

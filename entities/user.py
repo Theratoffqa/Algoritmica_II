@@ -7,7 +7,6 @@ def codificar(dato):
     encriptado = generate_password_hash(dato)
     return encriptado
 
-
 class Usuario:
 
     def __init__(self, usuario, contrasenia, nombre, apellido, correo):
@@ -28,7 +27,6 @@ class Usuario:
 
     def registrar(self):
         usern = dict(usuario = self._usuario, contrasenia = codificar(self._contrasenia), nombre = self._nombre, apellido = self._apellido, correo = self._correo)
-
         with open(file_path, "r") as f:
             data = json.load(f)
 
@@ -53,13 +51,12 @@ class Usuario:
 
     def actualizarDatos(self):
         menu = """ACTUALIZAR
-    1. Usuario
-    2. Contraseña
-    3. Nombre
-    4. Apellido
-    5. Correo
-OPCION: """
-
+            1. Usuario
+            2. Contraseña
+            3. Nombre
+            4. Apellido
+            5. Correo
+        OPCION: """
         opcion = int(input(menu))
 
         while opcion > 5 or opcion < 1:
@@ -68,23 +65,16 @@ OPCION: """
 
         if opcion == 1:
             dato = "usuario"
-
         elif opcion == 2:
             contraseniaActual = input("Ingrese contrasenia actual: ")
-
             while self._contrasenia != contraseniaActual:
                 print("Contrasenia incorrecta")
                 contraseniaActual = input("Ingrese contrasenia actual: ")
-
             dato = "contrasenia"
-
         elif opcion == 3:
             dato = "nombre"
-
         elif opcion == 4:
             dato = "apellido"
-
         elif opcion == 5:
             dato = "correo"
-
         self.actualizar(dato)

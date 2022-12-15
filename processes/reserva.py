@@ -1,8 +1,6 @@
 import random
 from datetime import datetime
 import json
-#from entities.habitacion import *
-#error al momento de importar entities.habitacion
 
 file_path1 = "reservas.json"
 file_path2 = "habitaciones_Registradas.json"
@@ -23,12 +21,10 @@ class Reserva:
         habitacionesSolicitadas = []
         for i in range(cantHabitaciones):
             habitacionesSolicitadas.append(input("Ingrese el numero de la "+str(i+1)+" habitacion que desea reservar:"))
-
         return habitacionesSolicitadas
 
     def reservar(self):
         reservan = dict(codReserva = self._codReserva, titular = self._titular, fechaEnt = self._fechaEnt, fechaSal = self._fechaSal, numDias = self._numDias, cantPersonas = self._cantPersonas, canthabitaciones = self._cantHabitaciones, habitacionesSolicitadas = self._habitacionesSolicitadas)
-
         with open(file_path1, "r") as f:
             data = json.load(f)
 
@@ -42,7 +38,6 @@ class Reserva:
         longitud = 5
         muestra = random.sample(caracteres, longitud)
         codigo = "".join(muestra)
-
         return codigo
 
     def cambiarEstado(habitacionesSolicitadas):
@@ -57,23 +52,21 @@ class Reserva:
                 json.dump(data, f, indent=4)
 
     def mostrarReserva(codReserva):
-
-            with open(file_path1, "r") as f:
+        with open(file_path1, "r") as f:
                 data = json.load(f)
-
-            for element in data:
-                if element["codReserva"] == codReserva:
-                    print("------------------------------------------------------")
-                    print("DATOS DE LA RESERVA DE LA HABITACION")
-                    print("Codigo de reserva:" + str(element["codReserva"]))
-                    print("Titular:" + str(element["titular"]))
-                    print("Fecha de entrada:" + str(element["fechaEnt"]))
-                    print("Fecha de salida:" + str(element["fechaSal"]))
-                    print("Numero de dias de la estadia:", element["numDias"])
-                    print("Cantidad de personas:", element["cantPersonas"])
-                    print("Cantidad de habitaciones:", element["canthabitaciones"])
-                    print("Habitaciones solicitadas:" + str(element["habitacionesSolicitadas"]))
-                    print("------------------------------------------------------")
+        for element in data:
+            if element["codReserva"] == codReserva:
+                print("------------------------------------------------------")
+                print("DATOS DE LA RESERVA DE LA HABITACION")
+                print("Codigo de reserva:" + str(element["codReserva"]))
+                print("Titular:" + str(element["titular"]))
+                print("Fecha de entrada:" + str(element["fechaEnt"]))
+                print("Fecha de salida:" + str(element["fechaSal"]))
+                print("Numero de dias de la estadia:", element["numDias"])
+                print("Cantidad de personas:", element["cantPersonas"])
+                print("Cantidad de habitaciones:", element["canthabitaciones"])
+                print("Habitaciones solicitadas:" + str(element["habitacionesSolicitadas"]))
+                print("------------------------------------------------------")
 
     def tiempoDeEstadia(E, S):
         fEnt = datetime.strptime(str(E), "%d-%m-%Y")
@@ -84,7 +77,7 @@ class Reserva:
     def validarNumPers(codReserva):
         with open(file_path1, "r") as f:
             data = json.load(f)
-
+            
         for element in data:
             if element["codReserva"] == codReserva:
                 n = element["canthabitaciones"]
