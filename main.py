@@ -99,7 +99,7 @@ def menu_usuarios(usuarioEnSesion):
         habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
         titular = usuarioEnSesion._usuario
         new_Reserva = Reserva(titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
-        monto = Reserva.calcularMonto(habitacionesSolicitadas)
+        monto = Reserva.calcularMonto(habitacionesSolicitadas,numDias)
         print("Monto="+str(monto))
         menuPago = """
         Seleccione el metodo de pago:

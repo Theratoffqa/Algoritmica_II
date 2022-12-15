@@ -36,18 +36,6 @@ class Reserva:
 
             return monto*numDias
 
-    def calcularMonto(habitacionesSolicitadas):
-        monto = 0
-        for element in habitacionesSolicitadas:
-            with open(file_path2, "r") as f:
-                data = json.load(f)
-            for habitacionSolicitada in data:
-                if str(habitacionSolicitada["numHabitacion"]) == element:
-                    monto = monto + habitacionSolicitada["precio"]
-            with open(file_path2, "w") as f:
-                json.dump(data, f, indent=4)
-
-        return monto
 
     def reservar(self):
         reservan = dict(codReserva=self._codReserva, titular=self._titular, fechaEnt=self._fechaEnt, fechaSal=self._fechaSal, numDias=self._numDias, cantPersonas=self._cantPersonas, canthabitaciones=self._cantHabitaciones, habitacionesSolicitadas=self._habitacionesSolicitadas)
@@ -59,12 +47,6 @@ class Reserva:
         with open(file_path1, "w") as f:
             json.dump(data, f, indent=4)
 
-    def generarCod():
-        caracteres = "123456789abcdefghijklmnopqrstuvwxyz"
-        longitud = 5
-        muestra = random.sample(caracteres, longitud)
-        codigo = "".join(muestra)
-        return codigo
 
     def cambiarEstado(habitacionesSolicitadas):
         for element in habitacionesSolicitadas:
