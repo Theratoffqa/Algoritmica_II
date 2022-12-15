@@ -13,7 +13,6 @@ class Pago:
         self._monto = monto
         self._metPago = [metPago, cuenta]
 
-
     def pagar(self):
         monto_suficiente = True
 
@@ -27,8 +26,8 @@ class Pago:
         with open(file_path, "r") as f:
             met_pago = json.load(f)
 
-        for element in met_pago:    
-            if check_password_hash(element[key],str(self._metPago[1])):
+        for element in met_pago:
+            if check_password_hash(element[key], str(self._metPago[1])):
                 if element["monto"] > self._monto:
                     element["monto"] = element["monto"] - self._monto
                 else:
@@ -50,4 +49,3 @@ class Pago:
 
         with open("pagos.json", "w") as f:
             json.dump(data, f, indent=4)
-

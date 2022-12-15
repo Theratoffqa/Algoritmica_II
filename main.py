@@ -7,10 +7,9 @@ from entities.paypal import PayPal
 from processes.reserva import Reserva
 from processes.pago import Pago
 
-import json
 
 if __name__ == "__main__":
-    menu="""
+    menu = """
     ---------BIENVENIDOS AL HOTEL VIRUS PELUCHE----------
     1.- Iniciar Sesion
     2.- Registrarse
@@ -41,8 +40,8 @@ if __name__ == "__main__":
                 usuarioEnSesion = Administrador.verify_session(user, password)
                 tipo = "admin"
 
-        if tipo == "admin":   
-            menu="""
+        if tipo == "admin":
+            menu = """
             1.- Registrar habitacion
             2.- Actualizar datos de habitacion
             3.- Actualizar contrasenia
@@ -54,21 +53,19 @@ if __name__ == "__main__":
                 usuarioEnSesion.registrarHab()
 
             elif option == 2:
-                usuarioEnSesion.actualizarDatos() 
+                usuarioEnSesion.actualizarDatos()
 
-            elif option==3:
+            elif option == 3:
                 usuarioEnSesion.actualizarContrasenia()
 
-            elif option==4:
+            elif option == 4:
                 Habitacion.buscarHabitacion()
 
-            elif option==5:
+            elif option == 5:
                 Habitacion.mostrarDatos()
 
             else:
                 print("Opcion no valida")
-            
-
         else:
             menu = """
             1.- Actualizar Datos
@@ -76,25 +73,25 @@ if __name__ == "__main__":
             Elija una opcion: """
 
             op = int(input(menu))
-            
+
             if op == 1:
                 usuarioEnSesion.actualizarDatos()
             elif op == 2:
                 print("**************SOLICITUD DE RESERVA*********************")
                 fechaEnt = str(input("Llegada (dd-mm-aaa):"))
                 fechaSal = str(input("Salida (dd-mm-aaaa):"))
-                numDias = Reserva.tiempoDeEstadia(fechaEnt,fechaSal)
+                numDias = Reserva.tiempoDeEstadia(fechaEnt, fechaSal)
                 cantPersonas = int(input("Ingrese la cantidad de personas: "))
                 cantHabitaciones = int(input("Ingrese el numero de habitaciones:"))
                 Habitacion.mostrarDatos()
                 codReserva = str(Reserva.generarCod())
                 habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
                 titular = usuarioEnSesion._usuario
-                new_Reserva= Reserva(codReserva,titular,fechaEnt,fechaSal,numDias,cantPersonas,cantHabitaciones,habitacionesSolicitadas)
+                new_Reserva = Reserva(codReserva, titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
                 new_Reserva.reservar()
                 if Reserva.validarNumPers(codReserva):
                     Reserva.mostrarReserva(codReserva)
-                
+
                 menuPago = """
                 Seleccione el metodo de pago:
                 1.- Tarjeta VISA/Mastercard
@@ -102,7 +99,7 @@ if __name__ == "__main__":
                 Elija una opcion: """
 
                 opSelec = int(input(menuPago))
-                
+
                 if opSelec == 1:
                     metPago = "Tarjeta"
                     print("Ingresar los datos de la tarjeta:")
@@ -123,7 +120,7 @@ if __name__ == "__main__":
                     emisorTarjeta = input("Emisor: ")
                     fechaCaducidadTarjeta = input("Fecha Caducidad: ")
 
-                    tarjetaIngresada = Tarjeta(numeroTarjeta,fechaCaducidadTarjeta,codigoTarjeta,nombreTarjeta,apellidoTarjeta,emisorTarjeta)
+                    tarjetaIngresada = Tarjeta(numeroTarjeta, fechaCaducidadTarjeta, codigoTarjeta, nombreTarjeta, apellidoTarjeta, emisorTarjeta)
 
                     if tarjetaIngresada.verificar():
                         print("Tarjeta valida")
@@ -151,26 +148,26 @@ if __name__ == "__main__":
 
                     else:
                         print("Tarjeta no valida, por favor ingres bien los datos")
-                
+
                 elif opSelec == 2:
                     metPago = "PayPal"
                     primeravalidacion = PayPal.verificar()
                     segundavalidacion = PayPal.verificarCaducidad(PayPal, primeravalidacion)
                     terceravalidacion = PayPal.verificarBloqueo(PayPal, primeravalidacion)
 
-                    if segundavalidacion  != False and terceravalidacion !=False:
+                    if segundavalidacion != False and terceravalidacion != False:
                         print("*** Pago exitoso =) ***")
-                        Reserva.cambiarEstado(habitacionesSolicitadas) 
+                        Reserva.cambiarEstado(habitacionesSolicitadas)
 
-                pago = "ejemplopago001" 
+                pago = "ejemplopago001"
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
-                nuevo_cliente.registrar()   
+                nuevo_cliente.registrar()
 
 
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
         password = input("Ingrese nueva contrasenia: ")
-        name = input("Ingrese su nombre: ") 
+        name = input("Ingrese su nombre: ")
         lastname = input("Ingrese su apellido: ")
         mail = input("Ingrese su correo: ")
         new_User = Usuario(user, password, name, lastname, mail)
