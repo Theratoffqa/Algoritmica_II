@@ -1,6 +1,6 @@
 import json
 
-file_path = "files/habitaciones_Registradas.json"
+file_path = "files/habitacionesRegistradas.json"
 
 class Habitacion:
 

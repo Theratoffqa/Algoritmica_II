@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 
 file_path1 = "files/reservas.json"
-file_path2 = "files/habitaciones_Registradas.json"
+file_path2 = "files/habitacionesRegistradas.json"
 
 class Reserva:
 

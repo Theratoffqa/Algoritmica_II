@@ -3,8 +3,8 @@ from entities.habitacion import Habitacion
 import json
 from werkzeug.security import generate_password_hash, check_password_hash
 
-file_path = "files/admin_Datos.json"
-file_path2 = "files/habitaciones_Registradas.json"
+file_path = "files/adminDatos.json"
+file_path2 = "files/habitacionesRegistradas.json"
 
 class Administrador(Usuario):
 
