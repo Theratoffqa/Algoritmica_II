@@ -49,7 +49,7 @@ class Cliente(Usuario):
             with open(file_path2, "w") as f:
                 json.dump(usuarios, f, indent=4)
 
-            usercliente = dict(usuario=self._usuario, contrasenia=codificar(self._contrasenia), nombre=self._nombre, apellido=self._apellido, correo=self._correo, metpago=self._metPago, pago=[])
+            usercliente = dict(usuario=self._usuario, contrasenia = codificar(self._contrasenia), nombre=self._nombre, apellido=self._apellido, correo=self._correo, metpago=self._metPago, pago=[])
             usercliente["pago"].append(self._pago)
             client.append(usercliente)
 
