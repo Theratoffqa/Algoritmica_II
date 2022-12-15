@@ -145,7 +145,7 @@ def menu_usuarios(usuarioEnSesion):
         c = metPagoIngresado.verificarCaducidad()
 
         if a and b and c:
-            nuevoPago = Pago("concepto", 100, metPago, cuenta)
+            nuevoPago = Pago(habitacionesSolicitadas, monto, metPago, cuenta)
 
             if nuevoPago.pagar():
                 nuevoPago.registrarTransaccion()
