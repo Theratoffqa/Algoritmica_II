@@ -4,7 +4,7 @@ file_path = "files/habitaciones_Registradas.json"
 
 class Habitacion:
 
-    def _init_(self, estado, precio, tipoHabitacion, numHabitacion):
+    def __init__(self, estado, precio, tipoHabitacion, numHabitacion):
         self.estado = estado
         self.precio = precio
         self.tipoHabitacion = tipoHabitacion
