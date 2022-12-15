@@ -5,13 +5,13 @@ import datetime
 
 
 class Pago: 
-    
+
     def __init__(self,concepto,monto, metPago, cuenta):
         self._numOperacion = str(uuid.uuid4())
         self._concepto = concepto
         self._fecha = str(datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S"))
         self._monto = monto
-        self._metPago = [metPago, cuenta]
+        self._metPago = {"Metodo de pago": metPago, "Cuenta": cuenta}
 
     def pagar(self):
         if "Tarjeta" in self._metPago[0]:
@@ -37,10 +37,12 @@ class Pago:
 
         return monto_suficiente
     
+    def cambiarFormato(self):
+        RegistroPago = dict(Codigo = self._numOperacion, Concepto = self._concepto,Fecha = self._fecha,Monto = self._monto,MetodoPago = self._metPago)
+        return RegistroPago
 
     def registrarTransaccion(self):     
-        RegistroPago = dict(numOperacion = self._numOperacion, concepto = self._concepto,fecha = self._fecha,monto = self._monto,metpago= self._metPago)
-
+        RegistroPago = Pago.cambiarFormato()
         with open("pagos.json", "r") as f:
             data = json.load(f)
 

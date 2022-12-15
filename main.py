@@ -145,7 +145,7 @@ def menu_usuarios(usuarioEnSesion):
                     if Reserva.validarNumPers(codReserva):
                         Reserva.mostrarReserva(codReserva)
                     Reserva.cambiarEstado(habitacionesSolicitadas)
-                    pago = "ejemplopago001"
+                    pago = nuevoPago.cambiarFormato()
                     nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                     nuevo_cliente.registrar()
 
@@ -171,7 +171,7 @@ def menu_usuarios(usuarioEnSesion):
                     print("Pago exitoso")
                     new_Reserva.reservar()
                     Reserva.cambiarEstado(habitacionesSolicitadas)
-                    pago = "ejemplopago001"
+                    pago = nuevoPago.cambiarFormato()
                     nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                     nuevo_cliente.registrar()
 
