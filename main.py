@@ -61,7 +61,7 @@ def menu_admin(usuarioEnSesion):
     Elija una opcion: """
     option = int(input(menu))
     if option == 1:
-        usuarioEnSesion.registrarHab()
+        Administrador.registrarHab()
 
     elif option == 2:
         usuarioEnSesion.actualizarDatos()

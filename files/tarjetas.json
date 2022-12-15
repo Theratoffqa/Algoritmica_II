@@ -15,7 +15,7 @@
         "codSeguridad": "pbkdf2:sha256:260000$FWNree8piIqB6Edc$28f92f1c30d8b4c20369f099745cb3d1185c9559ee41987bbb16c235f821ebf0",
         "nombTarjeta": "Gianfranco",
         "apellTarjeta": "Ore",
-        "monto": 500
+        "monto": 400
     },
     {
         "emisor": "VISA",

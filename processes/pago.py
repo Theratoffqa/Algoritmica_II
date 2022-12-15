@@ -26,7 +26,7 @@ class Pago:
             met_pago = json.load(f)
 
         for element in met_pago:
-            if check_password_hash(element[key], self._metPago["Cuenta"]):
+            if check_password_hash(element[key], str(self._metPago["Cuenta"])):
                 if element["monto"] > self._monto:
                     monto_suficiente = True
                     element["monto"] = element["monto"] - self._monto

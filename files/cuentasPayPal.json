@@ -9,6 +9,6 @@
         "correoPayPal": "pbkdf2:sha256:260000$qw9eDHVgIlmIFx6D$890614df7f690b9318a94460115f6b74ad235ff61de04503f22dc97f132f373e",
         "contraseniaPayPal": "pbkdf2:sha256:260000$N3O19gJPa2EWojBU$0fccb844059a880ab41254375351b1d936bb16541d68f73bc6ad27ec65b0f6ed",
         "estado": "activa",
-        "monto": 500
+        "monto": 400
     }
 ]

@@ -7,13 +7,6 @@
         "correo": "jatziry.sanchez@gmail.com"
     },
     {
-        "usuario": "Ghopst",
-        "contrasenia": "pbkdf2:sha256:260000$xmrUQvjpnbx8qaIY$827fd6abdf37cfde46dbe4012adec2ef40c0fb4e5a727308f406e7fae365d4ee",
-        "nombre": "Gianfranco",
-        "apellido": "Ore",
-        "correo": "gianfranco.ore@gmail.com"
-    },
-    {
         "usuario": "Fiomisufiu",
         "contrasenia": "pbkdf2:sha256:260000$4M5HjwK9vIOWCUWn$11f8647b232c2072aac3f441cdb9d0e07fe7f42564a28a86d88c491633a73e09",
         "nombre": "Fiorella",
