@@ -1,6 +1,6 @@
 [
     {
-        "estado": "No disponible",
+        "estado": "Disponible",
         "precio": 100,
         "tipoHabitacion": "Simple",
         "numHabitacion": 213
@@ -18,7 +18,7 @@
         "numHabitacion": 512
     },
     {
-        "estado": "Disponible",
+        "estado": "No disponible",
         "precio": 69,
         "tipoHabitacion": "Doble",
         "numHabitacion": 8
