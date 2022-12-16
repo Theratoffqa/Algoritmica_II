@@ -5,8 +5,8 @@ from werkzeug.security import check_password_hash
 
 file_path = "files/tarjetas.json"
 
-class Tarjeta(Metodo):
 
+class Tarjeta(Metodo):
     def __init__(self, numTarjeta, fechCaducidad, codSeguridad, nomTarjeta, apellTarjeta, emisorTarjeta):
         self.__emisor = emisorTarjeta
         self._numTarjeta = numTarjeta
@@ -48,4 +48,3 @@ class Tarjeta(Metodo):
             if element["numero"] == self._numTarjeta:
                 passed = True
         return passed
-

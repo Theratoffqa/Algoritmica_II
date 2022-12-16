@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-class Metodo(ABC):
 
+class Metodo(ABC):
     @abstractmethod
     def verificar(self):
         pass

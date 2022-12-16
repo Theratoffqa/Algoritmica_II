@@ -4,12 +4,13 @@ import json
 
 file_path = "files/clientes.json"
 
+
 def codificar(dato):
     encriptado = generate_password_hash(dato)
     return encriptado
 
-class Cliente(Usuario):
 
+class Cliente(Usuario):
     def __init__(self, usuario, contrasenia, nombre, apellido, correo, metPago, pago):
         super().__init__(usuario, contrasenia, nombre, apellido, correo)
         self._metPago = metPago
@@ -20,9 +21,19 @@ class Cliente(Usuario):
             usuario = json.load(f)
 
         for element in usuario:
-            if element["usuario"] == given_User and check_password_hash(element["contrasenia"], given_Password):
+            if element["usuario"] == given_User and check_password_hash(
+                element["contrasenia"], given_Password
+            ):
                 print("Bienvenido, " + element["nombre"])
-                return Cliente(element["usuario"], element["contrasenia"], element["nombre"], element["apellido"], element["correo"], element["metpago"], element["pago"])
+                return Cliente(
+                    element["usuario"],
+                    element["contrasenia"],
+                    element["nombre"],
+                    element["apellido"],
+                    element["correo"],
+                    element["metpago"],
+                    element["pago"]
+                )
 
     def registrar(self):
         with open(file_path, "r") as f:
@@ -49,7 +60,15 @@ class Cliente(Usuario):
             with open(file_path2, "w") as f:
                 json.dump(usuarios, f, indent=4)
 
-            usercliente = dict(usuario=self._usuario, contrasenia = codificar(self._contrasenia), nombre=self._nombre, apellido=self._apellido, correo=self._correo, metpago=self._metPago, pago=[])
+            usercliente = dict(
+                usuario=self._usuario,
+                contrasenia = codificar(self._contrasenia),
+                nombre=self._nombre,
+                apellido=self._apellido,
+                correo=self._correo,
+                metpago=self._metPago,
+                pago=[]
+            )
             usercliente["pago"].append(self._pago)
             client.append(usercliente)
 
@@ -63,7 +82,9 @@ class Cliente(Usuario):
         for element in usuarios:
             if element["usuario"] == self._usuario:
                 if dato == "contrasenia":
-                    element[dato] = generate_password_hash(input("Ingrese actualiazación de su " + dato + ": "))
+                    element[dato] = generate_password_hash(
+                        input("Ingrese actualiazación de su " + dato + ": ")
+                    )
                 else:
                     element[dato] = input("Ingrese actualiazación de su " + dato + ": ")
 

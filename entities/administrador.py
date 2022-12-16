@@ -6,8 +6,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 file_path = "files/adminDatos.json"
 file_path2 = "files/habitacionesRegistradas.json"
 
-class Administrador(Usuario):
 
+class Administrador(Usuario):
     def __init__(self, usuario, contrasenia, nombre, apellido, correo, llaveMaestra):
         super().__init__(usuario, contrasenia, nombre, apellido, correo)
         self._llaveMaestra = llaveMaestra
@@ -17,13 +17,22 @@ class Administrador(Usuario):
             usuario = json.load(f)
 
         for element in usuario:
-            if element["usuario"] == given_User and check_password_hash(element["contrasenia"], given_Password):
+            if element["usuario"] == given_User and check_password_hash(
+                element["contrasenia"], given_Password
+            ):
                 print("Bienvenido, " + element["nombre"])
                 llave = input("Ingrese su llame maestra para continuar: ")
                 while check_password_hash(element["llave_maestra"], llave) == False:
                     print("Llave maestra incorrecta, intentelo nuevamente, por favor")
                     llave = input("Ingrese su llame maestra para continuar: ")
-                return Administrador(element["usuario"], element["contrasenia"], element["nombre"], element["apellido"], element["correo"], element["llave_maestra"])
+                return Administrador(
+                    element["usuario"],
+                    element["contrasenia"],
+                    element["nombre"],
+                    element["apellido"],
+                    element["correo"],
+                    element["llave_maestra"]
+                )
 
     def actualizarContrasenia(self):
         with open(file_path, "r") as f:
@@ -33,7 +42,9 @@ class Administrador(Usuario):
             if admin["usuario"] == self._usuario:
                 admin_contrasenia = input("Ingrese su contrasenia actual:")
                 if check_password_hash(admin["contrasenia"], admin_contrasenia):
-                    admin["contrasenia"] = generate_password_hash(input("Ingrese actualiazación de su contraseña: "))
+                    admin["contrasenia"] = generate_password_hash(
+                        input("Ingrese actualiazación de su contraseña: ")
+                    )
                 else:
                     print("Contrasenia incorrecta")
 
@@ -45,13 +56,23 @@ class Administrador(Usuario):
         estado = input("Estado: ")
         precio = float(input("Precio: "))
         a = 1
-        while (a == 1):
+        while a == 1:
             tipoHabitacion = input("Tipo de habitacion:")
-            if (tipoHabitacion == 'Simple' or tipoHabitacion == 'Matrimonial' or tipoHabitacion == 'Triple' or tipoHabitacion == 'Doble'):
+            if (
+                tipoHabitacion == "Simple"
+                or tipoHabitacion == "Matrimonial"
+                or tipoHabitacion == "Triple"
+                or tipoHabitacion == "Doble"
+            ):
                 a = 0
         numHabitacion = int(input("Numero de habitacion:"))
         new_Room = Habitacion(estado, precio, tipoHabitacion, numHabitacion)
-        roomn = dict(estado=new_Room.estado, precio=new_Room.precio, tipoHabitacion=new_Room.tipoHabitacion, numHabitacion=new_Room.numHabitacion)
+        roomn = dict(
+            estado=new_Room.estado,
+            precio=new_Room.precio,
+            tipoHabitacion=new_Room.tipoHabitacion,
+            numHabitacion=new_Room.numHabitacion
+        )
 
         with open(file_path2, "r") as f:
             data = json.load(f)
@@ -68,10 +89,14 @@ class Administrador(Usuario):
 
         for element in habitacionTemp:
             if element["numHabitacion"] == habitacion_buscar:
-                if dato == 'precio':
-                    element[dato] = float(input("Ingrese actualiazación de su " + dato + ": "))
+                if dato == "precio":
+                    element[dato] = float(
+                        input("Ingrese actualiazación de su " + dato + ": ")
+                    )
                 else:
-                    element[dato] = str(input("Ingrese actualiazación de su " + dato + ": "))
+                    element[dato] = str(
+                        input("Ingrese actualiazación de su " + dato + ": ")
+                    )
 
         with open(file_path2, "w") as f:
             json.dump(habitacionTemp, f, indent=4)

@@ -7,6 +7,7 @@ from entities.paypal import PayPal
 from processes.reserva import Reserva
 from processes.pago import Pago
 
+
 def menu():
     menu = """
     ---------BIENVENIDOS AL HOTEL VIRUS PELUCHE----------
@@ -99,8 +100,8 @@ def menu_usuarios(usuarioEnSesion):
         habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
         titular = usuarioEnSesion._usuario
         new_Reserva = Reserva(titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
-        monto = Reserva.calcularMonto(habitacionesSolicitadas,numDias)
-        print("Monto="+str(monto))
+        monto = Reserva.calcularMonto(habitacionesSolicitadas, numDias)
+        print("Monto=" + str(monto))
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard
@@ -141,7 +142,7 @@ def menu_usuarios(usuarioEnSesion):
             cuenta = metPagoIngresado._correoPayPal
 
         a = metPagoIngresado.verificar()
-        b = (metPagoIngresado.verificarBloqueo() == False)
+        b = metPagoIngresado.verificarBloqueo() == False
         c = metPagoIngresado.verificarCaducidad()
 
         if a and b and c:
