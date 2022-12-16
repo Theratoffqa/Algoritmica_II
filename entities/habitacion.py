@@ -24,7 +24,7 @@ class Habitacion:
                 print("Numero de la habitacion:" + str(element["numHabitacion"]))
                 print("------------------------------------------------------")
 
-    def mostrarDatos():
+    def mostrarDatos(tipo):
         with open(file_path, "r") as f:
             habDatos = json.load(f)
         for element in habDatos:
@@ -36,3 +36,12 @@ class Habitacion:
                 print("Tipo de la habitacion:" + element["tipoHabitacion"])
                 print("Numero de la habitacion:" + str(element["numHabitacion"]))
                 print("------------------------------------------------------")
+            if tipo == "admin":
+                if element["estado"] == "No disponible":
+                    print("------------------------------------------------------")
+                    print("DATOS DE LA HABITACION " + str(element["numHabitacion"]))
+                    print("Estado:" + element["estado"])
+                    print("Precio:" + str(element["precio"]))
+                    print("Tipo de la habitacion:" + element["tipoHabitacion"])
+                    print("Numero de la habitacion:" + str(element["numHabitacion"]))
+                    print("------------------------------------------------------")
