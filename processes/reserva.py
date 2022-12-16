@@ -93,8 +93,8 @@ class Reserva:
     def tiempoDeEstadia(E, S):
         fEnt = datetime.strptime(str(E), "%d-%m-%Y")
         fSal = datetime.strptime(str(S), "%d-%m-%Y")
-        t = fSal - fEnt
-        return t.days
+        t = fSal - fEnt 
+        return (t.days + 1)
 
     def validarNumPers(codReserva):
         with open(file_path1, "r") as f:

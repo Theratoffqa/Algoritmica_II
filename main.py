@@ -156,7 +156,8 @@ def menu_usuarios(usuarioEnSesion):
                 pago = nuevoPago.cambiarFormato()
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()
-
+            else:
+                print("Monto insuficiente para realizar el pago.")
         else:
             print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")
 

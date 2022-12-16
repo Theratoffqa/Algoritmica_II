@@ -6,7 +6,7 @@
         "codSeguridad": "pbkdf2:sha256:260000$2BJWK9dX80LlLpoW$4a6d528886155cdd47a14f957afaef8a0110331d87805227958d9ae6c69e01a1",
         "nombTarjeta": "Jose",
         "apellTarjeta": "Quispe",
-        "monto": 500
+        "monto": 2500
     },
     {
         "emisor": "VISA",
@@ -15,7 +15,7 @@
         "codSeguridad": "pbkdf2:sha256:260000$FWNree8piIqB6Edc$28f92f1c30d8b4c20369f099745cb3d1185c9559ee41987bbb16c235f821ebf0",
         "nombTarjeta": "Gianfranco",
         "apellTarjeta": "Ore",
-        "monto": 400
+        "monto": 2400
     },
     {
         "emisor": "VISA",
@@ -24,7 +24,7 @@
         "codSeguridad": "pbkdf2:sha256:260000$3KVpIP1MmW5CcVLh$3809fe590ecec2b6b9ca9861ef36237a3daea84f3f1bad7a4b7572a554be29e5",
         "nombTarjeta": "Fiorella",
         "apellTarjeta": "Mirano",
-        "monto": 500
+        "monto": 2500
     },
     {
         "emisor": "MasterCard",
@@ -33,7 +33,7 @@
         "codSeguridad": "pbkdf2:sha256:260000$n6milTDPcHap5YBV$bffdbc78a4d9b87df89210dd4d3c15a2a24a4ef8d55adee3e0c746cf0f27789b",
         "nombTarjeta": "Jatziry",
         "apellTarjeta": "Wong",
-        "monto": 500
+        "monto": 2500
     },
     {
         "emisor": "MasterCard",
@@ -42,6 +42,6 @@
         "codSeguridad": "pbkdf2:sha256:260000$kaSijnfj8oVqONNa$615867665a26d1ff6194295cd4e69ed751b398e08bae9f8b9c29b8034e126699",
         "nombTarjeta": "Pedro",
         "apellTarjeta": "Barazorda",
-        "monto": 500
+        "monto": 2500
     }
 ]

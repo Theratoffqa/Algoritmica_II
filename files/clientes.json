@@ -48,5 +48,25 @@
                 }
             }
         ]
+    },
+    {
+        "usuario": "Fiomisufiu",
+        "contrasenia": "pbkdf2:sha256:260000$6TAis7MRpxlDRFHM$2f7474582cd5350a48f1ae6975901d540ebf007a3c588ef8fe77d866dc31d72b",
+        "nombre": "Fiorella",
+        "apellido": "Mirano",
+        "correo": "fiorella.mirano@gmail.com",
+        "metpago": "PayPal",
+        "pago": [
+            {
+                "Codigo": "14d4e84b-4358-47cd-889c-04726c345d69",
+                "Concepto": "Pago por reserva de habitaciones: ['213']",
+                "Fecha": "15/12/2022 23:14:05",
+                "Monto": 200,
+                "MetodoPago": {
+                    "Metodo de pago": "PayPal",
+                    "Cuenta": "jatPayPal@gmail.com"
+                }
+            }
+        ]
     }
 ]
