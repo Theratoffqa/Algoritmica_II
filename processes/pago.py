@@ -9,7 +9,7 @@ file_path1 = "files/pagos.json"
 class Pago:
     def __init__(self, concepto, monto, metPago, cuenta):
         self._numOperacion = str(uuid.uuid4())
-        self._concepto = "Pago por reserva de habitaciones: " + concepto
+        self._concepto = "Pago por reserva de habitaciones: " + str(concepto)
         self._fecha = str(
             datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S")
         )

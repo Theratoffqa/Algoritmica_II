@@ -82,7 +82,7 @@ class Administrador(Usuario):
         with open(file_path2, "w") as f:
             json.dump(data, f, indent=4)
 
-    def actualizar(dato):
+    def actualizar(self,dato):
         with open(file_path2, "r") as f:
             habitacionTemp = json.load(f)
         habitacion_buscar = int(input("Ingrese el numero de habitacion a editar:"))
