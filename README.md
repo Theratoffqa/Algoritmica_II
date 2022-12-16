@@ -6,8 +6,7 @@
  o descargarlo desde 
 > https://github.com/Theratoffqa/Algoritmica_II<link>
 
-#### Instalar Python 3.11 o mayor
-###### Se recomienda el uso de Visual Studio Code o PyCharm
+###### Se recomienda el uso de Python 3.11 o mayor y de Visual Studio Code o PyCharm
 - Acceder a la carpeta `Algoritmica_II`
 - Instalar las dependencias abriendo el terminal dentro de la carpeta e insertando:
 $ pip install -r requirements.txt 
