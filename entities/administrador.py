@@ -91,11 +91,11 @@ class Administrador(Usuario):
             if element["numHabitacion"] == habitacion_buscar:
                 if dato == "precio":
                     element[dato] = float(
-                        input("Ingrese actualiazación de su " + dato + ": ")
+                        input("Ingrese actualización de su " + dato + ": ")
                     )
                 else:
                     element[dato] = str(
-                        input("Ingrese actualiazación de su " + dato + ": ")
+                        input("Ingrese actualización de su " + dato + ": ")
                     )
 
         with open(file_path2, "w") as f:

@@ -83,10 +83,10 @@ class Cliente(Usuario):
             if element["usuario"] == self._usuario:
                 if dato == "contrasenia":
                     element[dato] = generate_password_hash(
-                        input("Ingrese actualiazación de su " + dato + ": ")
+                        input("Ingrese actualización de su " + dato + ": ")
                     )
                 else:
-                    element[dato] = input("Ingrese actualiazación de su " + dato + ": ")
+                    element[dato] = input("Ingrese actualización de su " + dato + ": ")
 
         with open(file_path, "w") as f:
             json.dump(usuarios, f, indent=4)

@@ -91,7 +91,7 @@ def menu_usuarios(usuarioEnSesion):
         usuarioEnSesion.actualizarDatos()
     elif op == 2:
         print("**************SOLICITUD DE RESERVA*********************")
-        fechaEnt = str(input("Llegada (dd-mm-aaa):"))
+        fechaEnt = str(input("Llegada (dd-mm-aaaa):"))
         fechaSal = str(input("Salida (dd-mm-aaaa):"))
         numDias = Reserva.tiempoDeEstadia(fechaEnt, fechaSal)
         cantPersonas = int(input("Ingrese la cantidad de personas: "))
