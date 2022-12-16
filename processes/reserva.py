@@ -37,7 +37,7 @@ class Reserva:
             for habitacionSolicitada in data:
                 if str(habitacionSolicitada["numHabitacion"]) == element:
                     monto = monto + habitacionSolicitada["precio"]
-           
+
         return monto * numDias
 
     def reservar(self):
