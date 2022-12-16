@@ -37,9 +37,7 @@ class Reserva:
             for habitacionSolicitada in data:
                 if str(habitacionSolicitada["numHabitacion"]) == element:
                     monto = monto + habitacionSolicitada["precio"]
-            with open(file_path2, "w") as f:
-                json.dump(data, f, indent=4)
-
+           
         return monto * numDias
 
     def reservar(self):
