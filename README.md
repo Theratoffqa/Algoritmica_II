@@ -16,11 +16,8 @@ $ pip install -r requirements.txt
 * Json 📄
 ------------
 ### Funcionalidades nuevas
-* Generar reservas: Separa habitaciones, calcula el monto a pagar, cambia el estado de las habitaciones reservadas,
- muestra los datos de las habitaciones reservadas, calcula el tiempo de la estadía y valida el número de personas
- que se hospedarán.
-* Encriptación de datos sensibles: Mediante la librería Werkzeug.security con dos métodos, uno que genera la
-contraseña y otro que la valida, se mejora la seguridad de los datos de los usuarios.
+* Sistema de gestión para seguimiento del negocio
+* Mostrar registro de compra de usuarios
 ------------
 ### Integrantes del grupo
 - Barazorda Medrano, Pedro Emanuel // [Theratoffqa](https://github.com/Theratoffqa) //
