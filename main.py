@@ -21,9 +21,9 @@ def menu():
             print("     No tenemos a ese usuario registrado, intentelo de nuevo")
             usuarioEnSesion, tipo = buscar_usuario()
         if tipo == "admin":
-            menu_admin(usuarioEnSesion)
+            menu_admin(usuarioEnSesion, tipo)
         else:
-            menu_usuarios(usuarioEnSesion)
+            menu_usuarios(usuarioEnSesion, tipo)
 
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
@@ -52,7 +52,7 @@ def buscar_usuario():
     return usuarioEnSesion, tipo
 
 
-def menu_admin(usuarioEnSesion):
+def menu_admin(usuarioEnSesion, tipo):
     menu = """
     1.- Registrar habitacion
     2.- Actualizar datos de habitacion
@@ -74,13 +74,13 @@ def menu_admin(usuarioEnSesion):
         Habitacion.buscarHabitacion()
 
     elif option == 5:
-        Habitacion.mostrarDatos()
+        Habitacion.mostrarDatos(tipo)
 
     else:
         print("Opcion no valida")
 
 
-def menu_usuarios(usuarioEnSesion):
+def menu_usuarios(usuarioEnSesion, tipo):
     menu = """
     1.- Actualizar Datos
     2.- Comprar
@@ -96,7 +96,7 @@ def menu_usuarios(usuarioEnSesion):
         numDias = Reserva.tiempoDeEstadia(fechaEnt, fechaSal)
         cantPersonas = int(input("Ingrese la cantidad de personas: "))
         cantHabitaciones = int(input("Ingrese el numero de habitaciones:"))
-        Habitacion.mostrarDatos()
+        Habitacion.mostrarDatos(tipo)
         habitacionesSolicitadas = Reserva.separarHabitaciones(cantHabitaciones)
         titular = usuarioEnSesion._usuario
         new_Reserva = Reserva(titular, fechaEnt, fechaSal, numDias, cantPersonas, cantHabitaciones, habitacionesSolicitadas)
